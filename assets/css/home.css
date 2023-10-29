@@ -269,3 +269,58 @@ a {
     background: -o-linear-gradient(90deg, #1345e6 0%, #ed239f 100%);
     background: linear-gradient(90deg, #1345e6 0%, #ed239f 100%)
 }
+
+/* other project */
+
+
+.other_project {
+    position: relative;
+    display: block;
+    overflow: hidden;
+    border-radius: 3%;
+    margin-top: 35px;
+}
+
+.other_project img {
+    transition: transform 0.5s ease;
+    width: 500px;
+}
+
+.other_project:hover img {
+    transform: scale(1.08);
+}
+
+.other_project .op_label {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding-top: 10px;
+    background-color: rgba(0, 0, 0, 0.9); 
+
+    color: #fff;
+    transition: transform 0.5s ease;
+    transform: translateY(100%);
+
+}
+
+.other_project .op_label p {
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.other_project:hover .op_label {
+    transform: translateY(0);
+}
+
+.other_project .op_label h3 {
+    position: absolute;
+    top: -40px;
+    height: 40px;
+    font-size: 20px;
+    width: 100%;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.9);
+    padding-left: 20px;
+    padding-top: 10px;
+}
