@@ -9,12 +9,9 @@
     top: 0;
     left: 0;
     right: 0;
-    margin-left: auto;
-    margin-right: auto;
     width: 100px;
     /* Need a specific value to work */
 
-    padding-right: 1200px;
 
     z-index: 999;
 }
@@ -26,7 +23,7 @@ body {
     line-height: 27px;
     font-weight: 300;
     font-family: "Roboto", sans-serif;
-    color: #797979
+    color: #797979;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -47,7 +44,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .navbar .navbar-collapse .navbar-nav .nav-item .nav-link {
-    font: 500 14px/100px "Roboto", sans-serif;
+    font: 500 14px/60px "Roboto", sans-serif;
     font-size: 14px;
     text-transform: uppercase;
     white-space: nowrap;
@@ -55,6 +52,9 @@ h1, h2, h3, h4, h5, h6 {
     padding: 0px 30px;
     font-size: 12px;
     display: inline-block;
+    margin: 0 10px;
+    background-color: #ffffff;
+    border-radius: 5px;
 }
 
 .navbar .navbar-collapse .navbar-nav .nav-item .nav-link:hover {
@@ -142,46 +142,39 @@ h1, h2, h3, h4, h5, h6 {
 .home_banner_area {
     padding-top: 250px;
     padding-bottom: 200px;
-
-    background: url(../img/banner/home-banner.png) no-repeat top center;
-    background-position: center;
+    position: relative;
+    background: url(../img/banner/home-banner.png) no-repeat top right;
     background-size: cover;
 }
 
-@media (max-width: 767px) {
-    .home_banner_area {
-        background: #ffffff
-    }
+.home_banner_area .banner_boids iframe {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    border: none;
+    position: absolute;
+    margin: 0 auto;
+    left: 0;
+    top: 0;
 }
 
 .home_banner_area .banner_inner {
-    width: 100%;
-}
-
-@media (max-width: 991px) {
-    .home_banner_area .banner_inner {
-        width: 100%;
-    }
-}
-
-.home_banner_area .banner_inner .home_right_img {
-    padding-top: 197px
-}
-
-@media (max-width: 991px) {
-    .home_banner_area .banner_inner .home_right_img {
-        display: none
-    }
+    padding-top: 100px;
 }
 
 .home_banner_area .banner_content {
-    text-align: left
+    text-align: left;
+    padding: 20px;
+    background-color: #ffffff;
+    box-shadow: 10px 10px 10px rgba(255, 255, 255, 0.219);
+    border-radius: 5px;
 }
 
 /* services_area */
 
 .services_area {
     margin-bottom: 150px;
+    margin-top: 50px;
 }
 
 /* service item */
@@ -279,7 +272,8 @@ a {
     overflow: hidden;
     border-radius: 3%;
     margin-top: 35px;
-    border: solid 3px rgb(188, 176, 204);
+    /*! border: solid 3px rgb(188, 176, 204); */
+    box-shadow: 10px 10px 10px #7477a0;
 }
 
 .other_project img {

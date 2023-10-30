@@ -17,19 +17,28 @@
 </head>
 
 <body>
-
-    <div id="nav-placeholder">
-        <script>
-            $(function () {
-                $("#nav-placeholder").load("navbar.html");
-            });
-        </script>
+    <div class="container">
+        <div id="nav-placeholder">
+            <script>
+                $(function () {
+                    $("#nav-placeholder").load("navbar.html");
+                });
+            </script>
+        </div>
     </div>
+    
+    
 
     <section class="home_banner_area">
+        <div class="banner_boids">
+            <iframe src="fs_portfolio/"
+            allowtransparency="true"
+            scrolling="no">                
+            </iframe>
+        </div>
         <div class="banner_inner">
             <div class="container">
-                <div class="row align-items-center justify-content-between">
+                <div class="row align-items-center justify-content-between banner_parent">
                     <div class="col-lg-6">
                         <div class="banner_content">
                             <h2>Hello there ! I'm Ruben ✨🤸‍♂️</h2>
@@ -55,8 +64,9 @@
 
                 </div>
             </div>
-        </div>
+            </div>
     </section>
+
 
     <section class="services_area" id="projects">
         <div class="container">
