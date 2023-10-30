@@ -9,9 +9,12 @@
     top: 0;
     left: 0;
     right: 0;
+    margin-left: auto;
+    margin-right: auto;
     width: 100px;
     /* Need a specific value to work */
 
+    padding-right: 1200px;
 
     z-index: 999;
 }
@@ -29,6 +32,10 @@ body {
 h1, h2, h3, h4, h5, h6 {
     font-family: "Roboto", sans-serif;
     color: #05364d;
+}
+
+.banner_parent{
+    pointer-events: none;
 }
 
 .home_banner_area .banner_content h5 {
