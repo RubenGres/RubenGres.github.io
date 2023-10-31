@@ -41,6 +41,9 @@ let f_boid;
 let cameraPos;
 let cameraScale = 1;
 
+/* mouse */
+let mousePos;
+
 /* world */
 let canvas;
 let isRunning;
@@ -64,6 +67,8 @@ window.onresize = function(event) {
 
 function setup() {
   setupWorld();
+
+  mousePos = createVector(0,0);
 
   /* disable right click */
   document.addEventListener('contextmenu', event => event.preventDefault());
@@ -375,10 +380,15 @@ function draw() {
 
   renderBoids();
 
-  let mousePos = getMousePosition()
   fill(200,200,200,30);
   stroke(0,0,0,70);
-  circle(mousePos.x,mousePos.y,20);
+  let mouse_diff = getMousePosition().dist(mousePos);
+  mousePos = getMousePosition()
+
+  mouse_diff = max(15, mouse_diff);
+  mouse_diff = min(30, mouse_diff);
+
+  circle(mousePos.x,mousePos.y,mouse_diff);
 
   /* add menu icons */
   if(isMenuVisible) {

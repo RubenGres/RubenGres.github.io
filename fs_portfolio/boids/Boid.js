@@ -4,6 +4,8 @@ class Boid {
       this.position = createVector(x, y);
       this.velocity = p5.Vector.random2D();
 
+      this.mouse = createVector(0, 0);
+
       this.setMaxSpeed(1.5); 
       this.setMaxSize(20);
       this.size = this.maxSize * random(0.5, 1);
@@ -69,13 +71,15 @@ class Boid {
     }
     
     escapeCursor(range){
-      let mouse = getMousePosition();
-      let d = p5.Vector.dist(this.position, mouse);
+      let mouse_diff = this.mouse.dist(getMousePosition())/10;
+      this.mouse = getMousePosition();
 
-      if(d > range)
+      let d = p5.Vector.dist(this.position, this.mouse);
+
+      if(d > range * mouse_diff)
         return createVector(0, 0);
 
-      let diff = p5.Vector.sub(this.position, mouse);
+      let diff = p5.Vector.sub(this.position, this.mouse);
       diff.normalize();
       diff.div(d);
       
