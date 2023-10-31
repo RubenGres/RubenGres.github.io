@@ -1,10 +1,9 @@
 class Predator extends Boid {
     constructor(x,y) {
-        super(x,y, color(255, 0, 0));
+        super(x,y, color(255, 100, 100));
 
         this.setSize(30);
-        this.setMaxSpeed(1.5);
-        this.setColorAccordingToSize();
+        this.setMaxSpeed(1.3);
         
         this.chaseRadius = this.size * 5;
         this.eatRadius = this.size;
@@ -15,13 +14,6 @@ class Predator extends Boid {
     
     findBuddies(){
         let buddies = [];
-        for (let i = 0; i < predators.length; i++) {
-          let pred = predators[i];
-          if(pred != this){
-            if(abs(pred.position.x - this.position.x) < this.buddyRadius && abs(pred.position.y - this.position.y) < this.buddyRadius)
-              buddies.push(pred);
-          }
-        }
         this.buddies = buddies;
     }
 
