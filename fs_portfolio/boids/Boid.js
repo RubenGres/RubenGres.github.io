@@ -42,11 +42,9 @@ class Boid {
       let coh = this.cohesion(0.1); // Cohesion
   
       let esc = createVector(0,0);
-      if(mouseIsPressed != 0){  
-        if(mouseButton === RIGHT)
+      if(mouseIsPressed != 0){
+        if(mouseButton === LEFT)
           esc = this.followCursor();
-        else if(mouseButton === LEFT)
-          esc = this.escapeCursor(100000);  
       } else {
         esc = this.escapeCursor(20)
       }
@@ -72,6 +70,8 @@ class Boid {
     
     escapeCursor(range){
       let mouse_diff = this.mouse.dist(getMousePosition())/10;
+      mouse_diff = max(0.7, mouse_diff);
+      
       this.mouse = getMousePosition();
 
       let d = p5.Vector.dist(this.position, this.mouse);

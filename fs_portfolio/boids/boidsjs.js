@@ -71,7 +71,7 @@ function setup() {
   mousePos = createVector(0,0);
 
   /* disable right click */
-  document.addEventListener('contextmenu', event => event.preventDefault());
+  //document.addEventListener('contextmenu', event => event.preventDefault());
 
   /* main buttons */
   /*
@@ -382,13 +382,6 @@ function draw() {
 
   fill(200,200,200,30);
   stroke(0,0,0,70);
-  let mouse_diff = getMousePosition().dist(mousePos);
-  mousePos = getMousePosition()
-
-  mouse_diff = max(15, mouse_diff);
-  mouse_diff = min(30, mouse_diff);
-
-  circle(mousePos.x,mousePos.y,mouse_diff);
 
   /* add menu icons */
   if(isMenuVisible) {
