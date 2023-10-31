@@ -87,7 +87,8 @@ h1, h2, h3, h4, h5, h6 {
     font-weight: 500;
     position: relative;
     margin-bottom: 30px;
-    font-size: 2em;
+    font-size: 1.6em;
+    letter-spacing: 0.1em;
 }
 
 .main_title p.top_text span {
