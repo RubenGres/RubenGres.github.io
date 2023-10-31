@@ -11,19 +11,13 @@
     right: 0;
     margin-left: auto;
     margin-right: auto;
-    width: 100px;
-    /* Need a specific value to work */
-
-    padding-right: 1200px;
 
     z-index: 999;
 }
 
 body {
-    line-height: 24px;
-    background: url(images/noise.jpg);
-    background-size: 200px;
-    line-height: 27px;
+    font-size: 20px;
+    line-height: 1em;
     font-weight: 300;
     font-family: "Roboto", sans-serif;
     color: #797979;
@@ -34,14 +28,14 @@ h1, h2, h3, h4, h5, h6 {
     color: #05364d;
 }
 
-.banner_parent{
-    pointer-events: none;
-}
-
 .home_banner_area .banner_content h5 {
-    font-size: 24px;
     font-weight: lighter;
     margin-bottom: 0px;
+    font-size: 1.5em;
+}
+
+.home_banner_area .banner_content h2 {
+    font-size: 2em;
 }
 
 @media (max-width: 767px) {
@@ -52,12 +46,11 @@ h1, h2, h3, h4, h5, h6 {
 
 .navbar .navbar-collapse .navbar-nav .nav-item .nav-link {
     font: 500 14px/60px "Roboto", sans-serif;
-    font-size: 14px;
+    font-size: 1em;
     text-transform: uppercase;
     white-space: nowrap;
     color: #05364d;
     padding: 0px 30px;
-    font-size: 12px;
     display: inline-block;
     margin: 0 10px;
     background-color: #ffffff;
@@ -71,7 +64,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .home_banner_area .banner_content .social_icons a {
     color: rgba(5, 54, 77, 0.5);
-    font-size: 20px;
+    font-size: 1.3em;
     cursor: pointer;
     transition: all 0.3s ease 0s;
 }
@@ -91,11 +84,10 @@ h1, h2, h3, h4, h5, h6 {
 
 .main_title p.top_text {
     text-transform: uppercase;
-    letter-spacing: 2px;
     font-weight: 500;
     position: relative;
     margin-bottom: 30px;
-    font-size: 25px;
+    font-size: 2em;
 }
 
 .main_title p.top_text span {
@@ -207,7 +199,7 @@ a {
 
 .service_item h4 {
     color: #05364d;
-    font-size: 20px;
+    font-size: 3em;
     font-weight: 500;
     margin-bottom: 20px;
     text-transform: capitalize;
@@ -238,7 +230,7 @@ a {
 }
 
 .primary_btn2 {
-    font-size: 13px;
+    font-size: 1em;
     font-weight: 500;
     text-transform: uppercase;
     color: #05364d;
@@ -318,7 +310,7 @@ a {
     position: absolute;
     top: -40px;
     height: 40px;
-    font-size: 20px;
+    font-size: 1.5em;
     width: 100%;
     color: white;
     background: rgb(255, 255, 255);
