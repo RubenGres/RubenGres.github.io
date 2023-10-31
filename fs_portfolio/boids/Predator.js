@@ -14,6 +14,13 @@ class Predator extends Boid {
     
     findBuddies(){
         let buddies = [];
+        for (let i = 0; i < predators.length; i++) {
+          let pred = predators[i];
+          if(pred != this){
+            if(abs(pred.position.x - this.position.x) < this.buddyRadius && abs(pred.position.y - this.position.y) < this.buddyRadius)
+              buddies.push(pred);
+          }
+        }
         this.buddies = buddies;
     }
 
