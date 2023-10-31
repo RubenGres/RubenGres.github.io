@@ -46,7 +46,7 @@ class Boid {
         if(mouseButton === LEFT)
           esc = this.followCursor();
       } else {
-        esc = this.escapeCursor(20)
+        esc = this.escapeCursor(40)
       }
   
       this.velocity.add(sep);
