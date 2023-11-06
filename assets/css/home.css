@@ -277,59 +277,33 @@ a {
 
 /* other project */
 
-
 .other_project {
-    position: relative;
-    display: block;
-    overflow: hidden;
-    border-radius: 3%;
-    margin-top: 35px;
-    /*! border: solid 3px rgb(188, 176, 204); */
-    box-shadow: 10px 10px 10px #7477a0;
-}
-
-.other_project img {
-    transition: transform 0.8s ease;
+    transition: transform 0.2s ease;
     width: 100%;
+    margin-bottom: 30px;
+    text-align: center;   
+    padding: 20px;
+    border-radius: 10px;
+    
+    background-color: #b8ccf8;
+    box-shadow: 10px 10px 10px #7E98D1;
 }
 
-.other_project:hover img {
-    transform: scale(1.06);
+.other_project img{
+    width: 70%;
+    margin-bottom: 30px;    
+    border-radius: 10px;
 }
 
-.other_project .op_label {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    padding-top: 10px;
-    background-color: rgba(0, 0, 0, 0.9); 
-    color: #fff;
-    transition: transform 0.5s ease;
-    transform: translateY(100%);
-
+.other_project h3{
+    font-size: 1.4em;
 }
 
-.other_project .op_label p {
-    padding-left: 20px;
-    padding-right: 20px;
+.other_project p{
+    text-align: left;
+    color: black;
 }
 
-.other_project:hover .op_label {
-    transform: translateY(0);
-}
-
-.other_project .op_label h3 {
-    position: absolute;
-    bottom: 0;
-    top: -45px;
-    height: 46px;
-    font-size: 20px;
-    padding-top: 10px;
-    width: 100%;
-    color: white;
-    background-color: rgba(0, 0, 0, 0.9); 
-    text-align: center;
-    font-weight: bold;
-    border-radius: 10px 10px 0 0;
+.other_project:hover {
+    transform: scale(1.03);
 }
