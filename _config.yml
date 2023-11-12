@@ -1,2 +1,4 @@
 theme: jekyll-theme-cayman
+include:
+  - "Seg2Sat/_app"
 future: true
