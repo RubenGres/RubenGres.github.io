@@ -4,15 +4,9 @@
 }
 
 #nav-placeholder {
-    height: 116px;
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    margin-left: auto;
-    margin-right: auto;
-
-    z-index: 999;
+    height: 75px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    margin-bottom: 6px;
 }
 
 body {
@@ -44,17 +38,21 @@ h1, h2, h3, h4, h5, h6 {
     }
 }
 
+.navbar {
+    height: 50px;
+    padding-top: 30px;
+}
+
 .navbar .navbar-collapse .navbar-nav .nav-item .nav-link {
-    font: 500 14px/60px "Roboto", sans-serif;
+    font: 500 14px/35px "Roboto", sans-serif;
     font-size: 1em;
-    text-transform: uppercase;
+    text-transform: capitalize;
     white-space: nowrap;
     color: #05364d;
-    padding: 0px 30px;
+    padding: 0px 10px;
     display: inline-block;
-    margin: 0 10px;
-    background-color: #ffffff;
-    border-radius: 5px;
+    margin: 0 5px;
+    border-radius: 2px;
 }
 
 .navbar .navbar-collapse .navbar-nav .nav-item .nav-link:hover {
@@ -140,7 +138,6 @@ h1, h2, h3, h4, h5, h6 {
 /* banner */
 
 .home_banner_area {
-    padding-top: 250px;
     padding-bottom: 200px;
     position: relative;
     background: url(../img/banner/home-banner.png) no-repeat top right;
@@ -290,7 +287,7 @@ a {
 }
 
 .other_project img{
-    width: 70%;
+    width: 100%;
     margin-bottom: 30px;    
     border-radius: 10px;
 }
@@ -306,4 +303,11 @@ a {
 
 .other_project:hover {
     transform: scale(1.03);
+}
+
+
+#site-name-nav *{
+    color: rgba(15, 118, 110, 0.9);
+    font: 500 1.25em/1.75em "Roboto", sans-serif;
+    font-weight: 600;
 }

@@ -8,6 +8,7 @@ class Predator extends Boid {
         this.chaseRadius = this.size * 5;
         this.eatRadius = this.size;
         this.chasedPrey = null;
+        this.buddyRadius = 0;
 
         predators.push(this);
     }

@@ -168,7 +168,7 @@ class Boid {
     }
     
     render() {
-      stroke(210,210,210);
+      stroke(170,170,170);
       
       let len = (this.size / 1.5) * cameraScale;
       let x1 = 1.5*len, y1 = 0;
