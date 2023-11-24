@@ -278,18 +278,22 @@ a {
     transition: transform 0.2s ease;
     width: 100%;
     margin-bottom: 30px;
-    text-align: center;   
-    padding: 20px;
+    text-align: center;
     border-radius: 10px;
     
-    background-color: #b8ccf8;
+    background-color: #d6e2fa;
     box-shadow: 10px 10px 10px #7E98D1;
+
+    height: 350px;
+    overflow: hidden;
 }
 
 .other_project img{
     width: 100%;
-    margin-bottom: 30px;    
-    border-radius: 10px;
+    margin-bottom: 10px;
+    
+    max-height: 200px;
+    object-fit: cover;
 }
 
 .other_project h3{
@@ -299,6 +303,8 @@ a {
 .other_project p{
     text-align: left;
     color: black;
+    padding: 20px;
+    padding-top: 0;
 }
 
 .other_project:hover {
