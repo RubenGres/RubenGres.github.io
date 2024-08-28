@@ -1,25 +1,23 @@
+
+
 <div id="page-wrap">
-    <img src="assets/img/me.png" alt="Me" id="pic" />
+    <img src="img/me.png" alt="Me" id="pic" />
 
     <div id="contact-info" class="vcard">
         <h1 class="fn">Ruben Grès</h1>
 
         <p>
-            Cell: <span class="tel">+33 6 17 09 96 80</span><br />
             Email:
-            <a class="email" href="ruben.g.gres@gmail.com"
-                >ruben.g.gres@gmail.com</a
-            >
+            <a class="email" href="mailto:ruben.gres@proton.me">ruben.gres@proton.me</a>
         </p>
     </div>
 
     <div id="objective">
         <p>
-            Currently I'm working as a Cloud Engineer for <a
-                href="https://ign.fr">IGN</a
-            >
-            (not the video game website) I'm very curious and often working on
-            new projects, take a look at <a href="https://koll.ai">koll.ai</a> !
+            I'm currently working as an AI Engineer at <a href="https://ign.fr">IGN</a> four days a week (not the gaming website).
+            <br><br>
+            In addition to my primary role, I frequently embark on other adventures, whether it's freelance work,
+            <a href="https://latentminds.com">AI exploration</a>, or volunteer projects!
         </p>
     </div>
 
@@ -31,54 +29,50 @@
         <dt>Experience</dt>
 
         <dd>
-            <h2>IGN<span>02/2023 - now </span></h2>
+            <h2>IGN - <i>AI engineer</i><span>02/2024 - now </span></h2>
             <p>
-                I use docker and kubernetes to deploy our apps on the Cloud and
-                make the best use of our server room
+                I'm implementing generative AI into our workflows, may be it for <b>Earth observation</b> to understand data or broader applications using <b>LLMs</b>.
+                I'm particulary interested in <b>diffusion models</b>
             </p>
         </dd>
 
         <dd>
-            <h2>CS Group<span>01/2022 - 02/2023</span></h2>
+            <h2>IGN - <i>Cloud engineer</i><span>02/2023 - 02/2024 </span></h2>
             <p>
-                I used NLP models to extract topics and sentiment from user
-                generated text. <br />
-                I also coded quite a bit on Airbus' Skywise platform.
+                I used <b>docker</b> and <b>kubernetes</b> to move our apps on the Cloud.
+                I was also in charge of deploying orchestrator on our infrastructure and adapting our pipelines
             </p>
         </dd>
 
         <dd>
-            <h2>Infotel<span>02/2021 - 08/2021</span></h2>
+            <h2>CS Group - <i>AI engineer</i> <span>01/2022 - 02/2023</span></h2>
             <p>
-                I created and tested neural network models to study and predict
-                trends in time series. Programming using Keras and TensorFlow. I
-                also built a front-end dashboard in Flutter for data
-                visualization.
+                Worked on <b>NLP models</b> to extract topics and sentiment from user generated text. <br />
+                I also built a team to work on <b>transformer models</b> for text analysis.
             </p>
         </dd>
 
         <dd>
-            <h2>INSA Toulouse<span>06/2020 - 07/2020</span></h2>
+            <h2>Infotel - <i>AI engineer internship</i><span>02/2021 - 08/2021</span></h2>
             <p>
-                During this month internship, I created a procedural world
-                generator and flight simulator in VR using Unity. The plane is
-                controlled by sensors communicating with Unity via an STM32
-                microcontroller. The project can be found <a
-                    href="https://github.com/RubenGres/VRHanglider">here</a
-                >
+                Using <b>Keras</b> and <b>TensorFlow</b>, built and tested neural network models to study and predict trends in time series.
+                Created a <b>Flutter</b> dashboard for data visualization.
             </p>
         </dd>
 
         <dd>
-            <h2>IUCT Oncopole<span>04/2019 - 08/2019</span></h2>
+            <h2>INSA Toulouse - <i>VR GameDev internship</i><span>06/2020 - 07/2020</span></h2>
             <p>
-                I built an
-                <a href="https://github.com/salimkanoun/Scintigraphy"
-                    >open-source software</a
-                >
-                in Java allowing to detect signs of organ dysfunction with scintigraphy
-                images with a team of oncology researchers in collaboration with
-                several institutes.
+                Month long internship. I created a procedural world generator and flight simulator in VR using <b>Unity</b>.
+                An <b>STM32</b> was used for controlling the plane. <a href="https://github.com/RubenGres/VRHanglider">Full project on GitHub</a>
+            </p>
+        </dd>
+
+        <dd>
+            <h2>IUCT Oncopole - <i>Software developer internship</i><span>04/2019 - 08/2019</span></h2>
+            <p>
+                Open source <b>Java</b> app to detect organ dysfunction from scintigraphy images. Worked with cancer researchers in collaboration with
+                several institutes. <a href="https://github.com/salimkanoun/Scintigraphy">Full project on GitHub</a>
             </p>
         </dd>
 

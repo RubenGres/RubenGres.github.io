@@ -1,7 +1,13 @@
 <script>
     import Banner from './Banner.svelte';
-    import Projects from './Projects.svelte';
 </script>
 
 <Banner />
-<Projects />
+
+<h1>
+    404
+</h1>
+
+<p>
+    Sorry there is nothing here...
+</p>

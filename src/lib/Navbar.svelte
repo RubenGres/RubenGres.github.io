@@ -5,19 +5,29 @@
             <li class="nav-item" id="site-name-nav">
                <a class="nav-link" href="../">Ruben Gres</a>
             </li>
+
             <li class="nav-item">
-               <a class="nav-link" href="https://rubengr.es/blog/">Blog</a>
+               <a class="nav-link" href="blog">Blog</a>
             </li>
+
             <li class="nav-item">
-               <a class="nav-link" href="index.html#projects">Portfolio</a>
+               <a class="nav-link" href="/">Portfolio</a>
             </li>
+
             <li class="nav-item">
-               <a class="nav-link" href="https://rubengr.es/blog/about/"
-                  >Contact</a
-               >
+               <a class="nav-link" href="publications">Publications</a>
             </li>
+
+            <li class="nav-item">
+               <a class="nav-link" href="teaching">Teaching</a>
+            </li>
+
             <li class="nav-item">
                <a class="nav-link" href="resume">Resume</a>
+            </li>
+            
+            <li class="nav-item">
+               <a class="nav-link" href="contact">Contact</a>
             </li>
          </ul>
       </div>

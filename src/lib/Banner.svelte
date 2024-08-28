@@ -9,7 +9,7 @@
 <section class="home_banner_area">
     <div class="banner_boids">
         <iframe
-            src="/assets/fs_portfolio/index.html"
+            src="/fs_portfolio/index.html"
             allowtransparency="true"
             scrolling="no"
             title="boids_banner"
@@ -23,7 +23,7 @@
                 class="row align-items-center justify-content-between banner_parent"
             >
                 <div class="banner_content col-lg-6 module-move">
-                    <h2>Hi there, I'm Ruben 👋🌱</h2>
+                    <h2>Hi there! 👋 I'm Ruben 🌱</h2>
                     <h5>
                         I build apps and games to reshape the digital frontier,
                         often with generative AI. Creator of <a
@@ -56,7 +56,7 @@
                             href="https://www.linkedin.com/in/ruben-gres-484930158/"
                             ><i class="fab fa-linkedin-in"></i></a
                         >
-                        <a href="mailto:ruben.g.gres@gmail.com"
+                        <a href="mailto:ruben.gres@proton.me"
                             ><i class="fas fa-envelope"></i></a
                         >
                     </div>

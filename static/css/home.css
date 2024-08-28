@@ -38,9 +38,13 @@ h1, h2, h3, h4, h5, h6 {
     }
 }
 
+#collapsibleNavbar ul {
+    list-style: none;
+}
+
 .navbar {
     height: 50px;
-    padding-top: 30px;
+    padding-top: 20px;
 }
 
 .navbar .navbar-collapse .navbar-nav .nav-item .nav-link {
@@ -78,6 +82,11 @@ h1, h2, h3, h4, h5, h6 {
 
 .social_icons a {
     padding-right: 20px;
+}
+
+.main_title .description {
+    margin-bottom: 50px;
+    font-size: 1.1em;
 }
 
 .main_title p.top_text {
@@ -124,6 +133,7 @@ h1, h2, h3, h4, h5, h6 {
     position: relative;
     background: url(../img/banner/home-banner.png) no-repeat top right;
     background-size: cover;
+    overflow: hidden; /* Ensure circles don't overflow out of the container */
 }
 
 .home_banner_area::before {
@@ -156,9 +166,11 @@ h1, h2, h3, h4, h5, h6 {
 .home_banner_area .banner_content {
     text-align: left;
     padding: 20px;
-    background-color: #ffffff;
+    background-color: #ffffffbc;
     box-shadow: 10px 10px 10px rgba(255, 255, 255, 0.219);
     border-radius: 5px;
+    z-index: 999;
+    position: relative;
 }
 
 /* services_area */
@@ -169,10 +181,6 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* service item */
-
-a {
-    color: inherit;
-}
 
 .service_item {
     padding: 60px 30px;
@@ -314,4 +322,49 @@ a:active {
     color: rgba(15, 118, 110, 0.9);
     font: 500 1.25em/1.75em "Roboto", sans-serif;
     font-weight: 600;
+}
+
+
+#page-wrap.contact {
+    font-family: Arial, sans-serif;
+    margin: 0 auto;
+    text-align: center;
+    margin-bottom: 100px;
+}
+
+#page-wrap.contact img {
+    display: block;
+    margin: 50px auto 20px auto;
+    border-radius: 100%;
+    width: 160px;
+    height: 160px;
+}
+
+#page-wrap.contact h2 {
+    text-align: center;
+}
+
+#page-wrap.contact p {
+    text-align: center;
+    max-width: 30em;
+    margin: auto;
+}
+
+#page-wrap.contact ul {
+    list-style-type: none;
+    padding: 0;
+    text-align: center;
+    margin-top: 50px;
+}
+
+#page-wrap.contact ul li {
+    margin: 10px 0;
+}
+
+#page-wrap.contact ul li i {
+    margin-right: 8px;
+}
+
+#page-wrap.contact ul li a {
+    text-decoration: none;
 }
