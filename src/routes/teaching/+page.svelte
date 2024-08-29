@@ -4,7 +4,7 @@
     <ul>
         <li>
             <h2>
-                <a href="https://docs.google.com/presentation/d/1-MErI2swr3_0d4anJyy-s73GpiBKLOYmiCAAnmi_DEM">
+                <a href="/documents/[ENSG] Introduction à l'IA générative 02_05.pdf">
                     Introduction à l'IA générative pour la géomatique
                 </a>
             </h2>
