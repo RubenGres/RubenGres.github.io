@@ -3,6 +3,30 @@
 <div id="page-wrap">
     <h1>Publications</h1>
 
+    <h2>Interviews</h2>
+    <ul>
+        <li>
+            <h4>
+                <a href="">
+                    Le modèle Seg2Sat
+                </a> ATLAS IGN - A l'aire de l'intelligence artificielle
+            </h4>
+            A double spread presenting my work on Seg2Sat in the yearly IGN's Atlas
+        </li>
+    </ul>
+
+        <ul>
+        <li>
+            <h4>
+                <a href="">
+                    L'IA générative au service de nos métiers et nos savoirs 
+                </a> ATLAS IGN - A l'aire de l'intelligence artificielle
+            </h4>
+            In this interview I explore the potential of RAGs for text analysis for geographical data
+        </li>
+    </ul>
+
+
     <h2>Non-Academic Publications</h2>
     <ul>
         <li>
