@@ -35,7 +35,7 @@
                         >
                         <br /><br />
                         <a href="https://calendly.com/rubengres/30min"
-                            >Get in touch if you to collaborate!</a
+                            >Get in touch to collaborate!</a
                         >
                         <br /><br />
                     </h5>
