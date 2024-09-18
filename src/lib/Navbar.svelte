@@ -11,10 +11,6 @@
             </li>
 
             <li class="nav-item">
-               <a class="nav-link" href="/">Portfolio</a>
-            </li>
-
-            <li class="nav-item">
                <a class="nav-link" href="publications">Publications</a>
             </li>
 

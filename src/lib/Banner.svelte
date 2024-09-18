@@ -23,7 +23,7 @@
                 class="row align-items-center justify-content-between banner_parent"
             >
                 <div class="banner_content col-lg-6 module-move">
-                    <h2>Hi there! 👋 I'm Ruben 🌱</h2>
+                    <h2>Hi! I'm Ruben 🌱</h2>
                     <h5>
                         I build apps and games to reshape the digital frontier,
                         often with generative AI. Creator of <a
