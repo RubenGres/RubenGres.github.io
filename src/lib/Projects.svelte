@@ -54,8 +54,8 @@
             description: "[2024] Play as an exploited employee in corporate hell. GMTK 2024 GameJam"
         },
         {
-            title: "Procedural Snake [WIP]",
-            link: "https://rubengr.es/snake",
+            title: "noperope.io [WIP]",
+            link: "https://github.com/RubenGres/noperope.io",
             image: "img/snake.jpg",
             description: "[2024] .io multiplayer snake with procedural animation and simple AI"
         },
