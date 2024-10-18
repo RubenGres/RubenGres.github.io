@@ -19,7 +19,7 @@
     <ul>
         <li>
             <h4>
-                <a href="">
+                <a href="https://www.calameo.com/read/0011885824d49acbe5730?page=22">
                     Le modèle Seg2Sat
                 </a> — ATLAS IGN 2024
             </h4>
@@ -30,7 +30,7 @@
     <ul>
         <li>
             <h4>
-                <a href="">
+                <a href="https://www.calameo.com/read/0011885824d49acbe5730?page=75">
                     L'IA générative au service de nos métiers et nos savoirs 
                 </a> — ATLAS IGN 2024
             </h4>
