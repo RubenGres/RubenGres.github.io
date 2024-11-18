@@ -29,10 +29,6 @@
                         often with generative AI. Creator of <a
                             href="https://ohmlet.itch.io/">Ohmlet studio</a
                         >
-                        and the
-                        <a href="https://latentminds.com"
-                            >LatentMinds collective</a
-                        >
                         <br /><br />
                         <a href="https://calendly.com/rubengres/30min"
                             >Get in touch to collaborate!</a
