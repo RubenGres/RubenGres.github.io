@@ -172,7 +172,7 @@
 <ScrollEffect>
     {#each projectCategories as category}
         <section class="services_area" id="projects">
-            <div class="container">
+            <div class="custom-container">
 
                 <div class="row">
                     <div class="col-lg-12">
@@ -185,7 +185,6 @@
                     </div>
                 </div>
 
-               <div class="container">
                     <div class="row ml-auto justify-content-start">
                         {#each category.projects as project}
                             <div class="col-lg-4 col-sm-4 col-4">
@@ -207,7 +206,6 @@
                             </div>
                         {/each}
                     </div>
-                </div>
 
             </div>
         </section>
