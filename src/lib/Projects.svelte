@@ -148,7 +148,7 @@
             title: "GenAI apps I've built",
             description: `
                 <p> I'm often tinkering with AI to create new and useful use cases for a broad audience.
-                <br> I've also co-created <a href="https://latentminds.com">LatentMinds</a>, an art collective where we build online apps to explore the frontier of generative AI.</p>
+                <br> I've also co-created LatentMinds, an art collective where we build online apps to explore the frontier of generative AI.</p>
             `,
             projects : genAIProjects
         },
