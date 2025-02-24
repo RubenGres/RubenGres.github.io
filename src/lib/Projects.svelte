@@ -3,6 +3,13 @@
 
     let genAIProjects = [
         {
+            title: "Visualizing RAGs",
+            link: "https://github.com/RubenGres/visualizingRAGS",
+            image: "img/rags.jpg",
+            description: "Teaching tool to explain the inner workings of a RAG system",
+            year: 2025
+        },
+        {
             title: "WTFood",
             link: "https://www.cunicode.com/works/food-dysmorphia",
             image: "img/wtfood.png",
@@ -54,6 +61,13 @@
     ];
 
     let gameProjects = [
+        {
+            title: "Dad knows (siege) best",
+            link: "https://www.youtube.com/watch?v=ofAcTvuybvY",
+            image: "img/siege.jpg",
+            description: "Lead an army of LLM soldier agents from the grave. Built during Mistral x HF Hackaton 2025.",
+            year: 2025
+        },
         {
             title: "Zoomies: Fast or fired",
             link: "https://ohmlet.itch.io/zoomies",
