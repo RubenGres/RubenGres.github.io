@@ -14,9 +14,9 @@ class Boid {
       this.color = boidColor;
       //this.setColorAccordingToSize();
   
-      this.buddyRadius = 10*this.size;
-      this.crowdRadius = this.buddyRadius;
-      this.desiredseparation = this.size;
+      this.buddyRadius = 5*this.size;
+      this.crowdRadius = this.buddyRadius * 3;
+      this.desiredseparation = this.size * 2;
 
       boids.push(this);
     }
@@ -64,10 +64,32 @@ class Boid {
     
     
     borders() {
-      this.position.x = (this.position.x + width) % width;
-      this.position.y = (this.position.y + height) % height;
+      let margin = 50;
+      let turnFactor = 0.2;
+      let steer = createVector(0, 0);
+      
+      // Check if approaching left or right edge
+      if (this.position.x < margin) {
+        steer.x = turnFactor;
+      } else if (this.position.x > width - margin) {
+        steer.x = -turnFactor;
+      }
+      
+      // Check if approaching top or bottom edge
+      if (this.position.y < margin) {
+        steer.y = turnFactor;
+      } else if (this.position.y > height - margin) {
+        steer.y = -turnFactor;
+      }
+      
+      if (steer.mag() > 0) {
+        steer.normalize();
+        steer.mult(this.maxspeed);
+        this.velocity.add(steer);
+        this.velocity.limit(this.maxspeed);
+      }
     }
-    
+
     escapeCursor(range){
       let mouse_diff = this.mouse.dist(getMousePosition())/10;
       mouse_diff = max(0.7, mouse_diff);
@@ -167,6 +189,31 @@ class Boid {
       this.chasedPrey = null;
     }
     
+    drawConnectionLines() {
+      let connectionRadius = this.buddyRadius * 2; // You can adjust this radius as needed
+      
+      for (let i = 0; i < this.buddies.length; i++) {
+        let otherBoid = this.buddies[i];
+        let d = p5.Vector.dist(this.position, otherBoid.position);
+        
+        if (d > 0 && d < connectionRadius) {
+          // Calculate opacity based on distance (closer = more opaque)
+          let opacity = map(d, 0, connectionRadius, 255, 30);
+          
+          // Calculate screen positions accounting for camera
+          let x1 = (this.position.x - cameraPos.x) * cameraScale;
+          let y1 = (this.position.y - cameraPos.y) * cameraScale;
+          let x2 = (otherBoid.position.x - cameraPos.x) * cameraScale;
+          let y2 = (otherBoid.position.y - cameraPos.y) * cameraScale;
+          
+          // Draw the line
+          stroke(170, 170, 170, opacity);
+          strokeWeight(map(d, 0, connectionRadius, 2, 0.5)); // Line weight also varies with distance
+          line(x1, y1, x2, y2);
+        }
+      }
+    }
+
     render() {
       stroke(170,170,170);
       

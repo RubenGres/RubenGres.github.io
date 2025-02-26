@@ -1,6 +1,6 @@
 /* constants */
 const nbPrey = 10;
-const nbPred = 1;
+const nbPred = 2;
 const globalScale = 1;
 
 const mouseRadius = 30;
@@ -219,8 +219,11 @@ function runBoids() {
 
 /* run all boids */
 function renderBoids() {
-  for (let i = 0; i < boids.length; i++)
-    boids[i].render();
+  for (let boid of boids)
+    boid.drawConnectionLines();
+
+  for (let boid of boids)
+    boid.render();
 }
 
 /* draw on screen */
