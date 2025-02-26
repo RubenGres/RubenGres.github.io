@@ -1,6 +1,6 @@
 /* constants */
 const nbPrey = 10;
-const nbPred = 2;
+const nbPred = 1;
 const globalScale = 1;
 
 const mouseRadius = 30;

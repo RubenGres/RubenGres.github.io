@@ -64,7 +64,7 @@ class Boid {
     
     
     borders() {
-      let margin = 50;
+      let margin = -10;
       let turnFactor = 0.2;
       let steer = createVector(0, 0);
       
