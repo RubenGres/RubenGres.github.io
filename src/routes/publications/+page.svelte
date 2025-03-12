@@ -7,11 +7,21 @@
     <ul>
         <li>
             <h4>
+                <a href="https://connect.ed-diamond.com/misc/misc-138/deepfake-ou-en-sommes-nous-a-l-ere-de-l-ia-generative">
+                    Deepfake : où en sommes-nous à l’ère de l’IA générative ?
+                </a> — MISC n°138
+            </h4>
+            This articles focuses on the history of DeepFakes and the current state of the art in real time image manipulation. 
+        </li>
+        
+        <li>
+            <h4>
                 <a href="https://connect.ed-diamond.com/misc/misc-134/techniques-des-injections-de-prompt-un-nouvel-eldorado-de-menaces-dirigees-vers-l-ia">
                     Techniques des injections de prompt
                 </a> — MISC n°134
             </h4>
             In this article I explore the history of the main approaches to prompt injection and I propose a comparative study on different models
+             (top 10 best articles of 2024)
         </li>
     </ul>
 

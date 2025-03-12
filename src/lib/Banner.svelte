@@ -26,7 +26,7 @@
                     <h2>Hi! I'm Ruben 🌱</h2>
                     <h5>
                         I build apps and games to reshape the digital frontier,
-                        often using generative AI. Creator of <a
+                        often using generative AI. Founder of <a
                             href="https://ohmlet.itch.io/">Ohmlet studio</a
                         >
                         <br /><br />

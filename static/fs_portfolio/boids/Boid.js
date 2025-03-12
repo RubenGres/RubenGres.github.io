@@ -16,7 +16,7 @@ class Boid {
   
       this.buddyRadius = 5*this.size;
       this.crowdRadius = this.buddyRadius * 3;
-      this.desiredseparation = this.size * 2;
+      this.desiredseparation = this.size * 4;
 
       boids.push(this);
     }
@@ -129,7 +129,7 @@ class Boid {
           diff.normalize();
 
           if(d < this.size)
-            diff.mult(10); //avoid merging boids
+            diff.mult(this.desiredseparation); //avoid merging boids
 
           diff.div(d);
           sum.add(diff);
