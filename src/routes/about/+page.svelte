@@ -16,7 +16,7 @@
     <div>
         <h2>Ruben Grès</h2>
         <p>
-            AI developer specializing in innovative projects at the intersection of technology and creativity, committed to creating impactful solutions for the common good.
+            AI dev at the intersection of technology and creativity, committed to creating impactful solutions for the common good.
         </p>
     
         <ul>
