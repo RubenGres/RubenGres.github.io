@@ -128,6 +128,13 @@
 
     let otherProjects = [
         {
+            title: "Tic-tac-toe matchbox AI",
+            link: "/blog/menace",
+            image: "img/menace.jpg",
+            description: "Mechanical learning system from the 1960s using matchboxes to learn tic-tac-toe, demonstrating fundamental AI principles with everyday objects.",
+            year: 2024
+        },
+        {
             title: "This website",
             link: "/",
             image: "img/portfolio.jpg",
@@ -155,6 +162,7 @@
             description: "Boids algorithm in p5.js. You can spawn a fish or a shark; the sharks will try to eat the fishes as they try to escape.",
             year: 2020
         }
+        
     ];
 
     let projectCategories = [
