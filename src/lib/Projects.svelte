@@ -3,6 +3,13 @@
 
     let genAIProjects = [
         {
+            title: "BITZ",
+            link: "https://genomicgastronomy.com/work/2025-2/bitz/",
+            image: "img/bitz.jpg",
+            description: "A digital tool for identifying and learning about the organisms around you. S+T+ARTS EU residency",
+            year: 2025
+        },
+        {
             title: "Visualizing RAGs",
             link: "https://github.com/RubenGres/visualizingRAGS",
             image: "img/rags.jpg",
@@ -207,27 +214,27 @@
                     </div>
                 </div>
 
-                    <div class="row ml-auto justify-content-start">
-                        {#each category.projects as project}
-                            <div class="col-lg-4 col-sm-4 col-4">
-                                <div class="other_project">
-                                    <a href="{project.link}">
-                                    
-                                    <img src={project.image} alt={project.title} class="img-fluid">
+                <div class="row">
+                    {#each category.projects as project}
+                        <div class="col-lg-4 col-md-4 col-sm-6 col-12">
+                            <div class="other_project">
+                                <a href="{project.link}">
+                                
+                                <img src={project.image} alt={project.title} class="img-fluid">
 
-                                    <div class="op_label">
-                                        <h4>
-                                            {project.title} 
-                                            <span style="font-size: 0.85em; font-weight: 400;">({project.year})</span>
-                                        </h4>
-                                        <p>{project.description}</p>
-                                    </div>
-
-                                    </a>
+                                <div class="op_label">
+                                    <h4>
+                                        {project.title} 
+                                        <span style="font-size: 0.85em; font-weight: 400;">({project.year})</span>
+                                    </h4>
+                                    <p>{project.description}</p>
                                 </div>
+
+                                </a>
                             </div>
-                        {/each}
-                    </div>
+                        </div>
+                    {/each}
+                </div>
 
             </div>
         </section>
