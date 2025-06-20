@@ -4,7 +4,7 @@
     let genAIProjects = [
         {
             title: "BITZ",
-            link: "https://genomicgastronomy.com/work/2025-2/bitz/",
+            link: "/work/bitz",
             image: "img/bitz.jpg",
             description: "A digital tool for identifying and learning about the organisms around you. S+T+ARTS EU residency",
             year: 2025
