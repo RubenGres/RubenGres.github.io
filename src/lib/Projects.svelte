@@ -11,14 +11,14 @@
         },
         {
             title: "Visualizing RAGs",
-            link: "https://github.com/RubenGres/visualizingRAGS",
+            link: "/work/visualizing-rags",
             image: "img/rags.jpg",
             description: "Teaching tool to explain the inner workings of a RAG system",
             year: 2025
         },
         {
             title: "WTFood",
-            link: "https://www.cunicode.com/works/food-dysmorphia",
+            link: "work/wtfood",
             image: "img/wtfood.png",
             description: "Using AI to uncover the glitches of the food system. Made with cunicode for S+T+ARTS EU.",
             year: 2024
@@ -197,7 +197,6 @@
         },
     ]
 </script>
-
 <ScrollEffect>
     {#each projectCategories as category}
         <section class="services_area" id="projects">
@@ -216,7 +215,7 @@
 
                 <div class="row">
                     {#each category.projects as project}
-                        <div class="col-lg-4 col-md-4 col-sm-6 col-12">
+                        <div class="col-lg-4 col-md-4 col-sm-6 col-12 mb-4">
                             <div class="other_project">
                                 <a href="{project.link}">
                                 
@@ -240,3 +239,39 @@
         </section>
     {/each}
 </ScrollEffect>
+
+<style>
+    @media (max-width: 767px) {
+        .services_area {
+            padding: 40px 0 !important;
+        }
+        
+        .custom-container {
+            padding-left: 20px !important;
+            padding-right: 20px !important;
+        }
+        
+        .other_project {
+            margin-bottom: 30px;
+        }
+        
+        .main_title {
+            margin-bottom: 40px;
+        }
+        
+        .op_label {
+            padding: 0 20px 20px 0;
+        }
+    }
+    
+    @media (max-width: 575px) {
+        .custom-container {
+            padding-left: 15px !important;
+            padding-right: 15px !important;
+        }
+        
+        .other_project {
+            margin-bottom: 25px;
+        }
+    }
+</style>

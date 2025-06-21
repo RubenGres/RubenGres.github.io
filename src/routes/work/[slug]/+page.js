@@ -39,43 +39,56 @@ export async function load({ params }) {
             ],
             "links": [
                 { "title": "Open the app", "url": "https://bitz.tools" },
-                { "title": "Video presentation", "url": "https://youtube.com" },
                 { "title": "Code", "url": "https://github.com/RubenGres/BITZ" }
             ]
         },
 
         "visualizing-rags": {
-            title: "Visualizing RAGs",
-            year: 2025,
-            category: "GenAI",
-            subtitle: "Teaching tool to explain the inner workings of a RAG system",
-            description: "An interactive visualization to help people understand how Retrieval Augmented Generation works.",
-            link: "https://github.com/RubenGres/visualizingRAGS",
-            images: ["img/rags.jpg"],
-            content: [
+            "title": "Visualizing RAGs",
+            "subtitle": "An educational tool for understanding Retrieval-Augmented Generation systems",
+            "description": "A small interactive application designed to demystify the inner workings of RAG systems through visual representation. Built as a teaching tool to help users understand how RAGs process documents, create embeddings, and generate contextual responses.",
+            "images": ["img/rags/screenshot.png"],
+            "content": [
                 {
-                    title: "Educational Goal",
-                    text: "RAG systems can be complex to understand. This tool breaks down the process into visual, interactive components that make the concept accessible to both technical and non-technical audiences."
+                    "title": "Project Overview",
+                    "text": "Visualizing RAGs is an educational tool that makes the inner workings of Retrieval-Augmented Generation systems visible and understandable. By processing PDF documents and creating visual representations of embeddings and retrieval processes, this application helps users grasp how RAG systems chunk text, create semantic embeddings, and retrieve relevant context for question answering.",
+                    "imgs": []
+                },
+                {
+                    "title": "Technical Implementation",
+                    "text": "The tool supports multiple AI providers including OpenAI (for embeddings), Mistral, Gemini, and Anthropic for text generation. Users can experiment with different chunk sizes to see how document segmentation affects retrieval performance, while the embedding visualization shows how text chunks are positioned in semantic space and how queries map to relevant sections.",
+                    "imgs": []
                 }
             ],
-            tags: ["RAG", "Education", "Visualization", "Teaching Tool"]
+            "links": [
+                { "title": "Code", "url": "https://github.com/RubenGres/visualizingRAG" }
+            ]
         },
 
         "wtfood": {
-            title: "WTFood",
-            year: 2024,
-            category: "GenAI",
-            subtitle: "Using AI to uncover the glitches of the food system",
-            description: "Made with cunicode for S+T+ARTS EU, exploring food system dysmorphia through AI.",
-            link: "https://www.cunicode.com/works/food-dysmorphia",
-            images: ["img/wtfood.png"],
-            content: [
+            "title": "WTFood",
+            "subtitle": "A lens to explore systemic socioeconomic glitches in the food system and discover ways to take action",
+            "description": "From curiosity to action. Take a fruit or vegetable, open the camera, and watch it morph into a glitch of the food system. WTFood reveals hidden socioeconomic impacts and connects you to local communities and policies that are fixing these issues.",
+            "images": [
+                "img/wtfood/map.gif", "img/wtfood/sorting.gif",
+            ],
+            "content": [
                 {
-                    title: "Concept",
-                    text: "WTFood uses AI to highlight the absurdities and problems in our modern food system, creating a critical examination of how we produce, distribute, and consume food."
+                    "title": "Reality Filter & Perspective Map",
+                    "text": "WTFood transforms photos of fruits and vegetables into visual narratives that reveal hidden aspects of the food system. Using generative AI and computer vision, the tool creates morphing videos that show systemic issues from different stakeholder perspectives - from permaculture growers to supermarket managers. Each generated story connects to local resources, communities, and policies where users can take action.",
+                    "imgs": []
+                },
+                {
+                    "title": "Technical Implementation",
+                    "text": "Built with ComfyUI and Stable Diffusion for image generation, the system uses ControlNet TILE models for visual consistency and FILM interpolation for smooth morphing transitions. LangChain integration with Tavily search API enables real-time web research to provide authentic local links and resources. The collaborative map interface uses CLIP embeddings for content sorting and community-driven exploration of food system narratives.",
+                    "imgs": []
                 }
             ],
-            tags: ["AI", "Food Systems", "Critical Design", "S+T+ARTS EU"]
+            "links": [
+                { "title": "WTFood", "url": "https://wtfood.eu" },
+                { "title": "Video presentation", "url": "https://www.youtube.com/watch?v=ihN679-qSrc" },
+                { "title": "Code", "url": "https://github.com/RubenGres/wtfood" }
+            ]
         },
 
         "gouvx": {
