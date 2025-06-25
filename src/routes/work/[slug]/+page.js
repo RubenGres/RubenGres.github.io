@@ -56,7 +56,7 @@ export async function load({ params }) {
                 },
                 {
                     "title": "Technical Implementation",
-                    "text": "The tool supports multiple AI providers including OpenAI (for embeddings), Mistral, Gemini, and Anthropic for text generation. Users can experiment with different chunk sizes to see how document segmentation affects retrieval performance, while the embedding visualization shows how text chunks are positioned in semantic space and how queries map to relevant sections.",
+                    "text": "The tool supports multiple AI providers including OpenAI (for embeddings), Mistral, Gemini, and Anthropic for text generation. Gradio is used to make the interface and llama index for the chunking and retrieval",
                     "imgs": []
                 }
             ],
@@ -75,12 +75,17 @@ export async function load({ params }) {
             "content": [
                 {
                     "title": "Reality Filter & Perspective Map",
-                    "text": "WTFood transforms photos of fruits and vegetables into visual narratives that reveal hidden aspects of the food system. Using generative AI and computer vision, the tool creates morphing videos that show systemic issues from different stakeholder perspectives - from permaculture growers to supermarket managers. Each generated story connects to local resources, communities, and policies where users can take action.",
-                    "imgs": []
+                    "text": "WTFood transforms photos of fruits and vegetables into visual narratives that reveal hidden aspects of the food system. WTFood creates morphing videos displaying systemic issues from different stakeholder perspectives - from permaculture growers to supermarket managers. For each generated story the tool looks for local resources, communities, and policies where users can take action.",
+                    "imgs": ["img/wtfood/example1.gif", "img/wtfood/example2.gif", "img/wtfood/example3.gif", "img/wtfood/example4.gif"]
                 },
                 {
                     "title": "Technical Implementation",
-                    "text": "Built with ComfyUI and Stable Diffusion for image generation, the system uses ControlNet TILE models for visual consistency and FILM interpolation for smooth morphing transitions. LangChain integration with Tavily search API enables real-time web research to provide authentic local links and resources. The collaborative map interface uses CLIP embeddings for content sorting and community-driven exploration of food system narratives.",
+                    "text": "Built in static html / js with ComfyUI and Stable Diffusion for image generation, the system uses ControlNet TILE models for visual consistency and FILM interpolation for smooth morphing transitions. Web research is handled by Tavily Langchain integration. The interactive map uses CLIP text-image embedding and content sorting and community-driven exploration of food system narratives.",
+                    "imgs": []
+                },
+                {
+                    "title": "Credits",
+                    "text": "WTFood is a project created by the artist Bernat Cuní and developed by Ruben Gres. This project is part of The Hungry EcoCities project, and has received funding from the European Union’s Horizon Europe research and innovation program. Part of S+T+ARTS program.",
                     "imgs": []
                 }
             ],
@@ -92,20 +97,32 @@ export async function load({ params }) {
         },
 
         "gouvx": {
-            title: "GouvX",
-            year: 2023,
-            category: "GenAI",
-            subtitle: "A chatbot using retrieval augmented generation to help you navigate French law",
-            description: "Making French legal information more accessible through conversational AI.",
-            link: "https://www.gouvx.fr/",
-            images: ["img/gouvx.jpg"],
-            content: [
+            "title": "GouvX",
+            "subtitle": "A chatbot using RAG to help you navigate French law",
+            "description": "GouvX is an assistant based on the service-public.fr website that helps navigate French law. Its goal is to promote better understanding of government topics, encourage civic reflection, and facilitate access to information. By implementing advanced language models, GouvX also aims to demonstrate the democratic utility of these emerging technologies.",
+            "images": ["img/gouvx/gouvx.png"],
+            "content": [
                 {
-                    title: "Problem & Solution",
-                    text: "French legal documentation can be overwhelming and hard to navigate. GouvX uses RAG to provide clear, contextual answers to legal questions, making the law more accessible to citizens."
+                    "title": "Project Overview",
+                    "text": "GouvX is designed to make French legal information more accessible through conversational AI. Built as an assistant leveraging the comprehensive database of service-public.fr, it transforms complex legal documentation into clear, understandable guidance for citizens. The platform uses advanced language models to foster civic engagement and demonstrate how AI can serve democratic purposes.",
+                    "imgs": []
+                },
+                {
+                    "title": "Technical Implementation",
+                    "text": "The system employs RAG (Retrieval-Augmented Generation) architecture to provide contextual answers to legal questions. GouvX can utilize different LLM backends including ChatGPT and Albert, allowing for flexible deployment and optimization based on specific use cases. This technical flexibility ensures robust performance while maintaining accessibility for users.",
+                    "imgs": []
+                },
+                {
+                    "title": "Democratic Impact",
+                    "text": "By making French legal information more accessible, GouvX serves as a bridge between citizens and their government. The tool encourages civic reflection by providing clear explanations of legal processes and requirements, ultimately contributing to a more informed citizenry. This demonstrates the potential for AI technologies to strengthen democratic participation through improved access to public information.",
+                    "imgs": []
                 }
             ],
-            tags: ["RAG", "Legal Tech", "French Law", "Accessibility"]
+            "links": [
+                { "title": "Open GouvX", "url": "https://gouvx.fr" },
+                { "title": "Blog article", "url": "../blog/gouvx" },
+                { "title": "Code", "url": "https://github.com/RubenGres/gouvx" }
+            ]
         },
 
         "drawing2map": {
