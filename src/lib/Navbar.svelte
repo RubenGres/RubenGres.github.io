@@ -32,7 +32,7 @@
   <nav class="navbar navbar-expand-sm navbar-light container">
     <div class="navbar-brand">
       <a class="nav-link" href="../" id="site-name-nav">
-        <span>Ruben Gres</span>
+        <span>Ruben&nbsp;Gres</span>
       </a>
     </div>
     
@@ -85,12 +85,14 @@
     padding-left: 15px;
     padding-right: 15px;
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
     align-items: center;
+    gap: 40px;
   }
 
   .navbar-brand {
-    flex-shrink: 0;
+    height: auto;
+    order: 1;
   }
 
   .navbar-toggler {
@@ -109,6 +111,7 @@
 
   .navbar-collapse {
     display: flex;
+    order: 2;
   }
 
   :global(#collapsibleNavbar ul) {
@@ -116,6 +119,7 @@
     display: flex;
     margin: 0;
     padding: 0;
+    align-items: center;
   }
 
   :global(.navbar .navbar-collapse .navbar-nav .nav-item .nav-link) {
@@ -129,6 +133,13 @@
     margin: 0 5px;
     border-radius: 2px;
     text-decoration: none;
+    line-height: 35px;
+    vertical-align: middle;
+  }
+
+  :global(#site-name-nav) {
+    line-height: 35px;
+    vertical-align: middle;
   }
 
   :global(.navbar .navbar-collapse .navbar-nav .nav-item .nav-link:hover) {
@@ -136,41 +147,36 @@
     border-bottom: 0px;
   }
 
-  :global(#site-name-nav *) {
-    color: rgba(15, 118, 110, 0.9);
-    font: 500 1.25em/1.75em "Roboto", sans-serif;
-    font-weight: 600;
-  }
-
   /* Mobile styles */
   @media (max-width: 768px) {
     #navigation {
       height: auto;
-      min-height: 75px;
+      min-height: 60px;
     }
 
     .navbar {
       height: auto;
-      min-height: 50px;
-      padding-top: 15px;
-      padding-bottom: 15px;
+      min-height: 40px;
+      padding-top: 10px;
+      padding-bottom: 10px;
       flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 0;
     }
 
     .navbar-toggler {
       display: flex;
       order: 2;
-    }
-
-    .navbar-brand {
-      order: 1;
+      font-size: 1.5rem;
+      padding: 5px;
+      min-width: 40px;
+      min-height: 40px;
     }
 
     .navbar-collapse {
       order: 3;
       width: 100%;
       display: none;
-      margin-top: 15px;
     }
 
     .navbar-collapse.show {
@@ -180,52 +186,49 @@
     :global(#collapsibleNavbar ul) {
       flex-direction: column;
       width: 100%;
-      background: rgba(255, 255, 255, 0.95);
-      border-radius: 5px;
-      padding: 10px 0;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     }
 
     :global(.navbar .navbar-collapse .navbar-nav .nav-item) {
       width: 100%;
-      text-align: center;
-      border-bottom: 1px solid rgba(5, 54, 77, 0.1);
-    }
-
-    :global(.navbar .navbar-collapse .navbar-nav .nav-item:last-child) {
-      border-bottom: none;
+      text-align: left;
     }
 
     :global(.navbar .navbar-collapse .navbar-nav .nav-item .nav-link) {
       display: block;
-      padding: 20px 20px;
+      padding: 3px 15px;
       margin: 0;
+      color: #666;
       width: 100%;
-      border-radius: 0;
-      font-size: 1.1em;
     }
 
     :global(.navbar .navbar-collapse .navbar-nav .nav-item .nav-link:hover) {
       background-color: rgba(239, 182, 223, 0.1);
       color: #efb6df;
     }
-
-    /* Keep site name visible and styled properly on mobile */
-    :global(#site-name-nav .nav-link) {
-      font-size: 1.25em !important;
-      font-weight: 600 !important;
-      color: rgba(15, 118, 110, 0.9) !important;
-    }
   }
 
   /* Extra small screens */
   @media (max-width: 480px) {
+    #navigation {
+      min-height: 50px;
+    }
+
     .navbar {
       padding-left: 10px;
       padding-right: 10px;
+      padding-top: 8px;
+      padding-bottom: 8px;
+      min-height: 35px;
     }
 
-    :global(#site-name-nav .nav-link) {
+    .navbar-toggler {
+      font-size: 1.3rem;
+      padding: 3px;
+      min-width: 35px;
+      min-height: 35px;
+    }
+
+    :global(#site-name-nav span) {
       font-size: 1.1em !important;
     }
   }

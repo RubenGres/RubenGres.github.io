@@ -178,7 +178,7 @@
             id: "art",
             description: `
                 <p> I work alongside artists in residency, bringing AI, data visualization, and development expertise to their creative practice.
-                <br> Our work has been presented at Rotterdam's Nieuw Instituut, Belgrade's Palace of Science, and other international venues. </p>
+                Our work has been presented at Rotterdam's Nieuw Instituut, Belgrade's Palace of Science, and other international venues. </p>
             `,
             projects : artCollaborations
         },
@@ -187,7 +187,7 @@
             id: "education",
             description: `
                 <p>I believe in making complex AI concepts accessible through hands-on learning and visual tools.
-                <br>I teach at graduate level (ENSG) and work with educational organizations to bring AI education to younger audiences.</p>
+                I teach at graduate level (ENSG) and work with educational organizations to bring AI education to younger audiences.</p>
             `,
             projects: educationProjects
         },
@@ -196,7 +196,7 @@
             id: "genai",
             description: `
                 <p> I explore generative AI to develop practical applications and creative tools for diverse audiences.
-                <br> I co-founded <a href="http://latentminds.co">LatentMinds</a>, where we develop experimental tools that redefine the boundaries of AI-assisted creativity.</p>
+                I co-founded <a href="http://latentminds.co">LatentMinds</a>, where we develop experimental tools that redefine the boundaries of AI-assisted creativity.</p>
             `,
             projects : genAIProjects
         },
@@ -205,7 +205,7 @@
             id: "games",
             description: `
                 <p> I explore unconventional gameplays through game jams, personal projects, and a bigger game soon to be announced.
-                <br> I collaborate with friends within <a href="https://ohmlet.itch.io">Ohmlet studio</a>, a collective making experimental games.</p>
+                I collaborate with friends within <a href="https://ohmlet.itch.io">Ohmlet studio</a>, a collective making experimental games.</p>
             `,
             projects : gameProjects
         },
@@ -222,36 +222,42 @@
 
 <ScrollEffect>
     {#each projectCategories as category}
-        <section class="services_area" id="{category.id}">
-            <div class="custom-container">
+        <section style="padding-left: 13px; padding-right: 13px; margin-bottom: 100px;" id="{category.id}">
+            <div class="container" style="max-width: 1000px;">
 
                 <div class="row">
-                    <div class="col-lg-12">
-                        <div class="main_title">
-                            <p class="top_text"><a href="/#{category.id}">{category.title}</a><span></span></p>
-                            <div class="description">
+                    <div class="col-12">
+                        <div style="padding-bottom: 30px;">
+                            <h2 class="text-uppercase" style="letter-spacing: 0.15em;">
+                                {category.title}
+                                <span class="colored-dash"></span>
+                            </h2>
+                            <h4 style="line-height: 1.4em;">
                                 {@html category.description}
-                            </div>
+                            </h4>
                         </div>
                     </div>
                 </div>
 
-                <div class="row">
+                <div class="row g-4 justify-content-center" style="margin: auto">
                     {#each category.projects as project}
-                        <div class="col-lg-4 col-md-4 col-sm-6 col-12 mb-4">
-                            <div class="other_project">
-                                <a href="{project.link}">
-                                
-                                <img src={project.image} alt={project.title} class="img-fluid">
-
-                                <div class="op_label">
-                                    <h4>
-                                        {project.title} 
-                                        <span style="font-size: 0.85em; font-weight: 400;">({project.year})</span>
-                                    </h4>
-                                    <p>{project.description}</p>
-                                </div>
-
+                        <div class="col-lg-4 col-md-4 col-sm-6 col-12" style="margin-bottom: 50px; display: flex; justify-content: center;">
+                            <div class="h-100">
+                                <a href="{project.link}" class="text-decoration-none">
+                                    <div class="card h-100 border-0 shadow-sm"  style="width: 300px">
+                                        <div class="overflow-hidden">
+                                        <center>
+                                           <img src={project.image} alt={project.title} class="card-img-top" style="margin: auto; height: 300px; width: auto; object-fit: cover; aspect-ratio: 1;">
+                                        </center>
+                                        </div>
+                                        <div class="card-body">
+                                            <h4 style="text-transform: uppercase; color: black; margin-bottom: 5px">
+                                                {project.title} 
+                                                <small class="fw-normal text-muted">({project.year})</small>
+                                            </h4>
+                                            <p class="card-text text-muted" style="line-height: 1.2em;">{project.description}</p>
+                                        </div>
+                                    </div>
                                 </a>
                             </div>
                         </div>
@@ -264,47 +270,24 @@
 </ScrollEffect>
 
 <style>
-    @media (max-width: 767px) {
-        .services_area {
-            padding: 40px 0 !important;
-        }
-        
-        .custom-container {
-            padding-left: 20px !important;
-            padding-right: 20px !important;
-        }
-        
-        .other_project {
-            margin-bottom: 30px;
-        }
-        
-        .main_title {
-            margin-bottom: 40px;
-        }
-        
-        .op_label {
-            padding: 0 20px 20px 0;
-        }
-    }
-    
-    @media (max-width: 575px) {
-        .custom-container {
-            padding-left: 15px !important;
-            padding-right: 15px !important;
-        }
-        
-        .other_project {
-            margin-bottom: 25px;
-        }
-    }
 
-    /* Optional: Add some offset to account for fixed headers */
-    .services_area {
-        scroll-margin-top: 20px;
-    }
+.colored-dash {
+    position: relative;
+    top: -2px;
+    display: inline-block;
+    margin-left: 5px;
+    width: 80px;
+    height: 4px;
+    background: -webkit-linear-gradient(90deg, #456df3 0%, #e66cb8 100%);
+    background: -moz-linear-gradient(90deg, #456df3 0%, #e66cb8 100%);
+    background: -o-linear-gradient(90deg, #456df3 0%, #e66cb8 100%);
+    background: linear-gradient(90deg, #456df3 0%, #e66cb8 100%);
+    filter: blur(1px);
+    -o-filter: blur(1px);
+    -ms-filter: blur(1px);
+    -moz-filter: blur(1px);
+    -webkit-filter: blur(1px);
+    border-radius: 5px;
+}
 
-    .top_text a {
-        color: inherit;
-        text-decoration: none;
-    }
 </style>
