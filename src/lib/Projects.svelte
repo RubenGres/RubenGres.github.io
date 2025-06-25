@@ -175,6 +175,7 @@
     let projectCategories = [
         {
             title: "Artistic collaborations",
+            id: "art",
             description: `
                 <p> I work alongside artists in residency, bringing AI, data visualization, and development expertise to their creative practice.
                 <br> Our work has been presented at Rotterdam's Nieuw Instituut, Belgrade's Palace of Science, and other international venues. </p>
@@ -183,6 +184,7 @@
         },
         {
             title: "Educational Tools",
+            id: "education",
             description: `
                 <p>I believe in making complex AI concepts accessible through hands-on learning and visual tools.
                 <br>I teach at graduate level (ENSG) and work with educational organizations to bring AI education to younger audiences.</p>
@@ -191,6 +193,7 @@
         },
         {
             title: "Generative AI projects",
+            id: "genai",
             description: `
                 <p> I explore generative AI to develop practical applications and creative tools for diverse audiences.
                 <br> I co-founded <a href="http://latentminds.co">LatentMinds</a>, where we develop experimental tools that redefine the boundaries of AI-assisted creativity.</p>
@@ -199,6 +202,7 @@
         },
         {
             title: "Game development",
+            id: "games",
             description: `
                 <p> I explore unconventional gameplays through game jams, personal projects, and a bigger game soon to be announced.
                 <br> I collaborate with friends within <a href="https://ohmlet.itch.io">Ohmlet studio</a>, a collective making experimental games.</p>
@@ -207,6 +211,7 @@
         },
         {
             title: "Miscellaneous projects",
+            id: "misc",
             description:`
                 <p>Diverse experiments and older projects<p>
             `,
@@ -214,15 +219,16 @@
         },
     ]
 </script>
+
 <ScrollEffect>
     {#each projectCategories as category}
-        <section class="services_area" id="projects">
+        <section class="services_area" id="{category.id}">
             <div class="custom-container">
 
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="main_title">
-                            <p class="top_text">{category.title}<span></span></p>
+                            <p class="top_text"><a href="/#{category.id}">{category.title}</a><span></span></p>
                             <div class="description">
                                 {@html category.description}
                             </div>
@@ -290,5 +296,20 @@
         .other_project {
             margin-bottom: 25px;
         }
+    }
+
+    /* Smooth scrolling for anchor links */
+    :global(html) {
+        scroll-behavior: smooth;
+    }
+
+    /* Optional: Add some offset to account for fixed headers */
+    .services_area {
+        scroll-margin-top: 20px;
+    }
+
+    .top_text a {
+        color: inherit;
+        text-decoration: none;
     }
 </style>
