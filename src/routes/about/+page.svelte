@@ -14,7 +14,7 @@
     />
 
     <div>
-        <h2>Ruben Grès</h2>
+        <h2>Ruben Gres</h2>
         <p>
             AI dev at the intersection of technology and creativity, committed to creating impactful solutions for the common good.
         </p>

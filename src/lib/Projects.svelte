@@ -298,11 +298,6 @@
         }
     }
 
-    /* Smooth scrolling for anchor links */
-    :global(html) {
-        scroll-behavior: smooth;
-    }
-
     /* Optional: Add some offset to account for fixed headers */
     .services_area {
         scroll-margin-top: 20px;

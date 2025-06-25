@@ -4,7 +4,7 @@
     <img src="img/me.png" alt="Me" id="pic" />
 
     <div id="contact-info" class="vcard">
-        <h1 class="fn">Ruben Grès</h1>
+        <h1 class="fn">Ruben Gres</h1>
 
         <p>
             Email:
