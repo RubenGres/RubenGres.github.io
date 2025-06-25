@@ -80,19 +80,14 @@
   }
 
   .navbar {
-    height: 50px;
-    padding-top: 20px;
-    padding-left: 15px;
-    padding-right: 15px;
     display: flex;
-    justify-content: flex-start;
+    justify-content: space-between;
     align-items: center;
-    gap: 40px;
   }
 
   .navbar-brand {
     height: auto;
-    order: 1;
+    margin-right: auto;
   }
 
   .navbar-toggler {
@@ -167,7 +162,7 @@
     .navbar-toggler {
       display: flex;
       order: 2;
-      font-size: 1.5rem;
+      font-size: 3rem;
       padding: 5px;
       min-width: 40px;
       min-height: 40px;
