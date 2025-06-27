@@ -5,7 +5,7 @@
         {
             title: "BITZ",
             link: "/work/bitz",
-            image: "img/bitz.jpg",
+            image: "img/bitz/bitz_logo.jpg",
             description: "A digital tool for identifying and learning about the organisms around you. S+T+ARTS EU residency.",
             year: 2025
         },
@@ -47,7 +47,7 @@
         {
             title: "GouvX",
             link: "work/gouvx",
-            image: "img/gouvx/gouvx.png",
+            image: "img/gouvx/gouvx_logo.jpg",
             description: "A chatbot using retrieval augmented generation to help you navigate French law.",
             year: 2023
         },

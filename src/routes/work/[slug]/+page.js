@@ -100,7 +100,7 @@ export async function load({ params }) {
             "title": "GouvX",
             "subtitle": "A chatbot using RAG to help you navigate French law",
             "description": "GouvX is an assistant based on the service-public.fr website that helps navigate French law. Its goal is to promote better understanding of government topics, encourage civic reflection, and facilitate access to information. By implementing advanced language models, GouvX also aims to demonstrate the democratic utility of these emerging technologies.",
-            "images": ["img/gouvx/gouvx.png"],
+            "images": ["img/gouvx/gouvx_screenshot.jpg", "img/gouvx/gouvx_logo.jpg", "img/gouvx/gouvx_screenshot2.jpg"],
             "content": [
                 {
                     "title": "Project Overview",
