@@ -36,8 +36,8 @@
         },
         {
             title: "Drawing2Map",
-            link: "https://rubengr.es/Seg2Sat/",
-            image: "img/drawing2map.jpg",
+            link: "/work/drawing2map",
+            image: "img/drawing2map/thumb.jpg",
             description: "Web interface for Seg2Sat that helps users understand the relationship between hand-drawn concepts and satellite imagery. Built using HuggingFace's inference endpoint.",
             year: 2023
         }

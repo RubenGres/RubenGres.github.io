@@ -127,19 +127,25 @@ export async function load({ params }) {
 
         "drawing2map": {
             title: "Drawing2Map",
-            year: 2023,
-            category: "GenAI",
-            subtitle: "Web interface for Seg2Sat to generate a map from a drawing",
-            description: "Built using HuggingFace's inference endpoint to turn sketches into satellite imagery.",
-            link: "https://rubengr.es/Seg2Sat/",
-            images: ["img/drawing2map.jpg"],
+            subtitle: "Interactive demonstration of AI terrain generation",
+            description: "Drawing2Map helps understanding diffusion models and ControlNet using the Seg2Sat model.",
+            images: ["img/drawing2map/thumb.jpg", "img/drawing2map/demo.gif"],
             content: [
                 {
-                    title: "Technical Implementation",
-                    text: "This web interface makes the Seg2Sat model accessible through a simple drawing interface, allowing users to sketch and see their drawings transformed into realistic satellite imagery."
-                }
+                    "title": "Project Overview",
+                    "text": "This interactive web tool transforms simple drawings into realistic satellite imagery in real-time. Users can sketch terrain features like forests, rivers, and buildings, then watch as AI generates photorealistic aerial views. The project has been used in workshops at IGN (French National Geographic Institute) to make complex generative AI concepts accessible to diverse audiences through hands-on experimentation.",
+                    "imgs": []
+                },
+                {
+                    "title": "Technical implementation",
+                    "text": "The interface is built with Svelte for a smooth, responsive user experience. The backend leverages a Hugging Face endpoint running the custom-trained Seg2Sat ControlNet model. This architecture allows real-time generation while keeping the interface lightweight and accessible from any web browser without requiring local GPU resources.",
+                    "imgs": []
+                },
             ],
-            tags: ["HuggingFace", "Image Generation", "Web Interface", "Seg2Sat"]
+            links: [
+                { "title": "Try the Demo", "url": "https://rubengr.es/Seg2Sat/" },
+                { "title": "Source Code", "url": "https://github.com/RubenGres/Seg2Sat" }
+            ],
         },
 
         "seg2sat": {
