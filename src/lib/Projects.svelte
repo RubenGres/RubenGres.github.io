@@ -67,7 +67,7 @@
         },
         {
             title: "Infinite Canvas",
-            link: "https://canvas.koll.ai",
+            link: "https://rubengr.es/blog/infinitecanvas/",
             image: "img/canvas.jpg",
             description: "Start creating with others using AI image generation in this shared infinite canvas. Powered by StableDiffusion and ReactJS.",
             year: 2022
