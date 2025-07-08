@@ -187,7 +187,7 @@
             id: "education",
             description: `
                 <p>I believe in making complex AI concepts accessible through hands-on learning and visual tools.
-                I teach at graduate level (ENSG) and work with educational organizations to bring AI education to younger audiences.</p>
+                I teach at graduate level and work with educational organizations to bring AI education to younger audiences.</p>
             `,
             projects: educationProjects
         },

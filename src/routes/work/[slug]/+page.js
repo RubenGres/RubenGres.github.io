@@ -144,7 +144,7 @@ export async function load({ params }) {
             ],
             links: [
                 { "title": "Try the Demo", "url": "https://rubengr.es/Seg2Sat/" },
-                { "title": "Source Code", "url": "https://github.com/RubenGres/Seg2Sat" }
+                { "title": "Source Code", "url": "https://github.com/RubenGres/Seg2Sat-demo" }
             ],
         },
 
