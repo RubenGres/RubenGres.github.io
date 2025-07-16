@@ -120,7 +120,7 @@ export async function load({ params }) {
             ],
             "links": [
                 { "title": "Open GouvX", "url": "https://gouvx.fr" },
-                { "title": "Blog article", "url": "../blog/gouvx" },
+                { "title": "Blog post", "url": "../blog/gouvx" },
                 { "title": "Code", "url": "https://github.com/RubenGres/gouvx" }
             ]
         },

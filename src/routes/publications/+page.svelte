@@ -23,7 +23,7 @@
                     Deepfake : où en sommes-nous à l’ère de l’IA générative ?
                 </a> — MISC n°138
             </h4>
-            This articles focuses on the history of DeepFakes and the current state of the art in real time image manipulation. 
+            This article focuses on the history of DeepFakes and the current state of the art in real time image manipulation. 
         </li>
         
         <li>
