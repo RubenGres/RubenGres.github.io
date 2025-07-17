@@ -24,19 +24,13 @@
             >
                 <div class="banner_content col-lg-6 module-move">
                     <h2>Hi! I'm Ruben Gres 🌱</h2>
-                    <h4> Creative technologist & generative AI explorer </h4>
+                    <h4> Creative technologist building experimental tools & games with AI </h4>
                     <h5>
-                        I build apps and games to reshape the digital frontier,
-                        often using generative AI. Founder of <a
-                            href="https://ohmlet.itch.io/">Ohmlet studio</a
-                        > and <a
-                            href="https://latentminds.co">Latent Minds </a
-                        >
+                        I design apps, games, and experimental systems that explore the edge of generative AI.<br />
+                        Co-founder of <a href="https://ohmlet.itch.io/">Ohmlet</a> game studio and 
+                        <a href="https://latentminds.co">Latent Minds</a> collective.<br /><br />
                         <br /><br />
-                        <a href="https://calendly.com/rubengres/30min"
-                            >Get in touch to collaborate!</a
-                        >
-                        <br /><br />
+                        <a href="https://calendly.com/rubengres/30min">Let’s build something together!</a><br /><br />
                     </h5>
                     <div class="social_icons my-3">
                         <a href="https://github.com/RubenGres"
