@@ -24,9 +24,9 @@
             >
                 <div class="banner_content col-lg-6 module-move">
                     <h2>Hi! I'm Ruben Gres 🌱</h2>
-                    <h4> Creative technologist building experimental tools & games with AI </h4>
+                    <h4> Creative technologist building experimental tools & games </h4>
                     <h5>
-                        I design apps, games, and experimental systems that explore AI and our relationship with it.
+                        I design apps, games, and experimental systems.
                         Co-founder of <a href="https://ohmlet.itch.io/">Ohmlet</a> game studio and 
                         <a href="https://latentminds.co">Latent Minds</a> collective.
                         <br /><br />

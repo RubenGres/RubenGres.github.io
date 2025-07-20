@@ -58,13 +58,13 @@
             description: "Create aerial view images in any style you want. Project made with IGN FLAIR1 dataset, StableDiffusion, and ControlNet.",
             year: 2023
         },
-        {
-            title: "ControlMeme",
-            link: "https://meme.koll.ai",
-            image: "img/controlmeme.jpg",
-            description: "Generate variations of popular memes using StableDiffusion and ControlNet. Share your creations in the gallery.",
-            year: 2023
-        },
+//        {
+//            title: "ControlMeme",
+//            link: "https://meme.koll.ai",
+//            image: "img/controlmeme.jpg",
+//            description: "Generate variations of popular memes using StableDiffusion and ControlNet. Share your creations in the gallery.",
+//            year: 2023
+//        },
         {
             title: "Infinite Canvas",
             link: "https://rubengr.es/blog/infinitecanvas/",
