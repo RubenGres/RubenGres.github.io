@@ -1,5 +1,3 @@
-
-
 <div id="page-wrap">
     <img src="img/me.png" alt="Me" id="pic" />
 
@@ -14,10 +12,8 @@
 
     <div id="objective">
         <p>
-            I'm currently working as an AI Engineer at <a href="https://ign.fr">IGN</a> four days a week (not the gaming website).
-            <br><br>
-            In addition to my primary role, I frequently embark on other adventures, whether it's freelance work,
-            <a href="https://latentminds.com">AI exploration</a>, or volunteer projects!
+            I'm currently working as a Game Developer at <a href="https://www.linkedin.com/company/gigax-games/">Gigax</a>, an indie game studio building games using AI in creative ways.
+            In addition to my primary role, I frequently embark on other adventures, whether it's art residencies, <a href="https://latentminds.com">AI exploration</a>, or volunteer work!
         </p>
     </div>
 
@@ -29,18 +25,25 @@
         <dt>Experience</dt>
 
         <dd>
-            <h2>IGN - <i>AI engineer</i><span>02/2024 - now </span></h2>
+            <h2>Gigax - <i>Lead Game Developer</i><span>08/2025 - now </span></h2>
             <p>
-                I'm implementing generative AI into our workflows, may be it for <b>Earth observation</b> to understand data or broader applications using <b>LLMs</b>.
-                I'm particulary interested in <b>diffusion models</b>
+                Making fun innovative games in <b>Godot</b> and <b>Unity</b>, sometimes using AI.
             </p>
         </dd>
 
         <dd>
-            <h2>IGN - <i>Cloud engineer</i><span>02/2023 - 02/2024 </span></h2>
+            <h2>Freelance - <i>Art Technical Consultant</i><span>01/2024 - now </span></h2>
             <p>
-                I used <b>docker</b> and <b>kubernetes</b> to move our apps on the Cloud.
-                I was also in charge of deploying orchestrator on our infrastructure and adapting our pipelines
+                Working as a freelance consultant with <b>established new media artists</b> on various creative projects.
+                Providing expertise in <b>AI implementation</b>, <b>fullstack development</b>, and <b>data visualization</b> for artistic and creative contexts.
+            </p>
+        </dd>
+
+        <dd>
+            <h2>IGN - <i>AI Engineer & MLOps</i><span>02/2023 - 08/2025 </span></h2>
+            <p>
+                Implementing AI into our <b>Earth observation</b> workflows. Using generative AI for change detections, particulary interested in <b>diffusion models</b> but also <b>LLMs</b>.
+                <b>Docker</b> and <b>Kubernetes</b> to move apps to the Cloud.
             </p>
         </dd>
 
@@ -48,7 +51,7 @@
             <h2>CS Group - <i>AI engineer</i> <span>01/2022 - 02/2023</span></h2>
             <p>
                 Worked on <b>NLP models</b> to extract topics and sentiment from user generated text. <br />
-                I also built a team to work on <b>transformer models</b> for text analysis.
+                Founded the NLP team to work on <b>transformer models</b> for textual analysis.
             </p>
         </dd>
 
@@ -81,7 +84,7 @@
         <dt>Education</dt>
         <dd>
             <h2>INSA Toulouse<span>2018 - 2021</span></h2>
-            <p>Engineer’s degree, major in Computer science</p>
+            <p>Engineer's degree, major in Computer science</p>
         </dd>
 
         <dd>
@@ -96,7 +99,7 @@
             <h2>Technical skills</h2>
             <p>
                 Python, Java, C, C#, PHP, SQL, OCaml, Prolog, Javascript,
-                NodeJS, React, View
+                NodeJS, React, View, Godot
             </p>
 
             <h2>Non technical skills</h2>
@@ -116,7 +119,7 @@
         <dd>
             <h2>Programming</h2>
             <p>
-                I’m always working on <a href="https://github.com/RubenGres"
+                I'm always working on <a href="https://github.com/RubenGres"
                     >personal projects</a
                 > and I take part in multiple programming events throughout the year.
             </p>
@@ -137,7 +140,6 @@
                 >
             </p>
         </dd>
-        .
 
         <dd class="clear"></dd>
     </dl>
