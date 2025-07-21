@@ -1,5 +1,6 @@
 <script>
     import ScrollEffect from './ScrollEffect.svelte';
+    import { onMount } from 'svelte';
 
     let artCollaborations = [
         {
@@ -9,7 +10,6 @@
             description: "A digital tool for identifying and learning about the organisms around you. S+T+ARTS EU residency.",
             year: 2025
         },
-
         {
             title: "WTFood",
             link: "work/wtfood",
@@ -58,13 +58,6 @@
             description: "Create aerial view images in any style you want. Project made with IGN FLAIR1 dataset, StableDiffusion, and ControlNet.",
             year: 2023
         },
-//        {
-//            title: "ControlMeme",
-//            link: "https://meme.koll.ai",
-//            image: "img/controlmeme.jpg",
-//            description: "Generate variations of popular memes using StableDiffusion and ControlNet. Share your creations in the gallery.",
-//            year: 2023
-//        },
         {
             title: "Infinite Canvas",
             link: "https://rubengr.es/blog/infinitecanvas/",
@@ -169,7 +162,6 @@
             description: "Boids algorithm in p5.js. You can spawn a fish or a shark; the sharks will try to eat the fishes as they try to escape.",
             year: 2020
         }
-        
     ];
 
     let projectCategories = [
@@ -224,14 +216,147 @@
     for (let category of projectCategories) {
         collapsedSections[category.id] = true;
     }
+
+    // Sphere functionality
+    let sphereVisible = false;
+    let sphereScale = 0;
+    let sphereOpacity = 0;
+    let sphereX = 0;
+    let sphereY = 0;
+    let targetX = 0;
+    let targetY = 0;
+    let currentImageIndex = 0;
+    let currentProjects = [];
+    let animationFrame;
+    let imageTimerInterval;
+    let windowWidth = 0;
+
+    function updateSpherePosition() {
+        // Smooth following with delay (faster movement)
+        const lerp = 0.03;
+        sphereY += (targetY - sphereY) * lerp;
+        
+        // Animate scale and opacity together
+        const targetScale = sphereVisible ? 1 : 0;
+        const targetOpacity = sphereVisible ? 1 : 0;
+        const scaleLerp = 0.15;
+        const opacityLerp = 0.12;
+        
+        sphereScale += (targetScale - sphereScale) * scaleLerp;
+        sphereOpacity += (targetOpacity - sphereOpacity) * opacityLerp;
+        
+        if (sphereVisible || sphereScale > 0.01 || sphereOpacity > 0.01) {
+            animationFrame = requestAnimationFrame(updateSpherePosition);
+        }
+    }
+
+    function handleMouseMove(event) {
+        if (sphereVisible) {
+            // Offset position to lower right to avoid blocking view
+            targetY = event.clientY - 100;
+        }
+    }
+
+    function startImageTimer() {
+        // Clear any existing timer
+        if (imageTimerInterval) {
+            clearInterval(imageTimerInterval);
+        }
+        
+        // Set up new timer to change image every 1 second
+        imageTimerInterval = setInterval(() => {
+            if (sphereVisible && currentProjects.length > 0) {
+                currentImageIndex = (currentImageIndex + 1) % currentProjects.length;
+            }
+        }, 1000); // 1000ms = 1 second
+    }
+
+    function stopImageTimer() {
+        if (imageTimerInterval) {
+            clearInterval(imageTimerInterval);
+            imageTimerInterval = null;
+        }
+    }
+
+    function startSphereEffect(projects) {
+        // Only show sphere on larger screens
+        if (windowWidth <= 1650) {
+            return;
+        }
+        
+        sphereVisible = true;
+        currentProjects = projects;
+        currentImageIndex = 0;
+        
+        // Start position animation
+        updateSpherePosition();
+        
+        // Start image timer
+        startImageTimer();
+    }
+
+    function stopSphereEffect() {
+        sphereVisible = false;
+        
+        // Stop image timer
+        stopImageTimer();
+        
+        // Let the animation continue until scale reaches 0
+        if (!animationFrame) {
+            updateSpherePosition();
+        }
+    }
+
+    onMount(() => {
+        return () => {
+            stopSphereEffect();
+        };
+    });
 </script>
+
+<svelte:window on:mousemove={handleMouseMove} bind:innerWidth={windowWidth} />
+
+<!-- Cursor following sphere -->
+{#if (sphereScale > 0.01 || sphereOpacity > 0.01) && currentProjects.length > 0 && windowWidth > 1650}
+    <div 
+        class="cursor-sphere" 
+        style="left: {sphereX - 100}px; top: {sphereY}px; transform: scale({sphereScale}); opacity: {sphereOpacity};"
+    >
+        <div class="sphere-image-container">
+            <img 
+                src={currentProjects[currentImageIndex].image} 
+                alt={currentProjects[currentImageIndex].title}
+                class="sphere-image"
+            />
+        </div>
+    </div>
+{/if}
 
 <ScrollEffect>
     {#each projectCategories as category}
         <section style="padding-left: 13px; padding-right: 13px; margin-bottom: 50px;" id="{category.id}">
             <div class="container" style="max-width: 1000px;">
 
-                <div class="row" style="cursor: pointer;" on:click={() => collapsedSections[category.id] = !collapsedSections[category.id]}>
+                <div 
+                    class="row category-header" 
+                    style="cursor: pointer;" 
+                    on:click={() => {
+                        collapsedSections[category.id] = !collapsedSections[category.id];
+                        // Hide sphere if section just got uncollapsed
+                        if (!collapsedSections[category.id]) {
+                            stopSphereEffect();
+                        }
+                    }}
+                    on:mouseenter={(event) => {
+                        
+                        sphereX =  200;
+                        sphereY =  event.clientY;
+                        if (collapsedSections[category.id]) {
+                            startSphereEffect(category.projects);
+                        }
+                    }}
+                    on:mouseleave={stopSphereEffect}
+                >
                     <div class="col-12">
                         <div>
                             <h2 class="text-uppercase" style="letter-spacing: 0.15em;">
@@ -255,8 +380,8 @@
 
             {#if !collapsedSections[category.id]}
                 <div class="row g-4 justify-content-center" style="margin: auto">
-                    {#each category.projects as project}
-                        <div class="col-lg-4 col-md-4 col-sm-6 col-12" style="margin-bottom: 50px; display: flex; justify-content: center;">
+                    {#each category.projects as project, index}
+                        <div class="col-lg-4 col-md-4 col-sm-6 col-12 project-card" style="margin-bottom: 50px; display: flex; justify-content: center; animation-delay: {index * 0.1}s;">
                             <div class="h-100">
                                 <a href="{project.link}" class="text-decoration-none">
                                     <div class="card h-100 border-0 shadow-sm" style="width: 300px">
@@ -286,24 +411,86 @@
 </ScrollEffect>
 
 <style>
+    .colored-dash {
+        position: relative;
+        top: -2px;
+        display: inline-block;
+        margin-left: 5px;
+        width: 80px;
+        height: 4px;
+        background: -webkit-linear-gradient(90deg, #456df3 0%, #e66cb8 100%);
+        background: -moz-linear-gradient(90deg, #456df3 0%, #e66cb8 100%);
+        background: -o-linear-gradient(90deg, #456df3 0%, #e66cb8 100%);
+        background: linear-gradient(90deg, #456df3 0%, #e66cb8 100%);
+        filter: blur(1px);
+        -o-filter: blur(1px);
+        -ms-filter: blur(1px);
+        -moz-filter: blur(1px);
+        -webkit-filter: blur(1px);
+        border-radius: 5px;
+    }
 
-.colored-dash {
-    position: relative;
-    top: -2px;
-    display: inline-block;
-    margin-left: 5px;
-    width: 80px;
-    height: 4px;
-    background: -webkit-linear-gradient(90deg, #456df3 0%, #e66cb8 100%);
-    background: -moz-linear-gradient(90deg, #456df3 0%, #e66cb8 100%);
-    background: -o-linear-gradient(90deg, #456df3 0%, #e66cb8 100%);
-    background: linear-gradient(90deg, #456df3 0%, #e66cb8 100%);
-    filter: blur(1px);
-    -o-filter: blur(1px);
-    -ms-filter: blur(1px);
-    -moz-filter: blur(1px);
-    -webkit-filter: blur(1px);
-    border-radius: 5px;
-}
+    .cursor-sphere {
+        position: fixed;
+        width: 200px;
+        height: 200px;
+        pointer-events: none;
+        z-index: 9999;
+        transform-origin: center;
+    }
 
+    .sphere-image-container {
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        overflow: hidden;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        border: 3px solid rgba(255, 255, 255, 0.8);
+        background: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .sphere-image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: opacity 0.3s ease;
+    }
+
+    .category-header {
+        position: relative;
+    }
+
+    .category-header:hover h2 {
+        transform: translateX(2px);
+        transition: transform 0.2s ease;
+    }
+
+    /* Project card animation - initially hidden */
+    .project-card {
+        opacity: 0;
+        transform: scale(0.3) rotate(10deg);
+        animation: projectPoof 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+    }
+
+    @keyframes projectPoof {
+        0% {
+            opacity: 0;
+            transform: scale(0.3) rotate(5deg);
+        }
+        50% {
+            opacity: 0.8;
+            transform: scale(1.05) rotate(-2deg);
+        }
+        70% {
+            opacity: 1;
+            transform: scale(0.95) rotate(1deg);
+        }
+        100% {
+            opacity: 1;
+            transform: scale(1) rotate(0deg);
+        }
+    }
 </style>
