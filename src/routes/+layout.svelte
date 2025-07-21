@@ -1,6 +1,7 @@
 <!-- src/routes/+layout.svelte -->
 <script>
     import Navbar from '$lib/Navbar.svelte';
+    import Footer from '$lib/Footer.svelte';
 </script>
 
 <svelte:head>
@@ -18,3 +19,5 @@
 <main>
     <slot />
 </main>
+
+<Footer/>
