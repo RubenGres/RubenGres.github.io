@@ -26,11 +26,12 @@
                     <h2>Hi! I'm Ruben Gres 🌱</h2>
                     <h4> Creative technologist building experimental tools & games </h4>
                     <h5>
-                        I design apps, games, and experimental systems.
-                        Co-founder of <a href="https://ohmlet.itch.io/">Ohmlet</a> game studio and 
-                        <a href="https://latentminds.co">Latent Minds</a> collective.
+                        I build playful systems, experimental tools, and little games; often with artists, studios, and educational orgs.
+                        <br />
+                        Making cool things with <a href="https://ohmlet.itch.io/">Ohmlet</a> and <a href="https://latentminds.co">LatentMinds</a> collectives.  
                         <br /><br />
-                        <a href="https://calendly.com/rubengres/30min">Let’s build something together!</a><br /><br />
+                        <a href="https://calendly.com/rubengres/30min">Let’s build something together!</a>
+                        <br /><br />
                     </h5>
                     <div class="social_icons my-3">
                         <a href="https://github.com/RubenGres"

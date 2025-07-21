@@ -27,7 +27,7 @@
         <dd>
             <h2>Gigax - <i>Lead Game Developer</i><span>08/2025 - now </span></h2>
             <p>
-                Making fun innovative games in <b>Godot</b> and <b>Unity</b>, sometimes using AI.
+                Making fun innovative indie games in <b>Godot</b> and <b>Unity</b>.
             </p>
         </dd>
 

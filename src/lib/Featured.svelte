@@ -29,12 +29,6 @@
 
 <section class="featured-section">
     <div class="container" style="max-width: 1200px;">
-        <div class="featured-header">
-            <h2 class="section-title">
-                Featured Work
-            </h2>
-        </div>
-
         <div class="featured-grid">
             {#each featuredProjects as project, index}
                 <div class="featured-card" style="--rotation: -2deg;">
@@ -59,8 +53,7 @@
 
 <style>
     .featured-section {
-        padding: 80px 20px;
-        background: linear-gradient(135deg, #f8f9ff 0%, #fff 50%, #f5f7ff 100%);
+        padding: 10px 20px;
         position: relative;
         overflow: hidden;
     }
@@ -78,22 +71,6 @@
     .container {
         position: relative;
         z-index: 1;
-    }
-
-    .featured-header {
-        text-align: center;
-        margin-bottom: 10px;
-    }
-
-    .section-title {
-        font-size: 2.5rem;
-        font-weight: 700;
-        text-transform: uppercase;
-        letter-spacing: 0.15em;
-        color: #333;
-        margin-bottom: 20px;
-        display: inline-block;
-        position: relative;
     }
 
     .featured-grid {
@@ -196,10 +173,6 @@
 
         .project-title {
             font-size: 1.5rem;
-        }
-
-        .section-title {
-            font-size: 2rem;
         }
 
         .featured-section {

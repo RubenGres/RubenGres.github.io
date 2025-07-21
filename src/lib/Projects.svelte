@@ -174,7 +174,7 @@
 
     let projectCategories = [
         {
-            title: "Artistic collaborations",
+            title: "🖼️ Artistic collaborations",
             id: "art",
             description: `
                 <p> I work alongside artists in residency, bringing AI, data visualization, and development expertise to their creative practice.
@@ -183,7 +183,7 @@
             projects : artCollaborations
         },
         {
-            title: "Educational Tools",
+            title: "👨‍🏫 Educational Tools",
             id: "education",
             description: `
                 <p>I believe in making complex AI concepts accessible through hands-on learning and visual tools.
@@ -192,45 +192,59 @@
             projects: educationProjects
         },
         {
-            title: "Generative AI projects",
+            title: "🧠 Generative AI projects",
             id: "genai",
             description: `
                 <p> I explore generative AI to develop practical applications and creative tools for diverse audiences.
-                I co-founded <a href="http://latentminds.co">LatentMinds</a>, where we develop experimental tools that redefine the boundaries of AI-assisted creativity.</p>
+                I co-founded <a href="hbittp://latentminds.co">LatentMinds</a>, where we develop experimental tools that redefine the boundaries of AI-assisted creativity.</p>
             `,
             projects : genAIProjects
         },
         {
-            title: "Game development",
+            title: "🎮 Game development",
             id: "games",
             description: `
-                <p> I explore unconventional gameplays through game jams, personal projects, and a bigger game soon to be announced.
-                I collaborate with friends within <a href="https://ohmlet.itch.io">Ohmlet studio</a>, a collective making experimental games.</p>
+                <p> I explore unconventional gameplays through game jams, personal projects, and a commercial game soon to be announced.
+                I collaborate with friends within <a href="https://ohmlet.itch.io">Ohmlet studio</a>, a collective making small experimental games.</p>
             `,
             projects : gameProjects
         },
         {
-            title: "Miscellaneous projects",
+            title: "👾 Miscellaneous projects",
             id: "misc",
             description:`
-                <p>Diverse experiments and older projects<p>
+                <p>Diverse experiments and older projects that didn't fit in any category.<p>
             `,
             projects : otherProjects
         },
     ]
+
+    let collapsedSections = {};
+
+    for (let category of projectCategories) {
+        collapsedSections[category.id] = true;
+    }
 </script>
 
 <ScrollEffect>
     {#each projectCategories as category}
-        <section style="padding-left: 13px; padding-right: 13px; margin-bottom: 100px;" id="{category.id}">
+        <section style="padding-left: 13px; padding-right: 13px; margin-bottom: 50px;" id="{category.id}">
             <div class="container" style="max-width: 1000px;">
 
                 <div class="row">
                     <div class="col-12">
-                        <div style="padding-bottom: 30px;">
+                        <div>
                             <h2 class="text-uppercase" style="letter-spacing: 0.15em;">
                                 {category.title}
-                                <span class="colored-dash"></span>
+                                    <button on:click={() => collapsedSections[category.id] = !collapsedSections[category.id]} class="btn btn-outline-primary">
+                                        {#if collapsedSections[category.id]}
+                                            Show {category.projects.length} projects ▼
+                                        {:else}
+                                            Hide projects ▲
+                                        {/if}
+                                    </button>
+                                <span>
+                                </span>
                             </h2>
                             <h4 style="line-height: 1.4em;">
                                 {@html category.description}
@@ -239,20 +253,21 @@
                     </div>
                 </div>
 
+            {#if !collapsedSections[category.id]}
                 <div class="row g-4 justify-content-center" style="margin: auto">
                     {#each category.projects as project}
                         <div class="col-lg-4 col-md-4 col-sm-6 col-12" style="margin-bottom: 50px; display: flex; justify-content: center;">
                             <div class="h-100">
                                 <a href="{project.link}" class="text-decoration-none">
-                                    <div class="card h-100 border-0 shadow-sm"  style="width: 300px">
+                                    <div class="card h-100 border-0 shadow-sm" style="width: 300px">
                                         <div class="overflow-hidden">
-                                        <center>
-                                           <img src={project.image} alt={project.title} class="card-img-top" style="margin: auto; height: 300px; width: auto; object-fit: cover; aspect-ratio: 1;">
-                                        </center>
+                                            <center>
+                                                <img src={project.image} alt={project.title} class="card-img-top" style="margin: auto; height: 300px; width: auto; object-fit: cover; aspect-ratio: 1;">
+                                            </center>
                                         </div>
                                         <div class="card-body">
                                             <h4 style="text-transform: uppercase; color: black; margin-bottom: 5px">
-                                                {project.title} 
+                                                {project.title}
                                                 <small class="fw-normal text-muted">({project.year})</small>
                                             </h4>
                                             <p class="card-text text-muted" style="line-height: 1.2em;">{project.description}</p>
@@ -263,6 +278,7 @@
                         </div>
                     {/each}
                 </div>
+            {/if}
 
             </div>
         </section>
