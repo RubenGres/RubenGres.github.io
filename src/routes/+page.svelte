@@ -8,6 +8,7 @@
     .section-header {
         text-align: center;
         margin-top: 80px;
+        margin-bottom: 20px;
     }
 
     .section-title {
