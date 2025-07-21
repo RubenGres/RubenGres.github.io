@@ -174,7 +174,7 @@
 
     let projectCategories = [
         {
-            title: "🖼️ Artistic collaborations",
+            title: "🖼️ Creative Tech for Artists",
             id: "art",
             description: `
                 <p> I work alongside artists in residency, bringing AI, data visualization, and development expertise to their creative practice.
@@ -183,7 +183,7 @@
             projects : artCollaborations
         },
         {
-            title: "👨‍🏫 Educational Tools",
+            title: "👨‍🏫 Interactive Tools for Education",
             id: "education",
             description: `
                 <p>I believe in making complex AI concepts accessible through hands-on learning and visual tools.
@@ -196,7 +196,7 @@
             id: "genai",
             description: `
                 <p> I explore generative AI to develop practical applications and creative tools for diverse audiences.
-                I co-founded <a href="hbittp://latentminds.co">LatentMinds</a>, where we develop experimental tools that redefine the boundaries of AI-assisted creativity.</p>
+                I co-founded <a href="http://latentminds.co">LatentMinds</a>, where we develop experimental tools that redefine the boundaries of AI-assisted creativity.</p>
             `,
             projects : genAIProjects
         },
@@ -231,12 +231,12 @@
         <section style="padding-left: 13px; padding-right: 13px; margin-bottom: 50px;" id="{category.id}">
             <div class="container" style="max-width: 1000px;">
 
-                <div class="row">
+                <div class="row" style="cursor: pointer;" on:click={() => collapsedSections[category.id] = !collapsedSections[category.id]}>
                     <div class="col-12">
                         <div>
                             <h2 class="text-uppercase" style="letter-spacing: 0.15em;">
                                 {category.title}
-                                    <button on:click={() => collapsedSections[category.id] = !collapsedSections[category.id]} class="btn btn-outline-primary">
+                                    <button class="btn btn-outline-primary">
                                         {#if collapsedSections[category.id]}
                                             Show {category.projects.length} projects ▼
                                         {:else}
