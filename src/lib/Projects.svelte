@@ -258,7 +258,7 @@
     function handleMouseMove(event) {
         if (sphereVisible) {
             // Offset position to lower right to avoid blocking view
-            targetY = event.clientY - 100;
+            targetY = event.clientY;
         }
     }
 
