@@ -205,7 +205,7 @@
             title: "👾 Miscellaneous projects",
             id: "misc",
             description:`
-                <p>Diverse experiments and older projects that didn't fit in any category.<p>
+                <p>Experiments, 3D modeling and older projects that didn't fit in any category.<p>
             `,
             projects : otherProjects
         },
@@ -230,6 +230,11 @@
     let animationFrame;
     let imageTimerInterval;
     let windowWidth = 0;
+    
+    // Generate curved text from project names
+    $: curvedText = currentProjects.length > 0 
+        ? (currentProjects.map(p => p.title.toUpperCase()).join(' • ') + ' • ').repeat(5).slice(0, 66) + "..."
+        : 'SNEAK PEEK • '.repeat(8);
 
     function updateSpherePosition() {
         // Smooth following with delay (faster movement)
@@ -320,8 +325,20 @@
 {#if (sphereScale > 0.01 || sphereOpacity > 0.01) && currentProjects.length > 0 && windowWidth > 1650}
     <div 
         class="cursor-sphere" 
-        style="left: {sphereX - 100}px; top: {sphereY}px; transform: scale({sphereScale}); opacity: {sphereOpacity};"
+        style="left: {sphereX - 130}px; top: {sphereY - 130}px; transform: scale({sphereScale}); opacity: {sphereOpacity};"
     >
+        <!-- Curved text around the sphere -->
+        <svg class="curved-text-svg" width="260" height="260" viewBox="0 0 260 260">
+            <defs>
+                <path id="circle-path" d="M 130,130 m -110,0 a 110,110 0 1,1 220,0 a 110,110 0 1,1 -220,0" />
+            </defs>
+            <text class="curved-text" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#666" letter-spacing="2px">
+                <textPath href="#circle-path" startOffset="0%">
+                    {curvedText}
+                </textPath>
+            </text>
+        </svg>
+        
         <div class="sphere-image-container">
             <img 
                 src={currentProjects[currentImageIndex].image} 
@@ -432,16 +449,43 @@
 
     .cursor-sphere {
         position: fixed;
-        width: 200px;
-        height: 200px;
+        width: 240px;
+        height: 240px;
         pointer-events: none;
         z-index: 9999;
         transform-origin: center;
     }
 
-    .sphere-image-container {
+    .curved-text-svg {
+        position: absolute;
+        top: 0;
+        left: 0;
         width: 100%;
         height: 100%;
+        animation: rotate 8s linear infinite;
+    }
+
+    .curved-text {
+        text-transform: uppercase;
+        opacity: 0.7;
+    }
+
+    @keyframes rotate {
+        from {
+            transform: rotate(0deg);
+        }
+        to {
+            transform: rotate(360deg);
+        }
+    }
+
+    .sphere-image-container {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 160px;
+        height: 160px;
         border-radius: 50%;
         overflow: hidden;
         box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
