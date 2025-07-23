@@ -24,11 +24,11 @@
             >
                 <div class="banner_content col-lg-6 module-move">
                     <h2>Hi! I'm Ruben Gres 🌱</h2>
-                    <h4> Creative technologist building experimental tools & games </h4>
+                    <h4> Creative technologist & AI Engineer </h4>
                     <h5>
-                        I build playful systems, experimental tools, and little games; often with artists, studios, and educational orgs.
+                        I build tools, apps, and little games; often with artists, studios, and educational orgs.
                         <br />
-                        Making cool things with <a href="https://ohmlet.itch.io/">Ohmlet</a> and <a href="https://latentminds.co">LatentMinds</a> collectives.  
+                        Making cool things within the <a href="https://ohmlet.itch.io/">Ohmlet</a> and <a href="https://latentminds.co">LatentMinds</a> collectives.  
                         <br /><br />
                         <a href="https://calendly.com/rubengres/30min">Let’s build something together!</a>
                         <br /><br />

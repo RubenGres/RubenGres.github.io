@@ -166,7 +166,7 @@
 
     let projectCategories = [
         {
-            title: "🖼️ Creative Tech for Artists",
+            title: "🖼️ Creative Tech and AI for Artists",
             id: "art",
             description: `
                 <p> I work alongside artists in residency, bringing AI, data visualization, and development expertise to their creative practice.
@@ -175,7 +175,7 @@
             projects : artCollaborations
         },
         {
-            title: "👨‍🏫 Interactive Tools for Education",
+            title: "👨‍🏫 Interactive Tools for AI Education",
             id: "education",
             description: `
                 <p>I believe in making complex AI concepts accessible through hands-on learning and visual tools.
