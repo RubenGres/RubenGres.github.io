@@ -83,7 +83,7 @@
             year: 2025
         },
         {
-            title: "Zoomies: Fast or fired",
+            title: "Zoomies",
             link: "https://ohmlet.itch.io/zoomies",
             image: "https://img.itch.zone/aW1nLzE3NDQ4OTYxLmpwZw==/315x250%23c/p%2BHryy.jpg",
             description: "Play as an exploited employee in corporate hell. GMTK 2024 GameJam.",
@@ -472,10 +472,10 @@
 
     @keyframes rotate {
         from {
-            transform: rotate(0deg);
+            transform: rotate(360deg);
         }
         to {
-            transform: rotate(360deg);
+            transform: rotate(0deg);
         }
     }
 
