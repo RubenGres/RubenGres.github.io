@@ -37,9 +37,9 @@
                         <a href="https://github.com/RubenGres"
                             ><i class="fab fa-github"></i></a
                         >
-                        <a href="https://www.instagram.com/retronyme/"
+                        <!-- <a href="https://www.instagram.com/retronyme/"
                             ><i class="fab fa-instagram"></i></a
-                        >
+                        > -->
                         <a href="https://ohmlet.itch.io/"
                             ><i class="fas fa-gamepad"></i></a
                         >

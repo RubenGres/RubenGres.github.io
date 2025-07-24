@@ -126,10 +126,7 @@
 
             <h2>3D Modeling</h2>
             <p>
-                I do 3D modeling and animation on Blender, my work can be found
-                on <a href="https://www.instagram.com/retronyme/"
-                    >my instagram account</a
-                >
+                I do 3D modeling and animation on Blender
             </p>
 
             <h2>Game Dev</h2>
