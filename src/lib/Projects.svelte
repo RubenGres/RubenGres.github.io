@@ -76,6 +76,13 @@
 
     let gameProjects = [
         {
+            title: "A Bug's Day",
+            link: "https://ohmlet.itch.io/a-bugs-day",
+            image: "img/fifi.png",
+            description: "A firefly is caught in a dull, colorless routine. GMTK 2025 GameJam.",
+            year: 2025
+        },
+        {
             title: "Dad knows (siege) best",
             link: "https://www.youtube.com/watch?v=ofAcTvuybvY",
             image: "img/siege.jpg",
@@ -197,7 +204,7 @@
             id: "games",
             description: `
                 <p> I explore unconventional gameplays through game jams, personal projects, and a commercial game soon to be announced.
-                I collaborate with friends within <a href="https://ohmlet.itch.io">Ohmlet studio</a>, a collective making small experimental games.</p>
+                I collaborate with friends within <a href="https://ohmlet.itch.io">RockBottom</a>, a collective making small experimental games.</p>
             `,
             projects : gameProjects
         },

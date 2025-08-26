@@ -41,7 +41,7 @@
             <li>
                 <a href="https://ohmlet.itch.io/">
                 <i class="fas fa-gamepad"></i> 
-                    Itch.io @Ohmlet Studio
+                    Itch.io @RockBottom
                 </a>
             </li>
             <li>

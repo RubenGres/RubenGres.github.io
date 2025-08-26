@@ -199,7 +199,7 @@ export async function load({ params }) {
                     text: "Created for GMTK 2024, this game critiques modern work culture through gameplay mechanics that mirror the stress and pressure of corporate environments."
                 }
             ],
-            tags: ["Game Jam", "GMTK", "Corporate Satire", "Ohmlet Studio"]
+            tags: ["Game Jam", "GMTK", "Corporate Satire", "RockBottom"]
         },
 
         "snipit": {
