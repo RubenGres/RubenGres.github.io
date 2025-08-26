@@ -39,6 +39,8 @@ export async function load({ params }) {
             ],
             "links": [
                 { "title": "Open the app", "url": "https://bitz.tools" },
+                { "title": "Video presentation", "url": "https://www.youtube.com/watch?v=c64kkIIpARY" },
+                { "title": "CGG Article", "url": "https://genomicgastronomy.com/work/2025-2/bitz/" },
                 { "title": "Code", "url": "https://github.com/RubenGres/BITZ" }
             ]
         },
