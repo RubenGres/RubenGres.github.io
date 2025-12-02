@@ -28,6 +28,8 @@
   });
 </script>
 
+<script data-goatcounter="https://rgres.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+
 <div id="navigation">
   <nav class="navbar navbar-expand-sm navbar-light container">
     <div class="navbar-brand">
