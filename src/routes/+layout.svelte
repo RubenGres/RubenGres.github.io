@@ -4,6 +4,8 @@
     import Footer from '$lib/Footer.svelte';
 </script>
 
+<script data-goatcounter="https://rgres.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+
 <svelte:head>
     <title>Ruben Gres</title>
     <link rel='icon' type='image/png' href='/favicon.ico'>
