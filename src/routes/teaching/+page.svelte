@@ -9,9 +9,9 @@
                 </a>
             </h2>
 
-            A suite of hands-on workshops to teach LLM technologies: Embeddings, tokenization, Word2Vec, RAG, and prompting techniques
+            A suite of hands-on workshops to teach LLM technologies
             <br/>
-            <a href="https://github.com/RubenGres/LLM_lab">GitHub Repository</a>
+            Embeddings, tokenization, Word2Vec, RAG, and prompting techniques <a href="https://github.com/RubenGres/LLM_lab">GitHub</a>
         </li>
     </ul>
 
