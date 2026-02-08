@@ -1,10 +1,8 @@
 <!-- src/routes/+layout.svelte -->
-<script>
+<script data-goatcounter="https://rgres.goatcounter.com/count" async src="//gc.zgo.at/count.js">
     import Navbar from '$lib/Navbar.svelte';
     import Footer from '$lib/Footer.svelte';
 </script>
-
-<script data-goatcounter="https://rgres.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 
 <svelte:head>
     <title>Ruben Gres</title>
