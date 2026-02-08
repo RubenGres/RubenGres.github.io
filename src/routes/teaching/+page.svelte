@@ -4,6 +4,22 @@
     <ul>
         <li>
             <h2>
+                <a href="https://rubengr.es/llm_lab/">
+                    LLM Lab (2026)
+                </a>
+            </h2>
+
+            A suite of hands-on workshops to teach LLM technologies
+            <br/>
+            <a href="https://github.com/RubenGres/LLM_lab">GitHub Repository</a>
+            <br/><br/>
+            Embeddings, tokenization, Word2Vec, RAG, and prompting techniques
+        </li>
+    </ul>
+
+    <ul>
+        <li>
+            <h2>
                 <a href="/documents/[ENSG] Generative AI 2025_01_20.pdf">
                     A DeepDive in Large Language Models
                 </a>
