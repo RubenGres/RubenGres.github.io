@@ -26,8 +26,8 @@
                     <h2>Hi! I'm Ruben Gres 🌱</h2>
                     <h4> Creative technologist & AI Engineer </h4>
                     <h5>
-                        I build tools, apps, and little games; often with artists, studios, and educational orgs.
-                        Making cool things within the <a href="https://ohmlet.itch.io/">RockBottom</a> and <a href="https://latentminds.co">LatentMinds</a> collectives.  
+                        I build tools, apps, and games; often with artists, studios, and educational orgs.
+                        Making cool things within the <a href="https://misaligned.games/">Misaligned Games</a> and <a href="https://rockbttm.itch.io">RockBottom</a> collectives.  
                         <br /><br />
                         <a href="https://calendly.com/rubengres/30min">Let’s build something together!</a>
                         <br /><br />
