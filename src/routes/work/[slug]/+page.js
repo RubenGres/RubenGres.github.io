@@ -45,6 +45,82 @@ export async function load({ params }) {
             ]
         },
 
+        "eyes-on-the-field": {
+            "title": "Eyes on the Field: Porto",
+            "subtitle": "A farm visit and biodiversity dinner event in the Porto region",
+            "description": "A participatory event combining species-quests and immersive dining to explore agricultural biodiversity around Porto. Participants used the BITZ digital tool to observe and identify organisms in the field, with findings transformed into a multi-sensory dinner experience at Venn Canteen. Part of the EU S+T+ARTS MUSAE project.",
+            "images": ["img/eyes-on-the-field/field_1.jpg", "img/eyes-on-the-field/field_2.jpg", "img/eyes-on-the-field/field_3.jpg"],
+            "content": [
+                {
+                    "title": "Event Overview",
+                    "text": "Eyes on the Field: Porto brought together farmers, artists, scientists, and curious eaters for a day of biodiversity observation and collective discovery. The event was structured around the idea that paying attention to the organisms sharing our agricultural landscapes can fundamentally change how we relate to what we eat. Participants moved through working farms in the Porto region, guided by species-quest prompts designed to surface the hidden ecological richness of transition zones between cultivated and wild land.",
+                    "imgs": []
+                },
+                {
+                    "title": "Species Quests in the Field",
+                    "text": "Using the BITZ digital tool, participants photographed plants, insects, fungi, and animals encountered during the farm visit. Each photo triggered species identification and opened connections to the cultural and ecological roles of that organism in the local food system. The quests were designed not just to identify species but to prompt reflection on how biodiversity supports soil health, pollination, pest control, and flavor. The collective observations built a shared live dataset of agricultural biodiversity in the Porto region.",
+                    "imgs": ["img/eyes-on-the-field/field_4.jpg", "img/eyes-on-the-field/field_5.jpg", "img/eyes-on-the-field/field_6.jpg", "img/eyes-on-the-field/field_7.jpg"]
+                },
+                {
+                    "title": "From Field to Table",
+                    "text": "The day culminated in a multi-course dinner at Venn Canteen with chef Barney Pau, where the discoveries from the field directly shaped the menu. Each dish was built around organisms identified during the species-quests, creating a sensory bridge between environmental observation and culinary experience. Formiga Gloriosa brought their foraging and fermentation expertise to the table, grounding the dinner in the living landscape the group had spent the day exploring.",
+                    "imgs": ["img/eyes-on-the-field/dinner_1.jpg", "img/eyes-on-the-field/dinner_2.jpg", "img/eyes-on-the-field/dinner_3.jpg", "img/eyes-on-the-field/dinner_4.jpg", "img/eyes-on-the-field/dinner_5.jpg", "img/eyes-on-the-field/dinner_6.jpg"]
+                },
+                {
+                    "title": "Data & Community",
+                    "text": "Beyond the event itself, the BITZ observations contributed to a growing public dataset of biodiversity in agricultural transition zones. This kind of community-generated data supports researchers, conservationists, and farmers in understanding which organisms are present, absent, or under pressure in working landscapes. Eyes on the Field demonstrated how participatory art events can double as meaningful scientific data-gathering exercises when paired with the right tools.",
+                    "imgs": []
+                },
+                {
+                    "title": "Collaborators & Support",
+                    "text": "Eyes on the Field: Porto was organized by Genomic Gastronomy and Nicetrails, hosted at Venn Canteen with chef Barney Pau, and supported by Formiga Gloriosa. The event was made possible by the EU S+T+ARTS MUSAE project, which supports art-science collaborations exploring the relationship between technology, ecology, and culture.",
+                    "imgs": []
+                }
+            ],
+            "links": [
+                { "title": "BITZ tool", "url": "https://bitz.tools" },
+                { "title": "Genomic Gastronomy article", "url": "https://genomicgastronomy.com/work/2025-2/eyes-on-the-field/" }
+            ]
+        },
+
+        "eat-bitz": {
+            "title": "EAT.BITZ",
+            "subtitle": "A data-driven oracle experience for exploring the biodiversity of the kitchen",
+            "description": "An interactive installation combining ingredient oracle readings, a kaleidoscope viewer, and a custom digital platform to reveal the ecological dimensions of restaurant dishes. Created with Bernat Cuní and Genomic Gastronomy for Venn Canteen in Porto, as part of the ST3ER (Scaling Twin Transition in Tourism) project.",
+            "images": ["img/eat-bitz/event_1.jpg", "img/eat-bitz/event_4.jpg", "img/eat-bitz/event_6.jpg"],
+            "content": [
+                {
+                    "title": "Project Overview",
+                    "text": "EAT.BITZ transforms the dining table into a site of ecological inquiry. Each dish served at Venn Canteen became an entry point into the biodiversity of the kitchen — the organisms, landscapes, and supply chains behind every ingredient. Rather than presenting this as a lecture or a menu annotation, EAT.BITZ made the information tangible and playful through three interlocking experiences: oracle card readings, a physical kaleidoscope viewer, and an interactive digital platform built on the BITZ data infrastructure.",
+                    "imgs": []
+                },
+                {
+                    "title": "The Oracle Cards",
+                    "text": "Diners received oracle card readings tied to the specific ingredients in their meal. Each card surfaced ecological and cultural stories embedded in the food — the pollinators behind a fruit, the soil fungi supporting a root vegetable, the migratory routes of a spice. The cards were designed to work both as standalone objects and as prompts for conversation, reframing each dish as a node in a larger living system rather than a finished product.",
+                    "imgs": ["img/eat-bitz/oracle_cards_1.jpg", "img/eat-bitz/oracle_cards_3.jpg", "img/eat-bitz/oracle_card.gif"]
+                },
+                {
+                    "title": "Kaleidoscope Viewer",
+                    "text": "A custom physical kaleidoscope viewer placed on each table let guests observe fragments of the micro-world of their ingredients — soil samples, plant structures, seed surfaces — transformed into immersive geometric patterns. The kaleidoscope made the invisible visible, offering a sensory encounter with the scale of life that exists below the threshold of the meal.",
+                    "imgs": ["img/eat-bitz/kaleidoscope.gif", "img/eat-bitz/event_2.jpg", "img/eat-bitz/event_3.jpg"]
+                },
+                {
+                    "title": "Digital Platform",
+                    "text": "The accompanying digital platform allowed guests to dive deeper into the biodiversity stories behind each dish. Built on the BITZ infrastructure, the platform connected ingredient data to species records, ecological relationships, and regional food system context. I developed the platform to pull structured biodiversity data into a format legible to curious eaters, bridging the gap between scientific datasets and the dinner table.",
+                    "imgs": ["img/eat-bitz/platform_1.png", "img/eat-bitz/platform_2.png", "img/eat-bitz/platform_4.png"]
+                },
+                {
+                    "title": "Event & Context",
+                    "text": "EAT.BITZ was presented at Venn Canteen in Porto as part of the ST3ER (Scaling Twin Transition in Tourism) project, which explores how the tourism and hospitality sector can embrace regenerative and digital transitions simultaneously. The collaboration brought together artist and digital craftsman Bernat Cuní, Genomic Gastronomy, and Venn Canteen to test what it looks like when a restaurant becomes a platform for ecological literacy.",
+                    "imgs": ["img/eat-bitz/event_5.jpg", "img/eat-bitz/event_7.jpg"]
+                }
+            ],
+            "links": [
+                { "title": "Genomic Gastronomy article", "url": "https://genomicgastronomy.com/work/2026-2/eat-bitz/" },
+                { "title": "Code", "url": "https://github.com/RubenGres/eatbitz3D" }
+            ]
+        },
+
         "visualizing-rags": {
             "title": "Visualizing RAGs",
             "subtitle": "An educational tool for understanding Retrieval-Augmented Generation systems",

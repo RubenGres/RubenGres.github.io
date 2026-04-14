@@ -1,3 +1,10 @@
+<svelte:head>
+    <title>Publications — Ruben Gres</title>
+    <meta name="description" content="Academic publications, articles, and interviews by Ruben Gres on AI, generative models, and creative technology." />
+    <meta property="og:title" content="Publications — Ruben Gres" />
+    <link rel="canonical" href="https://rubengr.es/publications" />
+</svelte:head>
+
 <div id="page-wrap">
 	<h1>Publications</h1>
 
@@ -74,7 +81,7 @@
 	<h2>Blog posts</h2>
 	<ul>
 		<li>
-			I write a <a href="/blog">semi-technical blog</a> where I discuss the apps I develop and share
+			I write a <a href="https://rubengr.es/blog/" target="_blank" rel="noopener noreferrer">semi-technical blog</a> where I discuss the apps I develop and share
 			my thoughts on the AI industry.
 		</li>
 	</ul>

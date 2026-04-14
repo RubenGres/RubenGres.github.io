@@ -31,38 +31,35 @@
 <div id="navigation">
   <nav class="navbar navbar-expand-sm navbar-light container">
     <div class="navbar-brand">
-      <a class="nav-link" href="../" id="site-name-nav">
+      <a class="nav-link" href="/" id="site-name-nav">
         <span>Ruben&nbsp;Gres</span>
       </a>
     </div>
-    
-    <button 
-      class="navbar-toggler" 
-      type="button" 
+
+    <button
+      class="navbar-toggler"
+      type="button"
       on:click={toggleMenu}
-      aria-controls="collapsibleNavbar" 
+      aria-controls="collapsibleNavbar"
       aria-expanded={isMenuOpen}
       aria-label="Toggle navigation"
     >
-      <i class="fas fa-bars"></i>
+      <i class="fas fa-bars" aria-hidden="true"></i>
     </button>
 
     <div class="navbar-collapse {isMenuOpen ? 'show' : ''}" id="collapsibleNavbar">
       <ul class="navbar-nav">
         <li class="nav-item">
-          <a class="nav-link" href="blog" on:click={closeMenu}>Blog</a>
+          <a class="nav-link" href="/publications" on:click={closeMenu}>Publications</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="publications" on:click={closeMenu}>Publications</a>
+          <a class="nav-link" href="/teaching" on:click={closeMenu}>Teaching</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="teaching" on:click={closeMenu}>Teaching</a>
+          <a class="nav-link" href="/resume" on:click={closeMenu}>Resume</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="resume" on:click={closeMenu}>Resume</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="about" on:click={closeMenu}>About</a>
+          <a class="nav-link" href="/about" on:click={closeMenu}>About</a>
         </li>
       </ul>
     </div>
@@ -74,7 +71,7 @@
     height: 75px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
     margin-bottom: 6px;
-    font-family: "Roboto", sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
     font-size: 1.15em;
     position: relative;
   }
@@ -118,7 +115,7 @@
   }
 
   :global(.navbar .navbar-collapse .navbar-nav .nav-item .nav-link) {
-    font: 500 14px/35px "Roboto", sans-serif;
+    font: 500 14px/35px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
     font-size: 1em;
     text-transform: capitalize;
     white-space: nowrap;

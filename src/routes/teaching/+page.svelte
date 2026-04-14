@@ -1,3 +1,10 @@
+<svelte:head>
+    <title>Teaching — Ruben Gres</title>
+    <meta name="description" content="Teaching materials and workshops by Ruben Gres — LLMs, generative AI, and AI education resources." />
+    <meta property="og:title" content="Teaching — Ruben Gres" />
+    <link rel="canonical" href="https://rubengr.es/teaching" />
+</svelte:head>
+
 <div id="page-wrap">
     <h1>Teaching</h1>
 

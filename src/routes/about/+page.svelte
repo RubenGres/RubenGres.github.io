@@ -1,58 +1,56 @@
-<link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
-    integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
-    crossorigin="anonymous"
-    referrerpolicy="no-referrer"
-/>
+<svelte:head>
+    <title>About — Ruben Gres</title>
+    <meta name="description" content="AI developer at the intersection of technology and creativity, committed to creating impactful solutions for the common good." />
+    <meta property="og:title" content="About — Ruben Gres" />
+    <meta property="og:description" content="AI developer at the intersection of technology and creativity." />
+    <link rel="canonical" href="https://rubengr.es/about" />
+</svelte:head>
 
 <div id="page-wrap" class="contact">
     <img
-        class="w-32 h-32 md:w-40 md:h-40 rounded-full"
-        alt="my avatar"
+        alt="Ruben Gres avatar"
         src="https://avatars.githubusercontent.com/u/23587703?v=4"
     />
 
     <div>
-        <h2>Ruben Gres</h2>
+        <h1>Ruben Gres</h1>
         <p>
             AI dev at the intersection of technology and creativity, committed to creating impactful solutions for the common good.
         </p>
-    
+
         <ul>
             <li>
                 <a href="mailto:ruben.gres@proton.me">
-                <i class="fas fa-envelope"></i> 
+                    <i class="fas fa-envelope" aria-hidden="true"></i>
                     ruben.gres@proton.me
                 </a>
             </li>
             <li>
-                <a href="https://www.linkedin.com/in/ruben-gres-484930158/">
-                <i class="fab fa-linkedin"></i> 
+                <a href="https://www.linkedin.com/in/ruben-gres-484930158/" target="_blank" rel="noopener noreferrer">
+                    <i class="fab fa-linkedin" aria-hidden="true"></i>
                     LinkedIn @Ruben Gres
                 </a>
             </li>
             <li>
-                <a href="https://github.com/RubenGres">
-                <i class="fab fa-github"></i> 
+                <a href="https://github.com/RubenGres" target="_blank" rel="noopener noreferrer">
+                    <i class="fab fa-github" aria-hidden="true"></i>
                     GitHub @RubenGres
                 </a>
             </li>
             <li>
-                <a href="https://ohmlet.itch.io/">
-                <i class="fas fa-gamepad"></i> 
+                <a href="https://ohmlet.itch.io/" target="_blank" rel="noopener noreferrer">
+                    <i class="fas fa-gamepad" aria-hidden="true"></i>
                     Itch.io @RockBottom
                 </a>
             </li>
             <li>
-                <a href="https://www.youtube.com/@retronyme">
-                <i class="fab fa-youtube"></i> 
+                <a href="https://www.youtube.com/@retronyme" target="_blank" rel="noopener noreferrer">
+                    <i class="fab fa-youtube" aria-hidden="true"></i>
                     YouTube @Retronyme
                 </a>
             </li>
         </ul>
-        
-        <a href="https://calendly.com/rubengres/30min"> Book a 30mn meeting </a>
-    </div>
 
+        <a href="https://calendly.com/rubengres/30min" target="_blank" rel="noopener noreferrer"> Book a 30mn meeting </a>
+    </div>
 </div>

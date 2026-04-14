@@ -1,17 +1,20 @@
 <!-- File: src/routes/work/[slug]/+page.svelte -->
 <script>
+    import { tick } from 'svelte';
+
     export let data;
     const { project } = data;
-    
+
     let fullscreenImage = null;
     let fullscreenAlt = '';
     let currentImageIndex = 0;
     let allImages = [];
-    
+    let closeButtonEl;
+
     // Build array of all images with their metadata
     $: {
         allImages = [];
-        
+
         // Add main project images
         project.images?.forEach((image, i) => {
             allImages.push({
@@ -20,7 +23,7 @@
                 type: 'main'
             });
         });
-        
+
         // Add content block images
         project.content?.forEach((block) => {
             if (block.imgs) {
@@ -34,22 +37,28 @@
             }
         });
     }
-    
-    function openFullscreen(imageSrc, altText) {
-        const index = allImages.findIndex(img => img.src === imageSrc);
-        currentImageIndex = index !== -1 ? index : 0;
+
+    // Use an image index Map for O(1) lookup
+    $: imageMap = new Map(allImages.map((img, i) => [img.src, i]));
+
+    async function openFullscreen(imageSrc, altText) {
+        const index = imageMap.has(imageSrc) ? imageMap.get(imageSrc) : 0;
+        currentImageIndex = index;
         fullscreenImage = allImages[currentImageIndex].src;
         fullscreenAlt = allImages[currentImageIndex].alt;
-        document.body.style.overflow = 'hidden';
+        document.documentElement.classList.add('modal-open');
+        // Move focus to close button after DOM update
+        await tick();
+        closeButtonEl?.focus();
     }
-    
+
     function closeFullscreen() {
         fullscreenImage = null;
         fullscreenAlt = '';
         currentImageIndex = 0;
-        document.body.style.overflow = '';
+        document.documentElement.classList.remove('modal-open');
     }
-    
+
     function nextImage() {
         if (allImages.length > 1) {
             currentImageIndex = (currentImageIndex + 1) % allImages.length;
@@ -57,7 +66,7 @@
             fullscreenAlt = allImages[currentImageIndex].alt;
         }
     }
-    
+
     function prevImage() {
         if (allImages.length > 1) {
             currentImageIndex = currentImageIndex === 0 ? allImages.length - 1 : currentImageIndex - 1;
@@ -65,10 +74,10 @@
             fullscreenAlt = allImages[currentImageIndex].alt;
         }
     }
-    
+
     function handleKeydown(event) {
         if (!fullscreenImage) return;
-        
+
         switch(event.key) {
             case 'Escape':
                 closeFullscreen();
@@ -83,30 +92,42 @@
                 break;
         }
     }
+
+    function handleOverlayClick(event) {
+        // Close only when clicking the backdrop, not the content
+        if (event.target === event.currentTarget) {
+            closeFullscreen();
+        }
+    }
 </script>
 
 <svelte:head>
     <title>{project.title} - Ruben Gres</title>
     <meta name="description" content={project.description} />
+    <meta property="og:title" content="{project.title} - Ruben Gres" />
+    <meta property="og:description" content={project.description} />
 </svelte:head>
 
 <svelte:window on:keydown={handleKeydown} />
 
 <div class="container">
-    <a href="/" class="back-link">← Back to projects</a>
+    <nav aria-label="Breadcrumb">
+        <a href="/" class="back-link">← Back to projects</a>
+    </nav>
 
-    <div class="project-content">        
+    <div class="project-content">
         <h1 class="project-title">{project.title}</h1>
         <p class="project-subtitle">{project.subtitle}</p>
 
         <div class="project-images">
             <div class="image-grid" class:single={project.images.length === 1}>
                 {#each project.images as image, i}
-                    <img 
-                        src="/{image}" 
+                    <img
+                        src="/{image}"
                         alt="{project.title} - Image {i + 1}"
                         on:click={() => openFullscreen(`/${image}`, `${project.title} - Image ${i + 1}`)}
                         class="clickable-image"
+                        loading={i === 0 ? 'eager' : 'lazy'}
                     />
                 {/each}
             </div>
@@ -120,16 +141,17 @@
             <section class="content-block">
                 <h2>{block.title}</h2>
                 <p>{block.text}</p>
-                
+
                 {#if block.imgs}
                     <div class="content-images">
                         <div class="image-grid" class:single={block.imgs.length === 1}>
                             {#each block.imgs as image, i}
-                                <img 
-                                    src="/{image}" 
+                                <img
+                                    src="/{image}"
                                     alt="{block.title} - Image {i + 1}"
                                     on:click={() => openFullscreen(`/${image}`, `${block.title} - Image ${i + 1}`)}
                                     class="clickable-image"
+                                    loading="lazy"
                                 />
                             {/each}
                         </div>
@@ -148,15 +170,25 @@
     </div>
 </div>
 
-<!-- Fullscreen Modal -->
+<!-- Fullscreen Modal — accessible dialog -->
 {#if fullscreenImage}
-    <div class="fullscreen-overlay" on:click={closeFullscreen} role="button" tabindex="0">
-        <div class="fullscreen-content" on:click|stopPropagation>
-            <button class="close-button" on:click={closeFullscreen} aria-label="Close fullscreen">
+    <div
+        class="fullscreen-overlay"
+        role="dialog"
+        aria-modal="true"
+        aria-label="Image viewer"
+        on:click={handleOverlayClick}
+    >
+        <div class="fullscreen-content">
+            <button
+                class="close-button"
+                on:click={closeFullscreen}
+                aria-label="Close image viewer"
+                bind:this={closeButtonEl}
+            >
                 ×
             </button>
-            
-            <!-- Navigation arrows (only show if more than 1 image) -->
+
             {#if allImages.length > 1}
                 <button class="nav-arrow nav-arrow-left" on:click={prevImage} aria-label="Previous image">
                     &#8249;
@@ -164,19 +196,23 @@
                 <button class="nav-arrow nav-arrow-right" on:click={nextImage} aria-label="Next image">
                     &#8250;
                 </button>
-                
-                <!-- Image counter -->
-                <div class="image-counter">
+
+                <div class="image-counter" aria-live="polite">
                     {currentImageIndex + 1} / {allImages.length}
                 </div>
             {/if}
-            
+
             <img src={fullscreenImage} alt={fullscreenAlt} class="fullscreen-image" />
         </div>
     </div>
 {/if}
 
 <style>
+    /* Prevent scroll when modal is open (avoids direct body mutation) */
+    :global(html.modal-open) {
+        overflow: hidden;
+    }
+
     .container {
         max-width: 800px;
         margin: 0 auto;
@@ -320,7 +356,7 @@
 
     .project-link {
         padding: 10px 20px;
-        background:rgb(0, 0, 0);
+        background: #05364d;
         color: white;
         text-decoration: none;
         border-radius: 4px;
@@ -328,7 +364,7 @@
     }
 
     .project-link:hover {
-        background:rgb(8, 0, 37);
+        background: #08253a;
     }
 
     /* Fullscreen Modal Styles */
@@ -375,8 +411,10 @@
         z-index: 1001;
     }
 
-    .close-button:hover {
+    .close-button:hover,
+    .close-button:focus {
         background: rgba(255, 255, 255, 0.1);
+        outline: 2px solid white;
     }
 
     /* Navigation arrows */
@@ -395,8 +433,10 @@
         z-index: 1001;
     }
 
-    .nav-arrow:hover {
+    .nav-arrow:hover,
+    .nav-arrow:focus {
         background: rgba(255, 255, 255, 0.2);
+        outline: 2px solid rgba(255,255,255,0.5);
     }
 
     .nav-arrow-left {

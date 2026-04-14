@@ -4,6 +4,14 @@
     import Projects from '$lib/Projects.svelte';
 </script>
 
+<svelte:head>
+    <title>Ruben Gres — Creative Technologist & AI Engineer</title>
+    <meta name="description" content="Ruben Gres — Creative technologist & AI Engineer building tools, apps, and games with artists, studios, and educational organizations." />
+    <meta property="og:title" content="Ruben Gres — Creative Technologist & AI Engineer" />
+    <meta property="og:description" content="Building tools, apps, and games at the intersection of AI and creativity." />
+    <link rel="canonical" href="https://rubengr.es/" />
+</svelte:head>
+
 <style>
     .section-header {
         text-align: center;

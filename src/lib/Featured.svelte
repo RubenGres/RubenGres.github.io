@@ -34,7 +34,7 @@
                 <div class="featured-card" style="--rotation: -2deg;">
                     <a href={project.link} class="card-link">
                         <div class="image-container">
-                            <img src={project.image} alt={project.title} class="project-image">
+                            <img src={project.image} alt={project.title} class="project-image" loading="lazy">
                         </div>
                         
                         <div class="card-content">

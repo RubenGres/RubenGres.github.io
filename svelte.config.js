@@ -15,11 +15,17 @@ const config = {
 
 		prerender: {
 			handleHttpError: ({ status, path, referrer, referenceType }) => {
-				// Ignore 404 errors for specific routes
-				if (status === 404) {
-					console.warn(`Ignoring 404 error for ${path}`);
-					return; // Prevent the error from stopping the build
+				// Ignore /blog/* paths — they live on an external subdomain
+				if (status === 404 && path.startsWith('/blog')) {
+					console.warn(`Skipping /blog path (external): ${path}`);
+					return;
 				}
+				// Ignore dynamically-resolved paths from JS data
+				if (status === 404 && referenceType === 'js') {
+					console.warn(`Ignoring JS-referenced 404: ${path}`);
+					return;
+				}
+				throw new Error(`${status} on ${path}${referrer ? ` (linked from ${referrer})` : ''}`);
 			}
 		}
 	}

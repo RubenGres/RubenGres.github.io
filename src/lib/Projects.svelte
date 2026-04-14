@@ -1,8 +1,22 @@
 <script>
     import ScrollEffect from './ScrollEffect.svelte';
-    import { onMount } from 'svelte';
+    import { onMount, onDestroy } from 'svelte';
 
     let artCollaborations = [
+        {
+            title: "EAT.BITZ",
+            link: "/work/eat-bitz",
+            image: "img/eat-bitz/event_1.jpg",
+            description: "A data-driven oracle experience for exploring the biodiversity of the kitchen. Interactive installation at Venn Canteen, Porto.",
+            year: 2026
+        },
+        {
+            title: "Eyes on the Field: Porto",
+            link: "/work/eyes-on-the-field",
+            image: "img/eyes-on-the-field/field_1.jpg",
+            description: "Farm visit and biodiversity dinner event using BITZ to observe and identify organisms, transformed into a multi-sensory dinner. S+T+ARTS EU residency.",
+            year: 2025
+        },
         {
             title: "BITZ",
             link: "/work/bitz",
@@ -20,6 +34,13 @@
     ]
 
     let educationProjects = [
+        {
+            title: "LLM Workshops",
+            link: "https://rubengr.es/llm_lab/",
+            image: "img/llmlab.png",
+            description: "7-part hands-on workshop series covering embeddings, Word2Vec, tokenization, the LLM Playground, data pipelines, and RAG with LangFlow.",
+            year: 2024
+        },
         {
             title: "Visualizing RAGs",
             link: "/work/visualizing-rags",
@@ -142,20 +163,6 @@
 
     let otherProjects = [
         {
-            title: "This website",
-            link: "/",
-            image: "img/portfolio.jpg",
-            description: "Wow so meta. Statically built with SvelteKit and Bootstrap. No template cause I'm a special boy.",
-            year: 2022 
-        },
-        {
-            title: "TVShow Ratings",
-            link: "https://rubengres.github.io/TvShowRatings/index.html",
-            image: "img/tvshowratings.jpg",
-            description: "View TV show IMDB ratings in a simple, comprehensive way. Built using Angular, jQuery, and OMDB API for data.",
-            year: 2020
-        },
-        {
             title: "Bad Apple Animation",
             link: "https://www.youtube.com/watch?v=LD4D09EVcDY&t=112s",
             image: "img/badapple.jpg",
@@ -173,7 +180,7 @@
 
     let projectCategories = [
         {
-            title: "🖼️ Creative Tech and AI for Artists",
+            title: "Creative Tech and AI for Artists",
             id: "art",
             description: `
                 <p> I work alongside artists in residency, bringing AI, data visualization, and development expertise to their creative practice.
@@ -182,7 +189,7 @@
             projects : artCollaborations
         },
         {
-            title: "👨‍🏫 Interactive Tools for AI Education",
+            title: "Interactive Tools for AI Education",
             id: "education",
             description: `
                 <p>I believe in making complex AI concepts accessible through hands-on learning and visual tools.
@@ -191,7 +198,7 @@
             projects: educationProjects
         },
         {
-            title: "🧠 Generative AI projects",
+            title: "Generative AI projects",
             id: "genai",
             description: `
                 <p> I explore generative AI to develop practical applications and creative tools for diverse audiences.
@@ -200,7 +207,7 @@
             projects : genAIProjects
         },
         {
-            title: "🎮 Game development",
+            title: "Game development",
             id: "games",
             description: `
                 <p> I explore unconventional gameplays through game jams, personal projects, and a commercial game soon to be announced.
@@ -209,7 +216,7 @@
             projects : gameProjects
         },
         {
-            title: "👾 Miscellaneous projects",
+            title: "Miscellaneous projects",
             id: "misc",
             description:`
                 <p>Experiments, 3D modeling and older projects that didn't fit in any category.<p>
@@ -319,10 +326,15 @@
         }
     }
 
-    onMount(() => {
-        return () => {
-            stopSphereEffect();
-        };
+    onMount(() => {});
+
+    onDestroy(() => {
+        // Cancel RAF immediately — no need to animate to 0 after component is gone
+        if (animationFrame) {
+            cancelAnimationFrame(animationFrame);
+            animationFrame = null;
+        }
+        stopImageTimer();
     });
 </script>
 
@@ -347,83 +359,77 @@
         </svg>
         
         <div class="sphere-image-container">
-            <img 
-                src={currentProjects[currentImageIndex].image} 
+            <img
+                src={currentProjects[currentImageIndex].image}
                 alt={currentProjects[currentImageIndex].title}
                 class="sphere-image"
+                loading="lazy"
             />
         </div>
     </div>
 {/if}
 
 <ScrollEffect>
-    {#each projectCategories as category}
+    {#each projectCategories as category, i}
         <section style="padding-left: 13px; padding-right: 13px; margin-bottom: 50px;" id="{category.id}">
             <div class="container" style="max-width: 1000px;">
 
-                <div 
-                    class="row category-header" 
-                    style="cursor: pointer;" 
+                <div
+                    class="category-header"
                     on:click={() => {
                         collapsedSections[category.id] = !collapsedSections[category.id];
-                        // Hide sphere if section just got uncollapsed
                         if (!collapsedSections[category.id]) {
                             stopSphereEffect();
                         }
                     }}
                     on:mouseenter={(event) => {
-                        
-                        sphereX =  200;
-                        sphereY =  event.clientY;
+                        sphereX = 200;
+                        sphereY = event.clientY;
                         if (collapsedSections[category.id]) {
                             startSphereEffect(category.projects);
                         }
                     }}
                     on:mouseleave={stopSphereEffect}
                 >
-                    <div class="col-12">
-                        <div>
-                            <h2 class="text-uppercase" style="letter-spacing: 0.15em;">
-                                {category.title}
-                                    <button class="btn btn-outline-primary">
-                                        {#if collapsedSections[category.id]}
-                                            Show {category.projects.length} projects ▼
-                                        {:else}
-                                            Hide projects ▲
-                                        {/if}
-                                    </button>
-                                <span>
-                                </span>
-                            </h2>
-                            <h4 style="line-height: 1.4em;">
-                                {@html category.description}
-                            </h4>
-                        </div>
+                    <span class="category-num" aria-hidden="true">{i + 1 < 10 ? '0' : ''}{i + 1}</span>
+                    <div class="category-header-top">
+                        <h2 class="category-title">{category.title}</h2>
+                        <button class="toggle-btn" aria-expanded={!collapsedSections[category.id]}>
+                            {#if collapsedSections[category.id]}
+                                <span>{category.projects.length} projects</span>
+                                <svg class="toggle-chevron" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                            {:else}
+                                <span>hide</span>
+                                <svg class="toggle-chevron expanded" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                            {/if}
+                        </button>
+                    </div>
+                    <div class="category-description">
+                        {@html category.description}
                     </div>
                 </div>
 
             {#if !collapsedSections[category.id]}
-                <div class="row g-4 justify-content-center" style="margin: auto">
+                <div class="projects-grid">
                     {#each category.projects as project, index}
-                        <div class="col-lg-4 col-md-4 col-sm-6 col-12 project-card" style="margin-bottom: 50px; display: flex; justify-content: center; animation-delay: {index * 0.1}s;">
-                            <div class="h-100">
-                                <a href="{project.link}" class="text-decoration-none">
-                                    <div class="card h-100 border-0 shadow-sm" style="width: 300px">
-                                        <div class="overflow-hidden">
-                                            <center>
-                                                <img src={project.image} alt={project.title} class="card-img-top" style="margin: auto; height: 300px; width: auto; object-fit: cover; aspect-ratio: 1;">
-                                            </center>
-                                        </div>
-                                        <div class="card-body">
-                                            <h4 style="text-transform: uppercase; color: black; margin-bottom: 5px">
-                                                {project.title}
-                                                <small class="fw-normal text-muted">({project.year})</small>
-                                            </h4>
-                                            <p class="card-text text-muted" style="line-height: 1.2em;">{project.description}</p>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
+                        <div class="project-card" class:tilt-left={index % 2 === 0} class:tilt-right={index % 2 !== 0} style="animation-delay: {index * 0.08}s;">
+                            <a
+                                href="{project.link}"
+                                class="project-card-link"
+                                target={project.link.startsWith('http') ? '_blank' : null}
+                                rel={project.link.startsWith('http') ? 'noopener noreferrer' : null}
+                            >
+                                <div class="project-card-img-wrap">
+                                    <img src={project.image} alt={project.title} class="project-card-img" loading="lazy">
+                                </div>
+                                <div class="project-card-body">
+                                    <h4 class="project-card-title">
+                                        {project.title}
+                                        <small class="project-card-year">({project.year})</small>
+                                    </h4>
+                                    <p class="project-card-desc">{project.description}</p>
+                                </div>
+                            </a>
                         </div>
                     {/each}
                 </div>
@@ -512,18 +518,197 @@
 
     .category-header {
         position: relative;
+        cursor: pointer;
+        padding: 1.25rem 0 1rem 0;
+        border-top: 2px solid #eee;
+        box-shadow: inset 3px 0 0 transparent;
+        transition: box-shadow 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), padding-left 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+        overflow: hidden;
     }
 
-    .category-header:hover h2 {
-        transform: translateX(2px);
-        transition: transform 0.2s ease;
+    .category-header:hover {
+        box-shadow: inset 3px 0 0 #1a1a1a;
+        padding-left: 10px;
     }
 
-    /* Project card animation - initially hidden */
+    .category-num {
+        position: absolute;
+        right: -0.05em;
+        top: 50%;
+        transform: translateY(-60%);
+        font-size: 7rem;
+        font-weight: 900;
+        color: #000;
+        opacity: 0.04;
+        line-height: 1;
+        user-select: none;
+        pointer-events: none;
+        letter-spacing: -0.05em;
+        transition: opacity 0.3s ease;
+    }
+
+    .category-header:hover .category-num {
+        opacity: 0.07;
+    }
+
+    .category-header-top {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+    }
+
+    .category-title {
+        font-size: 1.3rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+        color: #1a1a1a;
+        margin: 0;
+        line-height: 1.3;
+        background-image: linear-gradient(currentColor, currentColor);
+        background-size: 0% 2px;
+        background-repeat: no-repeat;
+        background-position: left bottom;
+        padding-bottom: 2px;
+        transition: background-size 0.35s cubic-bezier(0.25, 1, 0.5, 1), transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    .category-header:hover .category-title {
+        background-size: 100% 2px;
+        transform: translateX(4px);
+    }
+
+    .toggle-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        padding: 6px 14px;
+        font-size: 0.78rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: #555;
+        background: #f4f4f4;
+        border: 1px solid #ddd;
+        border-radius: 20px;
+        cursor: pointer;
+        white-space: nowrap;
+        flex-shrink: 0;
+        transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease, transform 0.15s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    .toggle-btn:hover,
+    .category-header:hover .toggle-btn {
+        background: #1a1a1a;
+        color: white;
+        border-color: transparent;
+    }
+
+    .toggle-btn:active {
+        transform: scale(0.88);
+    }
+
+    .toggle-chevron {
+        transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    .toggle-chevron.expanded {
+        transform: rotate(180deg);
+    }
+
+    .category-description {
+        margin-top: 0.6rem;
+        color: #555;
+        font-size: 0.95rem;
+        line-height: 1.5;
+        max-width: 720px;
+    }
+
+    .category-description :global(p) {
+        margin: 0;
+    }
+
+    .category-description :global(a) {
+        color: #456df3;
+        text-decoration: underline;
+    }
+
+    /* Projects grid — CSS Grid, no Bootstrap dependency */
+    .projects-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 2rem;
+        margin-top: 1.5rem;
+    }
+
+    /* Project card */
     .project-card {
         opacity: 0;
         transform: scale(0.3) rotate(10deg);
         animation: projectPoof 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+    }
+
+    .project-card-link {
+        display: block;
+        text-decoration: none;
+        color: inherit;
+        background: white;
+        border-radius: 8px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        overflow: hidden;
+        height: 100%;
+        transition: box-shadow 0.3s ease, transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    .tilt-left .project-card-link:hover {
+        box-shadow: 0 8px 24px rgba(0,0,0,0.13);
+        transform: translateY(-5px) rotate(-1.5deg);
+    }
+
+    .tilt-right .project-card-link:hover {
+        box-shadow: 0 8px 24px rgba(0,0,0,0.13);
+        transform: translateY(-5px) rotate(1.5deg);
+    }
+
+    .project-card-img-wrap {
+        overflow: hidden;
+        aspect-ratio: 1;
+    }
+
+    .project-card-img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+    }
+
+    .project-card-link:hover .project-card-img {
+        transform: scale(1.06);
+    }
+
+    .project-card-body {
+        padding: 1rem;
+    }
+
+    .project-card-title {
+        text-transform: uppercase;
+        color: black;
+        margin-bottom: 5px;
+        font-size: 1rem;
+    }
+
+    .project-card-year {
+        font-weight: 400;
+        color: #6c757d;
+    }
+
+    .project-card-desc {
+        color: #6c757d;
+        line-height: 1.3em;
+        font-size: 0.95rem;
+        margin: 0;
     }
 
     @keyframes projectPoof {
