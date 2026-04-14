@@ -630,8 +630,12 @@
     }
 
     .category-description :global(a) {
-        color: #456df3;
+        color: #05364d;
         text-decoration: underline;
+    }
+
+    .category-description :global(a:hover) {
+        color: #efb6df;
     }
 
     /* Projects grid — CSS Grid, no Bootstrap dependency */

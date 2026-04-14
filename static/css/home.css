@@ -295,20 +295,23 @@ body {
     line-height: 1.2em;
 }
 
-a:link { 
-    text-decoration: none; 
-} 
-
-a:visited { 
-    text-decoration: none; 
+a:link {
+    text-decoration: none;
+    color: #05364d;
 }
 
-a:hover { 
-    text-decoration: none; 
-} 
+a:visited {
+    text-decoration: none;
+    color: #05364d;
+}
 
-a:active { 
-    text-decoration: none; 
+a:hover {
+    text-decoration: none;
+    color: #efb6df;
+}
+
+a:active {
+    text-decoration: none;
 }
 
 #site-name-nav *{
