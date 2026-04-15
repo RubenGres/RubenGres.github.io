@@ -17,8 +17,8 @@
 					Data Generation
 				</a> — CVPR 2025
 			</h4>
-			While not listed as a co-author, I collaborated on the early development of this research and am
-			acknowledged in the paper for contributing the original idea and providing technical feedback.
+			I contributed to the early development of this research, including the original idea and
+			technical feedback, and I am acknowledged in the paper.
 		</li>
 	</ul>
 
