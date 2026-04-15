@@ -50,6 +50,9 @@
     <div class="navbar-collapse {isMenuOpen ? 'show' : ''}" id="collapsibleNavbar">
       <ul class="navbar-nav">
         <li class="nav-item">
+          <a class="nav-link" href="/blog" on:click={closeMenu}>Blog</a>
+        </li>
+        <li class="nav-item">
           <a class="nav-link" href="/publications" on:click={closeMenu}>Publications</a>
         </li>
         <li class="nav-item">
