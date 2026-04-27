@@ -16,7 +16,7 @@
             >
                 <div class="banner_content col-lg-6 module-move">
                     <h1>Hi! I'm Ruben Gres 🌱</h1>
-                    <h2> Creative technologist & AI Engineer </h2>
+                    <h2> Creative Technologist & AI Engineer — based in France </h2>
                     <p class="banner-bio">
                         I build tools, apps, and games; often with artists, studios, and educational orgs.
                         Making cool things within the <a href="https://misaligned.games/">Misaligned Games</a> and <a href="https://rockbttm.itch.io">RockBottom</a> collectives.
@@ -33,6 +33,9 @@
                         </a>
                         <a href="https://www.youtube.com/@retronyme" aria-label="YouTube channel">
                             <i class="fab fa-youtube" aria-hidden="true"></i>
+                        </a>
+                        <a href="https://www.instagram.com/retronyme/" aria-label="Instagram profile">
+                            <i class="fab fa-instagram" aria-hidden="true"></i>
                         </a>
                         <a href="https://www.linkedin.com/in/ruben-gres-484930158/" aria-label="LinkedIn profile">
                             <i class="fab fa-linkedin-in" aria-hidden="true"></i>

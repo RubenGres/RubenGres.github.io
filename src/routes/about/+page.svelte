@@ -1,8 +1,8 @@
 <svelte:head>
-    <title>About — Ruben Gres</title>
-    <meta name="description" content="AI developer at the intersection of technology and creativity, committed to creating impactful solutions for the common good." />
-    <meta property="og:title" content="About — Ruben Gres" />
-    <meta property="og:description" content="AI developer at the intersection of technology and creativity." />
+    <title>About — Ruben Gres | Creative Technologist & AI Engineer (France)</title>
+    <meta name="description" content="About Ruben Gres — Creative Technologist and AI developer based in France, working at the intersection of technology and creativity to build impactful solutions for the common good." />
+    <meta property="og:title" content="About — Ruben Gres | Creative Technologist & AI Engineer (France)" />
+    <meta property="og:description" content="Creative Technologist and AI developer based in France." />
     <link rel="canonical" href="https://rubengr.es/about" />
 </svelte:head>
 
@@ -15,7 +15,7 @@
     <div>
         <h1>Ruben Gres</h1>
         <p>
-            AI dev at the intersection of technology and creativity, committed to creating impactful solutions for the common good.
+            Creative Technologist & AI developer based in France, working at the intersection of technology and creativity and committed to creating impactful solutions for the common good.
         </p>
 
         <ul>
@@ -47,6 +47,12 @@
                 <a href="https://www.youtube.com/@retronyme" target="_blank" rel="noopener noreferrer">
                     <i class="fab fa-youtube" aria-hidden="true"></i>
                     YouTube @Retronyme
+                </a>
+            </li>
+            <li>
+                <a href="https://www.instagram.com/retronyme/" target="_blank" rel="noopener noreferrer">
+                    <i class="fab fa-instagram" aria-hidden="true"></i>
+                    Instagram @retronyme
                 </a>
             </li>
         </ul>

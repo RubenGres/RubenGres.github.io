@@ -5,11 +5,49 @@
 </script>
 
 <svelte:head>
-    <title>Ruben Gres — Creative Technologist & AI Engineer</title>
-    <meta name="description" content="Ruben Gres — Creative technologist & AI Engineer building tools, apps, and games with artists, studios, and educational organizations." />
-    <meta property="og:title" content="Ruben Gres — Creative Technologist & AI Engineer" />
-    <meta property="og:description" content="Building tools, apps, and games at the intersection of AI and creativity." />
+    <title>Ruben Gres — Creative Technologist & AI Engineer | France</title>
+    <meta name="description" content="Ruben Gres — Creative Technologist & AI Engineer based in France. Building tools, apps, and games with artists, studios, and educational organizations at the intersection of AI and creativity." />
+    <meta name="keywords" content="creative technologist France, AI engineer France, generative AI, AI artist, AI games, creative AI, Ruben Gres" />
+    <meta property="og:title" content="Ruben Gres — Creative Technologist & AI Engineer (France)" />
+    <meta property="og:description" content="Creative Technologist & AI Engineer based in France. Tools, apps, and games at the intersection of AI and creativity." />
     <link rel="canonical" href="https://rubengr.es/" />
+    {@html `<script type="application/ld+json">${JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Ruben Gres",
+        "url": "https://rubengr.es/",
+        "image": "https://rubengr.es/img/portfolio.jpg",
+        "jobTitle": "Creative Technologist & AI Engineer",
+        "description": "Creative Technologist and AI Engineer based in France, building tools, apps, and games at the intersection of AI and creativity.",
+        "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "FR"
+        },
+        "nationality": "FR",
+        "knowsAbout": [
+            "Creative Technology",
+            "Artificial Intelligence",
+            "Generative AI",
+            "Game Development",
+            "Art and Technology"
+        ],
+        "sameAs": [
+            "https://github.com/RubenGres",
+            "https://www.linkedin.com/in/ruben-gres-484930158/",
+            "https://ohmlet.itch.io/",
+            "https://www.youtube.com/@retronyme",
+            "https://www.instagram.com/retronyme/"
+        ],
+        "blog": {
+            "@type": "Blog",
+            "url": "https://rubengr.es/blog",
+            "name": "Ruben Gres — Blog"
+        },
+        "worksFor": [
+            { "@type": "Organization", "name": "Misaligned Games", "url": "https://misaligned.games/" },
+            { "@type": "Organization", "name": "RockBottom", "url": "https://rockbttm.itch.io" }
+        ]
+    })}</script>`}
 </svelte:head>
 
 <style>

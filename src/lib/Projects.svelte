@@ -646,6 +646,12 @@
         margin-top: 1.5rem;
     }
 
+    @media (max-width: 768px) {
+        .projects-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+
     /* Project card */
     .project-card {
         opacity: 0;
