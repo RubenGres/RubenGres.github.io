@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Invoice Generator</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<style>
+  :root {
+    --bg: #f4f5f7;
+    --panel: #ffffff;
+    --border: #e3e5e8;
+    --text: #1f2328;
+    --muted: #6b7280;
+    --accent: #2563eb;
+    --table-head: #f3f4f6;
+    --watermark: #f4d4d4;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+  }
+
+  .app {
+    display: grid;
+    grid-template-columns: 380px 1fr;
+    gap: 24px;
+    padding: 24px;
+    min-height: 100vh;
+  }
+
+  .editor {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 20px;
+    height: fit-content;
+    position: sticky;
+    top: 24px;
+    max-height: calc(100vh - 48px);
+    overflow-y: auto;
+  }
+
+  .editor h2 {
+    margin: 0 0 4px;
+    font-size: 18px;
+  }
+
+  .editor p.hint {
+    color: var(--muted);
+    font-size: 12px;
+    margin: 0 0 16px;
+  }
+
+  .editor fieldset {
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 12px;
+    margin: 0 0 14px;
+  }
+  .editor legend {
+    padding: 0 6px;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--muted);
+  }
+
+  .editor label {
+    display: block;
+    font-size: 12px;
+    color: var(--muted);
+    margin-top: 8px;
+  }
+  .editor input,
+  .editor textarea,
+  .editor select {
+    width: 100%;
+    padding: 8px 10px;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    font-size: 13px;
+    font-family: inherit;
+    margin-top: 4px;
+    background: #fff;
+  }
+  .editor input:focus,
+  .editor textarea:focus {
+    outline: 2px solid var(--accent);
+    outline-offset: -1px;
+    border-color: var(--accent);
+  }
+  .editor textarea { resize: vertical; min-height: 60px; }
+
+  .row { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+
+  .actions {
+    display: flex;
+    gap: 8px;
+    margin-top: 8px;
+  }
+  .btn {
+    flex: 1;
+    padding: 10px 12px;
+    background: var(--accent);
+    color: #fff;
+    border: 0;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+  }
+  .btn.secondary {
+    background: #fff;
+    color: var(--text);
+    border: 1px solid var(--border);
+  }
+  .btn:hover { filter: brightness(0.95); }
+
+  .preview-wrap {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+  }
+
+  .invoice {
+    background: #fff;
+    width: 794px;
+    min-height: 1123px;
+    padding: 56px 64px;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+    border-radius: 4px;
+    position: relative;
+    color: var(--text);
+    font-size: 13px;
+    line-height: 1.5;
+  }
+
+  .invoice h1 {
+    font-size: 32px;
+    font-weight: 600;
+    margin: 0;
+    letter-spacing: -0.01em;
+  }
+  .invoice .date {
+    color: var(--muted);
+    margin: 6px 0 36px;
+    font-size: 14px;
+  }
+
+  .invoice h2 {
+    font-size: 18px;
+    font-weight: 600;
+    margin: 0 0 14px;
+  }
+
+  .two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 56px;
+    margin-bottom: 36px;
+  }
+
+  .field-grid {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 6px 16px;
+    font-size: 13px;
+  }
+  .field-grid .label {
+    color: var(--muted);
+  }
+  .field-grid .value {
+    font-weight: 600;
+    white-space: pre-line;
+  }
+  .field-grid .value.normal { font-weight: 400; }
+
+  table.details {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 8px;
+    font-size: 13px;
+  }
+  table.details thead th {
+    background: var(--table-head);
+    text-align: left;
+    padding: 10px 12px;
+    font-weight: 600;
+    border: 0;
+  }
+  table.details thead th.num { text-align: right; }
+  table.details tbody td {
+    padding: 14px 12px;
+    border-bottom: 1px solid var(--border);
+  }
+  table.details tbody td.num { text-align: right; }
+
+  .totals {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    margin-top: 12px;
+    font-size: 13px;
+    gap: 4px;
+  }
+  .totals .row-t {
+    display: grid;
+    grid-template-columns: auto auto;
+    gap: 32px;
+    padding: 4px 12px;
+  }
+  .totals .row-t.total {
+    font-weight: 700;
+    font-size: 14px;
+  }
+  .totals .label { color: var(--muted); }
+
+  .terms-bank {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 56px;
+    margin-top: 48px;
+  }
+  .terms-bank .item { font-size: 13px; }
+  .terms-bank .item p { margin: 6px 0; }
+  .terms-bank .item strong { font-weight: 700; }
+
+  .watermark {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+    font-size: 180px;
+    font-weight: 600;
+    color: var(--watermark);
+    transform: rotate(-30deg);
+    user-select: none;
+  }
+  .watermark.hidden { display: none; }
+
+  @media print {
+    body { background: #fff; }
+    .editor, .no-print { display: none !important; }
+    .app { display: block; padding: 0; }
+    .invoice {
+      box-shadow: none;
+      width: auto;
+      min-height: auto;
+      padding: 40px 56px;
+    }
+    @page { size: A4; margin: 0; }
+  }
+
+  @media (max-width: 1100px) {
+    .app { grid-template-columns: 1fr; }
+    .editor { position: static; max-height: none; }
+    .invoice { width: 100%; padding: 40px; }
+  }
+</style>
+</head>
+<body>
+<div class="app">
+
+  <aside class="editor no-print">
+    <h2>Invoice Generator</h2>
+    <p class="hint">Fields auto-save to your browser.</p>
+
+    <fieldset>
+      <legend>Document</legend>
+      <label>Title <input id="title" value="Invoice Draft" /></label>
+      <label>Date <input id="date" type="date" /></label>
+      <label>
+        <input type="checkbox" id="watermarkOn" checked style="width:auto;margin-right:6px;vertical-align:middle;" />
+        Show "Draft" watermark
+      </label>
+      <label>Watermark text <input id="watermarkText" value="Draft" /></label>
+    </fieldset>
+
+    <fieldset>
+      <legend>From</legend>
+      <label>Contact name <input id="fromContact" /></label>
+      <label>Address (multi-line) <textarea id="fromAddress"></textarea></label>
+      <label>Country <input id="fromCountry" /></label>
+      <label>Company number <input id="fromCompanyNum" /></label>
+      <label>VAT number <input id="fromVAT" /></label>
+      <label>Phone number <input id="fromPhone" /></label>
+      <label>Email <input id="fromEmail" type="email" /></label>
+    </fieldset>
+
+    <fieldset>
+      <legend>Invoice to</legend>
+      <label>Company <input id="toCompany" /></label>
+      <label>Address (multi-line) <textarea id="toAddress"></textarea></label>
+      <label>Country <input id="toCountry" /></label>
+      <label>VAT number <input id="toVAT" /></label>
+    </fieldset>
+
+    <fieldset>
+      <legend>Line items</legend>
+      <div id="itemsList"></div>
+      <button type="button" class="btn secondary" style="margin-top:8px" onclick="addItem()">+ Add line</button>
+      <label style="margin-top:12px">Currency symbol <input id="currency" value="€" /></label>
+      <label>Tax line label <input id="taxLabel" value="Reverse charge VAT" /></label>
+    </fieldset>
+
+    <fieldset>
+      <legend>Terms</legend>
+      <label>Payment terms <input id="paymentTerms" value="Upon receipt" /></label>
+      <label>Payment method <input id="paymentMethod" value="Bank transfer" /></label>
+      <label>Notes <textarea id="notes">Autoliquidation — Article 283-2 du CGI / Article 196 de la Directive 2006/112/CE</textarea></label>
+    </fieldset>
+
+    <fieldset>
+      <legend>Bank details</legend>
+      <label>IBAN <input id="iban" /></label>
+      <label>BIC <input id="bic" /></label>
+      <label>Holder <input id="holder" /></label>
+    </fieldset>
+
+    <div class="actions">
+      <button class="btn" onclick="downloadPDF()">Download PDF</button>
+      <button class="btn secondary" onclick="window.print()">Print</button>
+    </div>
+    <div class="actions" style="margin-top:8px">
+      <button class="btn secondary" onclick="resetForm()">Reset</button>
+    </div>
+  </aside>
+
+  <main class="preview-wrap">
+    <article class="invoice" id="invoice">
+      <div class="watermark" id="watermark">Draft</div>
+
+      <h1 id="p_title">Invoice Draft</h1>
+      <div class="date" id="p_date">—</div>
+
+      <div class="two-col">
+        <section>
+          <h2>From</h2>
+          <div class="field-grid">
+            <div class="label">Your contact :</div><div class="value" id="p_fromContact">—</div>
+            <div class="label">Address :</div><div class="value normal" id="p_fromAddress">—</div>
+            <div class="label">Country :</div><div class="value normal" id="p_fromCountry">—</div>
+            <div class="label">Company number :</div><div class="value normal" id="p_fromCompanyNum">—</div>
+            <div class="label">VAT number :</div><div class="value normal" id="p_fromVAT">—</div>
+            <div class="label">Phone number :</div><div class="value normal" id="p_fromPhone">—</div>
+            <div class="label">Email :</div><div class="value normal" id="p_fromEmail">—</div>
+          </div>
+        </section>
+        <section>
+          <h2>Invoice to</h2>
+          <div class="field-grid">
+            <div class="label">Company :</div><div class="value" id="p_toCompany">—</div>
+            <div class="label">Address :</div><div class="value normal" id="p_toAddress">—</div>
+            <div class="label">Country :</div><div class="value normal" id="p_toCountry">—</div>
+            <div class="label">VAT number :</div><div class="value normal" id="p_toVAT">—</div>
+          </div>
+        </section>
+      </div>
+
+      <h2>Details</h2>
+      <table class="details">
+        <thead>
+          <tr>
+            <th style="width:90px">Type</th>
+            <th>Description</th>
+            <th class="num" style="width:110px">Unit price</th>
+            <th class="num" style="width:80px">Quantity</th>
+            <th class="num" style="width:110px">Total</th>
+          </tr>
+        </thead>
+        <tbody id="p_items"></tbody>
+      </table>
+
+      <div class="totals">
+        <div class="row-t"><div class="label" id="p_taxLabel">Reverse charge VAT</div><div></div></div>
+        <div class="row-t total"><div>Total</div><div id="p_total">—</div></div>
+      </div>
+
+      <div class="terms-bank">
+        <div class="item">
+          <h2>Terms</h2>
+          <p><strong>Payment terms:</strong> <span id="p_paymentTerms">—</span></p>
+          <p><strong>Payment method:</strong> <span id="p_paymentMethod">—</span></p>
+          <p><strong>Notes:</strong></p>
+          <p id="p_notes" style="white-space:pre-line">—</p>
+        </div>
+        <div class="item">
+          <h2>Bank details</h2>
+          <p><strong>IBAN:</strong> <span id="p_iban">—</span></p>
+          <p><strong>BIC:</strong> <span id="p_bic">—</span></p>
+          <p><strong>Holder:</strong> <span id="p_holder">—</span></p>
+        </div>
+      </div>
+    </article>
+  </main>
+</div>
+
+<script>
+  const FIELDS = [
+    'title','date','watermarkText',
+    'fromContact','fromAddress','fromCountry','fromCompanyNum','fromVAT','fromPhone','fromEmail',
+    'toCompany','toAddress','toCountry','toVAT',
+    'currency','taxLabel',
+    'paymentTerms','paymentMethod','notes',
+    'iban','bic','holder'
+  ];
+  const STORAGE_KEY = 'invoice_template_v7';
+
+  const DEFAULT_ITEMS = [
+    { type: 'Service', description: '', unit: 0, qty: 1 },
+  ];
+
+  let items = [];
+
+  function itemRow(idx, item) {
+    const wrap = document.createElement('div');
+    wrap.style.cssText = 'border:1px solid var(--border);border-radius:8px;padding:8px;margin-top:8px;background:#fafafa';
+    wrap.innerHTML = `
+      <div style="display:flex;justify-content:space-between;align-items:center;font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:0.04em;font-weight:600;margin-bottom:4px">
+        <span>Line ${idx + 1}</span>
+        <button type="button" style="background:none;border:0;color:#b91c1c;cursor:pointer;font-size:12px" onclick="removeItem(${idx})">Remove</button>
+      </div>
+      <label>Type <input data-item="${idx}" data-key="type" value="${escape(item.type)}" /></label>
+      <label>Description <textarea data-item="${idx}" data-key="description">${escape(item.description)}</textarea></label>
+      <div class="row">
+        <label>Unit price <input type="number" step="0.01" data-item="${idx}" data-key="unit" value="${item.unit}" /></label>
+        <label>Quantity <input type="number" step="1" data-item="${idx}" data-key="qty" value="${item.qty}" /></label>
+      </div>
+    `;
+    return wrap;
+  }
+
+  function escape(s) { return String(s ?? '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+
+  function renderItemsEditor() {
+    const list = document.getElementById('itemsList');
+    list.innerHTML = '';
+    items.forEach((it, i) => list.appendChild(itemRow(i, it)));
+  }
+
+  function addItem() {
+    items.push({ type: 'Service', description: '', unit: 0, qty: 1 });
+    renderItemsEditor();
+    save();
+    render();
+  }
+
+  function removeItem(idx) {
+    items.splice(idx, 1);
+    if (items.length === 0) items.push({ type: 'Service', description: '', unit: 0, qty: 1 });
+    renderItemsEditor();
+    save();
+    render();
+  }
+
+  function readItemsFromEditor() {
+    document.querySelectorAll('#itemsList [data-item]').forEach(input => {
+      const i = parseInt(input.dataset.item);
+      const k = input.dataset.key;
+      const v = (k === 'unit' || k === 'qty') ? parseFloat(input.value) : input.value;
+      if (items[i]) items[i][k] = v;
+    });
+  }
+
+  function load() {
+    const raw = localStorage.getItem(STORAGE_KEY);
+    if (!raw) {
+      items = JSON.parse(JSON.stringify(DEFAULT_ITEMS));
+      return;
+    }
+    try {
+      const data = JSON.parse(raw);
+      FIELDS.forEach(f => { if (data[f] !== undefined && document.getElementById(f)) document.getElementById(f).value = data[f]; });
+      if (data.watermarkOn !== undefined) document.getElementById('watermarkOn').checked = data.watermarkOn;
+      items = Array.isArray(data.items) && data.items.length ? data.items : JSON.parse(JSON.stringify(DEFAULT_ITEMS));
+    } catch(e) {
+      items = JSON.parse(JSON.stringify(DEFAULT_ITEMS));
+    }
+  }
+
+  function save() {
+    readItemsFromEditor();
+    const data = { items };
+    FIELDS.forEach(f => { data[f] = document.getElementById(f).value; });
+    data.watermarkOn = document.getElementById('watermarkOn').checked;
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+  }
+
+  function fmtMoney(n, cur) {
+    if (isNaN(n)) return '—';
+    return cur + n.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+  }
+
+  function fmtDate(s) {
+    if (!s) return '—';
+    const d = new Date(s);
+    if (isNaN(d)) return s;
+    return d.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+  }
+
+  function setText(id, v) {
+    const el = document.getElementById(id);
+    if (!el) return;
+    el.textContent = (v && v.trim()) ? v : '—';
+  }
+
+  function render() {
+    const v = id => document.getElementById(id).value;
+    setText('p_title', v('title'));
+    document.getElementById('p_date').textContent = fmtDate(v('date'));
+
+    setText('p_fromContact', v('fromContact'));
+    setText('p_fromAddress', v('fromAddress'));
+    setText('p_fromCountry', v('fromCountry'));
+    setText('p_fromCompanyNum', v('fromCompanyNum'));
+    setText('p_fromVAT', v('fromVAT'));
+    setText('p_fromPhone', v('fromPhone'));
+    setText('p_fromEmail', v('fromEmail'));
+
+    setText('p_toCompany', v('toCompany'));
+    setText('p_toAddress', v('toAddress'));
+    setText('p_toCountry', v('toCountry'));
+    setText('p_toVAT', v('toVAT'));
+
+    const cur = v('currency') || '';
+    const tbody = document.getElementById('p_items');
+    tbody.innerHTML = '';
+    let grand = 0;
+    items.forEach(it => {
+      const unit = parseFloat(it.unit);
+      const qty = parseFloat(it.qty);
+      const lineTotal = (isNaN(unit) || isNaN(qty)) ? NaN : unit * qty;
+      if (!isNaN(lineTotal)) grand += lineTotal;
+      const tr = document.createElement('tr');
+      tr.innerHTML = `
+        <td>${escape(it.type) || '—'}</td>
+        <td>${escape(it.description) || '—'}</td>
+        <td class="num">${isNaN(unit) ? '—' : fmtMoney(unit, cur)}</td>
+        <td class="num">${isNaN(qty) ? '—' : qty}</td>
+        <td class="num">${isNaN(lineTotal) ? '—' : fmtMoney(lineTotal, cur)}</td>
+      `;
+      tbody.appendChild(tr);
+    });
+    document.getElementById('p_total').textContent = items.length ? fmtMoney(grand, cur) : '—';
+
+    setText('p_taxLabel', v('taxLabel'));
+    setText('p_paymentTerms', v('paymentTerms'));
+    setText('p_paymentMethod', v('paymentMethod'));
+    setText('p_notes', v('notes'));
+    setText('p_iban', v('iban'));
+    setText('p_bic', v('bic'));
+    setText('p_holder', v('holder'));
+
+    const wm = document.getElementById('watermark');
+    wm.textContent = v('watermarkText') || '';
+    wm.classList.toggle('hidden', !document.getElementById('watermarkOn').checked || !v('watermarkText'));
+  }
+
+  async function downloadPDF() {
+    const el = document.getElementById('invoice');
+    const title = (document.getElementById('title').value || 'invoice').replace(/[^a-z0-9-_ ]/gi, '_');
+    const prevShadow = el.style.boxShadow;
+    el.style.boxShadow = 'none';
+    try {
+      const canvas = await window.html2canvas(el, { scale: 2, useCORS: true, backgroundColor: '#ffffff' });
+      const imgData = canvas.toDataURL('image/jpeg', 0.98);
+      const { jsPDF } = window.jspdf;
+      const pdf = new jsPDF({ unit: 'mm', format: 'a4', orientation: 'portrait' });
+      const pageW = pdf.internal.pageSize.getWidth();
+      const pageH = pdf.internal.pageSize.getHeight();
+      const imgRatio = canvas.height / canvas.width;
+      let w = pageW, h = pageW * imgRatio;
+      if (h > pageH) { h = pageH; w = pageH / imgRatio; }
+      // Nudge under page bounds so rounding doesn't trigger an extra page.
+      h = Math.min(h, pageH - 0.5);
+      w = Math.min(w, pageW);
+      const x = (pageW - w) / 2;
+      pdf.addImage(imgData, 'JPEG', x, 0, w, h);
+      // Belt-and-suspenders: drop any trailing empty pages.
+      for (let i = pdf.internal.getNumberOfPages(); i > 1; i--) pdf.deletePage(i);
+      pdf.save(title + '.pdf');
+    } catch (e) {
+      console.error(e);
+      alert('PDF generation failed: ' + e.message);
+    } finally {
+      el.style.boxShadow = prevShadow;
+    }
+  }
+
+  function resetForm() {
+    if (!confirm('Clear all fields?')) return;
+    localStorage.removeItem(STORAGE_KEY);
+    location.reload();
+  }
+
+  document.addEventListener('input', () => { save(); render(); });
+  document.addEventListener('change', () => { save(); render(); });
+
+  load();
+  if (!document.getElementById('date').value) {
+    document.getElementById('date').value = new Date().toISOString().slice(0,10);
+  }
+  renderItemsEditor();
+  render();
+</script>
+</body>
+</html>
