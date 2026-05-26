@@ -1,4 +1,10 @@
+<script>
+    import WorkCarousel from './WorkCarousel.svelte';
+</script>
+
 <section class="home_banner_area">
+    <WorkCarousel />
+
     <div class="banner_boids">
         <iframe
             src="/fs_portfolio/index.html"
