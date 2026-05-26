@@ -67,6 +67,18 @@
         display: inline-block;
         position: relative;
     }
+
+    @media (max-width: 768px) {
+        .section-header {
+            margin-top: 50px;
+            padding: 0 15px;
+        }
+
+        .section-title {
+            font-size: 1.6rem;
+            letter-spacing: 0.1em;
+        }
+    }
 </style>
 
 <Banner />

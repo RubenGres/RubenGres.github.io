@@ -271,18 +271,12 @@
     .image-grid {
         display: grid !important;
         gap: 15px !important;
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)) !important;
+        grid-template-columns: 1fr !important;
     }
 
-    @media (min-width: 500px) {
+    @media (min-width: 769px) {
         .image-grid:not(.single) {
-            grid-template-columns: repeat(2, 1fr);
-        }
-    }
-
-    @media (min-width: 768px) {
-        .image-grid:not(.single) {
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)) !important;
         }
     }
 
