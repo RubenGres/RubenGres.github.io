@@ -133,7 +133,7 @@
     .project-title {
         font-size: 1.8rem;
         font-weight: 700;
-        color: #333;
+        color: #e8e8f0;
         margin: 0;
         text-transform: uppercase;
         letter-spacing: 0.05em;
@@ -141,13 +141,13 @@
 
     .project-year {
         font-weight: 600;
-        color: #456df3;
+        color: #efb6df;
         font-size: 0.9rem;
     }
 
     .project-category {
         font-size: 0.9rem;
-        color: #666;
+        color: #a8a8b8;
         font-weight: 500;
         margin-bottom: 15px;
     }
@@ -155,7 +155,7 @@
     .project-description {
         font-size: 1.1rem;
         line-height: 1.6;
-        color: #666;
+        color: #a8a8b8;
         margin-bottom: 0;
     }
 

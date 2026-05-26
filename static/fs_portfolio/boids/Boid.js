@@ -6,7 +6,7 @@ class Boid {
 
       this.mouse = createVector(0, 0);
 
-      this.setMaxSpeed(1.5); 
+      this.setMaxSpeed(0.8);
       this.setMaxSize(20);
       this.size = this.maxSize * random(0.5, 1);
       
@@ -14,9 +14,9 @@ class Boid {
       this.color = boidColor;
       //this.setColorAccordingToSize();
   
-      this.buddyRadius = 5*this.size;
-      this.crowdRadius = this.buddyRadius * 3;
-      this.desiredseparation = this.size * 4;
+      this.buddyRadius = 6*this.size;
+      this.crowdRadius = this.buddyRadius * 6;
+      this.desiredseparation = this.size * 9;
 
       boids.push(this);
     }
@@ -39,7 +39,7 @@ class Boid {
     applyForces(){
       let sep = this.separate(1); // Separation
       let ali = this.align(1);    // Alignment
-      let coh = this.cohesion(0.1); // Cohesion
+      let coh = this.cohesion(0.04); // Cohesion
   
       let esc = createVector(0,0);
       if(mouseIsPressed != 0){
@@ -215,24 +215,34 @@ class Boid {
     }
 
     render() {
-      stroke(170,170,170);
-      
-      let len = (this.size / 1.5) * cameraScale;
-      let x1 = 1.5*len, y1 = 0;
-      let x2 = -len, y2 = -len;
-      let x3 = -len, y3 = +len;
-  
+      let s = this.size * cameraScale;
+
       push();
       let x = this.position.x - cameraPos.x;
       let y = this.position.y - cameraPos.y;
       translate(x * cameraScale, y * cameraScale);
-      fill(this.color);
-      rotate(this.velocity.heading());
-      triangle(x1, y1, x2, y2, x3, y3);
-      pop();
+      // Mac-style cursor has its tip pointing up-left (-3π/4 from +X in screen coords).
+      // Align that direction with the velocity heading.
+      rotate(this.velocity.heading() + (3 * PI) / 4);
 
-      if(true)
-        this.showHitbox();
+      fill(this.color);
+      stroke(0);
+      strokeWeight(1.5);
+      strokeJoin(ROUND);
+
+      // Mac-style cursor polygon (tip at 0,0, body extends down-right).
+      const k = s * 0.13;
+      beginShape();
+      vertex(0,        0);
+      vertex(0,        16 * k);
+      vertex(4.5 * k,  13 * k);
+      vertex(7 * k,    19 * k);
+      vertex(9 * k,    18 * k);
+      vertex(6.5 * k,  11 * k);
+      vertex(11 * k,   11 * k);
+      endShape(CLOSE);
+
+      pop();
     }
 
     setSize(size) {

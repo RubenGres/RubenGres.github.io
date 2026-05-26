@@ -1,5 +1,5 @@
-<footer style="margin-top: 5rem; padding: 2rem 2.5rem; background-color: #f8f9fa;">
-    <div style="max-width: 1200px; margin: 0 auto; text-align: center; color: #6c757d;">
+<footer style="margin-top: 5rem; padding: 2rem 2.5rem; background-color: #07070d; border-top: 1px solid #2a2a3a;">
+    <div style="max-width: 1200px; margin: 0 auto; text-align: center; color: #70707f;">
         © 2025 Ruben Gres.
     </div>
 </footer>

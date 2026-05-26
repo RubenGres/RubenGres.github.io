@@ -3,7 +3,7 @@ class Predator extends Boid {
         super(x,y, color(255, 175, 175));
 
         this.setSize(30);
-        this.setMaxSpeed(1);
+        this.setMaxSpeed(0.5);
         
         this.chaseRadius = this.size * 5;
         this.eatRadius = this.size;

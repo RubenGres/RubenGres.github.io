@@ -1,6 +1,6 @@
 /* constants */
-const nbPrey = 10;
-const nbPred = 1;
+const nbPrey = 20;
+const nbPred = 2;
 const globalScale = 1;
 
 const mouseRadius = 30;
@@ -382,6 +382,19 @@ function draw() {
     runBoids();
 
   renderBoids();
+
+  /* broadcast boid positions to parent page for distortion overlay */
+  if (window.parent !== window && boids.length > 0) {
+    const positions = [];
+    for (let i = 0; i < boids.length; i++) {
+      positions.push({
+        x: boids[i].position.x,
+        y: boids[i].position.y,
+        isPred: boids[i] instanceof Predator
+      });
+    }
+    window.parent.postMessage({ type: 'boids', positions, w: windowWidth, h: windowHeight }, '*');
+  }
 
   fill(200,200,200,30);
   stroke(0,0,0,70);

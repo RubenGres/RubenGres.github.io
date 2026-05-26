@@ -1,6 +1,9 @@
 <script>
   import { onMount } from 'svelte';
-  
+  import { page } from '$app/stores';
+
+  $: isHome = $page.url.pathname === '/';
+
   let isMenuOpen = false;
   
   function toggleMenu() {
@@ -28,7 +31,7 @@
   });
 </script>
 
-<div id="navigation">
+<div id="navigation" class:home={isHome}>
   <nav class="navbar navbar-expand-sm navbar-light container">
     <div class="navbar-brand">
       <a class="nav-link" href="/" id="site-name-nav">
@@ -72,11 +75,55 @@
 <style>
   #navigation {
     height: 75px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-    margin-bottom: 6px;
+    background-color: #0a0a12;
+    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.06);
+    margin-bottom: 0;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
     font-size: 1.15em;
     position: relative;
+  }
+
+  :global(.navbar .navbar-collapse .navbar-nav .nav-item .nav-link) {
+    color: #c9d4ff !important;
+  }
+
+  :global(.navbar .navbar-collapse .navbar-nav .nav-item .nav-link:hover) {
+    color: #efb6df !important;
+  }
+
+  :global(#site-name-nav span) {
+    color: #ffd0ec !important;
+  }
+
+  :global(.navbar-toggler) {
+    color: #c9d4ff !important;
+  }
+
+  #navigation.home {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0));
+    box-shadow: none;
+    z-index: 10000;
+  }
+
+  #navigation.home :global(.nav-link) {
+    color: rgba(255, 255, 255, 0.92) !important;
+    text-shadow: 0 1px 8px rgba(0, 0, 0, 0.5);
+  }
+
+  #navigation.home :global(.nav-link:hover) {
+    color: #ffd0ec !important;
+  }
+
+  #navigation.home :global(#site-name-nav span) {
+    color: #ffffff !important;
+  }
+
+  #navigation.home :global(.navbar-toggler) {
+    color: #ffffff !important;
   }
 
   .navbar {

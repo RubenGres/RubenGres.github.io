@@ -62,7 +62,7 @@
         font-weight: 700;
         text-transform: uppercase;
         letter-spacing: 0.15em;
-        color: #333;
+        color: #e8e8f0;
         margin-bottom: 20px;
         display: inline-block;
         position: relative;

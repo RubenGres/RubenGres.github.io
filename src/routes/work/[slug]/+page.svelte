@@ -1,6 +1,7 @@
 <!-- File: src/routes/work/[slug]/+page.svelte -->
 <script>
     import { tick } from 'svelte';
+    import { goto } from '$app/navigation';
 
     export let data;
     const { project } = data;
@@ -99,6 +100,18 @@
             closeFullscreen();
         }
     }
+
+    let projectContentEl;
+
+    function handleOutsideClick(event) {
+        if (fullscreenImage) return;
+        if (!projectContentEl) return;
+        // Ignore clicks on interactive elements (nav, links, buttons)
+        if (event.target.closest('a, button, nav')) return;
+        if (!projectContentEl.contains(event.target)) {
+            goto('/');
+        }
+    }
 </script>
 
 <svelte:head>
@@ -108,14 +121,14 @@
     <meta property="og:description" content={project.description} />
 </svelte:head>
 
-<svelte:window on:keydown={handleKeydown} />
+<svelte:window on:keydown={handleKeydown} on:click={handleOutsideClick} />
 
 <div class="container">
     <nav aria-label="Breadcrumb">
         <a href="/" class="back-link">← Back to projects</a>
     </nav>
 
-    <div class="project-content">
+    <div class="project-content" bind:this={projectContentEl}>
         <h1 class="project-title">{project.title}</h1>
         <p class="project-subtitle">{project.subtitle}</p>
 
