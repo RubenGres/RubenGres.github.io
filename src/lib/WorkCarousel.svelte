@@ -11,8 +11,12 @@
     const MAX_BOIDS = 32;
     const FADE_DURATION = 1400; // ms
     const SLIDE_INTERVAL = 5000; // ms
-    const GRID_W = 96;
-    const GRID_H = 54;
+    const isMobile = typeof window !== 'undefined' && window.matchMedia('(max-width: 768px), (pointer: coarse)').matches;
+    const GRID_W = isMobile ? 48 : 96;
+    const GRID_H = isMobile ? 27 : 54;
+
+    const boidPositions = new Float32Array(MAX_BOIDS * 2);
+    const boidStrengths = new Float32Array(MAX_BOIDS);
 
     /** @type {HTMLCanvasElement} */
     let canvas;
@@ -261,22 +265,20 @@
         const mouseActive = mouseUV !== null && (t - mouseLastSeen) < 1500;
         const boidSlots = mouseActive ? MAX_BOIDS - 1 : MAX_BOIDS;
         let count = Math.min(boidList.length, boidSlots);
-        const positions = new Float32Array(MAX_BOIDS * 2);
-        const strengths = new Float32Array(MAX_BOIDS);
         for (let i = 0; i < count; i++) {
-            positions[i * 2] = boidList[i].x / frameW;
-            positions[i * 2 + 1] = 1.0 - boidList[i].y / frameH;
-            strengths[i] = boidList[i].isPred ? 1.6 : 1.0;
+            boidPositions[i * 2] = boidList[i].x / frameW;
+            boidPositions[i * 2 + 1] = 1.0 - boidList[i].y / frameH;
+            boidStrengths[i] = boidList[i].isPred ? 1.6 : 1.0;
         }
         if (mouseActive && mouseUV) {
-            positions[count * 2] = mouseUV.x;
-            positions[count * 2 + 1] = 1.0 - mouseUV.y;
-            strengths[count] = 4.0;
+            boidPositions[count * 2] = mouseUV.x;
+            boidPositions[count * 2 + 1] = 1.0 - mouseUV.y;
+            boidStrengths[count] = 4.0;
             count++;
         }
         gl.uniform1i(u.boidCount, count);
-        gl.uniform2fv(u.boids, positions);
-        gl.uniform1fv(u.boidStrength, strengths);
+        gl.uniform2fv(u.boids, boidPositions);
+        gl.uniform1fv(u.boidStrength, boidStrengths);
 
         gl.drawElements(gl.TRIANGLES, indexCount, gl.UNSIGNED_SHORT, 0);
     }
@@ -334,6 +336,17 @@
         mouseLastSeen = performance.now();
     }
 
+    function onVisibility() {
+        if (document.hidden) {
+            if (rafId) cancelAnimationFrame(rafId);
+            rafId = 0;
+            clearInterval(slideTimer);
+        } else if (!rafId) {
+            rafId = requestAnimationFrame(render);
+            slideTimer = setInterval(advance, SLIDE_INTERVAL);
+        }
+    }
+
     onMount(() => {
         if (!initGL()) return;
         imagePaths.forEach((path, i) => loadTexture(path, i));
@@ -345,6 +358,7 @@
         window.addEventListener('resize', resize);
         window.addEventListener('pointermove', onPointerMove);
         window.addEventListener('keydown', onKeyDown);
+        document.addEventListener('visibilitychange', onVisibility);
     });
 
     onDestroy(() => {
@@ -355,6 +369,7 @@
             window.removeEventListener('resize', resize);
             window.removeEventListener('pointermove', onPointerMove);
             window.removeEventListener('keydown', onKeyDown);
+            document.removeEventListener('visibilitychange', onVisibility);
         }
         if (gl) {
             textures.forEach((t) => t && gl && gl.deleteTexture(t.tex));

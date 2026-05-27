@@ -13,6 +13,7 @@
 
     let firstIndex = 0;
     let lastIndex = 3;
+    let showBoids = false;
 
     function nextIndex(current, other) {
         let n = (current + 1) % fonts.length;
@@ -21,6 +22,11 @@
     }
 
     onMount(() => {
+        const mq = window.matchMedia('(min-width: 769px) and (pointer: fine)');
+        showBoids = mq.matches;
+        const onChange = (e) => { showBoids = e.matches; };
+        mq.addEventListener('change', onChange);
+
         let tick = 0;
         const timer = setInterval(() => {
             if (tick % 2 === 0) {
@@ -30,7 +36,10 @@
             }
             tick++;
         }, 1000);
-        return () => clearInterval(timer);
+        return () => {
+            clearInterval(timer);
+            mq.removeEventListener('change', onChange);
+        };
     });
 </script>
 
@@ -46,21 +55,23 @@
 <section class="home_banner_area">
     <WorkCarousel />
 
-    <div class="banner_boids">
-        <iframe
-            src="/fs_portfolio/index.html"
-            allowtransparency="true"
-            scrolling="no"
-            title="boids_banner"
-        >
-        </iframe>
-    </div>
+    {#if showBoids}
+        <div class="banner_boids">
+            <iframe
+                src="/fs_portfolio/index.html"
+                allowtransparency="true"
+                scrolling="no"
+                title="boids_banner"
+            >
+            </iframe>
+        </div>
+    {/if}
 
     <div class="banner_inner">
         <div class="container">
             <div class="row justify-content-center banner_parent">
                 <div class="banner_content col-12 text-center">
-                    <h1 class="hero-name"><span class="gradient-name"><span class="name-part" style="font-family: {fonts[firstIndex].css};">Ruben</span>&nbsp;<span class="name-part" style="font-family: {fonts[lastIndex].css};">Gres</span></span></h1>
+                    <h1 class="hero-name"><span class="gradient-name"><span class="name-part" style="font-family: {fonts[firstIndex].css};">Ruben</span><span style="display:inline-block;width:0.3em;">&nbsp;</span><span class="name-part" style="font-family: {fonts[lastIndex].css};">Gres</span></span></h1>
                     <h2 class="hero-tagline">Game Dev, Creative Technologist &amp; AI Engineer</h2>
 
                     <div class="intro-bio">

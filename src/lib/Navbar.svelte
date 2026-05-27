@@ -47,7 +47,9 @@
       aria-expanded={isMenuOpen}
       aria-label="Toggle navigation"
     >
-      <i class="fas fa-bars" aria-hidden="true"></i>
+      <svg class="hamburger-icon" viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+      </svg>
     </button>
 
     <div class="navbar-collapse {isMenuOpen ? 'show' : ''}" id="collapsibleNavbar">
@@ -141,14 +143,20 @@
     display: none;
     background: none;
     border: none;
-    font-size: 2rem;
-    color: #05364d;
+    color: #c9d4ff;
     cursor: pointer;
     padding: 10px;
     min-width: 50px;
     min-height: 50px;
     align-items: center;
     justify-content: center;
+  }
+
+  .hamburger-icon {
+    width: 28px;
+    height: 28px;
+    fill: none;
+    stroke: currentColor;
   }
 
   .navbar-collapse {
@@ -209,10 +217,14 @@
     .navbar-toggler {
       display: flex;
       order: 2;
-      font-size: 3rem;
       padding: 5px;
       min-width: 40px;
       min-height: 40px;
+    }
+
+    .hamburger-icon {
+      width: 32px;
+      height: 32px;
     }
 
     .navbar-collapse {
@@ -264,10 +276,14 @@
     }
 
     .navbar-toggler {
-      font-size: 1.3rem;
       padding: 3px;
       min-width: 35px;
       min-height: 35px;
+    }
+
+    .hamburger-icon {
+      width: 26px;
+      height: 26px;
     }
 
     :global(#site-name-nav span) {
