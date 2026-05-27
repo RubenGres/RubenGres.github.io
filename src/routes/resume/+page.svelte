@@ -9,7 +9,7 @@
     <div id="header-area">
         <div id="header-left">
             <div id="contact-info" class="vcard">
-                <h1 class="fn">Ruben Gres</h1>
+                <h1 class="fn">Ruben&nbsp;Gres</h1>
                 <p>
                     Email:
                     <a class="email" href="mailto:ruben.gres@proton.me">ruben.gres@proton.me</a>

@@ -34,6 +34,20 @@
             image: "img/boidsjs.jpg",
             description: "Boids algorithm in p5.js. You can spawn a fish or a shark; the sharks will try to eat the fishes as they try to escape.",
             year: 2020
+        },
+        {
+            title: "Out Of Control(s)",
+            link: "https://ohmlet.itch.io/out-of-controls",
+            image: "img/outofcontrols.jpg",
+            description: "You have a limited number of key presses before you run out of controls. Made for GMTK 2020 Game Jam.",
+            year: 2020
+        },
+        {
+            title: "Blastoff",
+            link: "https://github.com/RubenGres/Blastoff",
+            image: "img/blastoff.jpg",
+            description: "Procedural mining game in Java. Custom game engine, perlin noise, and cellular automatas for terrain generation.",
+            year: 2018
         }
     ];
 </script>

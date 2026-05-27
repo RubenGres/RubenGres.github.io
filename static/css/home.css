@@ -79,10 +79,6 @@ body {
     vertical-align: top;
 }
 
-.home_banner_area .banner_content .hero-name .gradient-name .initial {
-    color: #fff;
-}
-
 .home_banner_area .banner_content .hero-tagline {
     color: rgba(255, 255, 255, 0.95);
     font-size: 1.35em;

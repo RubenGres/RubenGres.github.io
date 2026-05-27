@@ -13,7 +13,7 @@
     />
 
     <div>
-        <h1>Ruben Gres</h1>
+        <h1>Ruben&nbsp;Gres</h1>
         <p>
             Creative Technologist & AI developer based in France, working at the intersection of technology and creativity and committed to creating impactful solutions for the common good.
         </p>
@@ -28,7 +28,7 @@
             <li>
                 <a href="https://www.linkedin.com/in/ruben-gres-484930158/" target="_blank" rel="noopener noreferrer">
                     <i class="fab fa-linkedin" aria-hidden="true"></i>
-                    LinkedIn @Ruben Gres
+                    LinkedIn @Ruben&nbsp;Gres
                 </a>
             </li>
             <li>

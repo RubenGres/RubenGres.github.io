@@ -124,20 +124,6 @@
             description: "Deal with your inescapable anxiety, your unwanted roommate. Made for GMTK 2021 Game Jam",
             year: 2021
         },
-        {
-            title: "Out Of Control(s)",
-            link: "https://ohmlet.itch.io/out-of-controls",
-            image: "img/outofcontrols.jpg",
-            description: "You have a limited number of key presses before you run out of controls. Made for GMTK 2020 Game Jam.",
-            year: 2020
-        },
-        {
-            title: "Blastoff",
-            link: "https://github.com/RubenGres/Blastoff",
-            image: "img/blastoff.jpg",
-            description: "Procedural mining game in Java. Custom game engine, perlin noise, and cellular automatas for terrain generation.",
-            year: 2018
-        }
     ];
 
     let projectCategories = [
