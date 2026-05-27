@@ -2,10 +2,10 @@
     import { onMount, onDestroy } from 'svelte';
 
     const imagePaths = [
-        "img/eat-bitz/event_2.jpg",
+        "img/snipit.png",
         "img/eyes-on-the-field/dinner_2.jpg",
-        "img/seg2sat.jpg",
-        "img/fifi.png",
+        "img/bitz/workshop_2.jpg",
+        "img/emotional-baggage.jpg",
     ];
 
     const MAX_BOIDS = 32;
@@ -83,10 +83,10 @@
                 d.x *= u_canvasAspect;
                 float dist = length(d);
                 float strength = u_boidStrength[i];
-                float wave = sin(dist * 55.0 - u_time * 5.5) * exp(-dist * 22.0);
+                float falloff = exp(-dist * 22.0);
                 vec2 dir = dist > 0.0001 ? normalize(d) : vec2(0.0);
-                displaced += dir * wave * 0.010 * strength;
-                highlight += max(wave, 0.0) * strength;
+                displaced -= dir * falloff * 0.040 * strength;
+                highlight += falloff * strength;
             }
 
             displaced.y = 1.0 - displaced.y; // flip Y for image orientation
@@ -271,7 +271,7 @@
         if (mouseActive && mouseUV) {
             positions[count * 2] = mouseUV.x;
             positions[count * 2 + 1] = 1.0 - mouseUV.y;
-            strengths[count] = 2.0;
+            strengths[count] = 4.0;
             count++;
         }
         gl.uniform1i(u.boidCount, count);
@@ -285,6 +285,29 @@
         current = next;
         next = (next + 1) % imagePaths.length;
         fadeStart = performance.now();
+    }
+
+    function goPrev() {
+        current = next;
+        next = (next - 1 + imagePaths.length) % imagePaths.length;
+        fadeStart = performance.now();
+        restartTimer();
+    }
+
+    function goNext() {
+        advance();
+        restartTimer();
+    }
+
+    function restartTimer() {
+        clearInterval(slideTimer);
+        slideTimer = setInterval(advance, SLIDE_INTERVAL);
+    }
+
+    /** @param {KeyboardEvent} e */
+    function onKeyDown(e) {
+        if (e.key === 'ArrowLeft') goPrev();
+        else if (e.key === 'ArrowRight') goNext();
     }
 
     /** @param {MessageEvent} e */
@@ -321,6 +344,7 @@
         window.addEventListener('message', onMessage);
         window.addEventListener('resize', resize);
         window.addEventListener('pointermove', onPointerMove);
+        window.addEventListener('keydown', onKeyDown);
     });
 
     onDestroy(() => {
@@ -330,6 +354,7 @@
             window.removeEventListener('message', onMessage);
             window.removeEventListener('resize', resize);
             window.removeEventListener('pointermove', onPointerMove);
+            window.removeEventListener('keydown', onKeyDown);
         }
         if (gl) {
             textures.forEach((t) => t && gl && gl.deleteTexture(t.tex));

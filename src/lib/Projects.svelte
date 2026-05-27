@@ -104,13 +104,6 @@
             year: 2025
         },
         {
-            title: "Dad knows (siege) best",
-            link: "https://www.youtube.com/watch?v=ofAcTvuybvY",
-            image: "img/siege.jpg",
-            description: "Lead an army of LLM soldier agents from the grave. Built during Mistral x HF Hackaton 2025.",
-            year: 2025
-        },
-        {
             title: "Zoomies",
             link: "https://ohmlet.itch.io/zoomies",
             image: "https://img.itch.zone/aW1nLzE3NDQ4OTYxLmpwZw==/315x250%23c/p%2BHryy.jpg",
@@ -125,25 +118,11 @@
             year: 2023
         },
         {
-            title: "Pug Heist",
-            link: "https://ohmlet.itch.io/pug-heists",
-            image: "img/pug.jpg",
-            description: "A strange little puzzle game made for GTMK 2022. Solve every level and escape to safety.",
-            year: 2022
-        },
-        {
             title: "Unwanted Roommate",
             link: "https://ohmlet.itch.io/unwanted-roommate",
             image: "img/unwantedroommate.jpg",
             description: "Deal with your inescapable anxiety, your unwanted roommate. Made for GMTK 2021 Game Jam",
             year: 2021
-        },
-        {
-            title: "VR Handglider",
-            link: "https://github.com/RubenGres/VRHanglider",
-            image: "img/planeur.jpg",
-            description: "Procedural world generator and flight simulator in VR using Unity. The plane is controlled via a microcontroller.",
-            year: 2020
         },
         {
             title: "Out Of Control(s)",
@@ -161,23 +140,6 @@
         }
     ];
 
-    let otherProjects = [
-        {
-            title: "Bad Apple Animation",
-            link: "https://www.youtube.com/watch?v=LD4D09EVcDY&t=112s",
-            image: "img/badapple.jpg",
-            description: "A Blender animation of the opening of Bad Apple rendered on an Etch-A-Sketch. The video is currently reaching 333k views!",
-            year: 2020
-        },
-        {
-            title: "Flocking Sandbox",
-            link: "https://github.com/RubenGres/FlockingSandbox",
-            image: "img/boidsjs.jpg",
-            description: "Boids algorithm in p5.js. You can spawn a fish or a shark; the sharks will try to eat the fishes as they try to escape.",
-            year: 2020
-        }
-    ];
-
     let projectCategories = [
         {
             title: "Creative Tech and AI for Artists",
@@ -189,13 +151,13 @@
             projects : artCollaborations
         },
         {
-            title: "Interactive Tools for AI Education",
-            id: "education",
+            title: "Game development",
+            id: "games",
             description: `
-                <p>I believe in making complex AI concepts accessible through hands-on learning and visual tools.
-                I teach at graduate level and work with educational organizations to bring AI education to younger audiences.</p>
+                <p> I explore unconventional gameplays through game jams, personal projects, and a commercial game soon to be announced.
+                I collaborate with friends within <a href="https://ohmlet.itch.io">RockBottom</a>, a collective making small experimental games.</p>
             `,
-            projects: educationProjects
+            projects : gameProjects
         },
         {
             title: "Generative AI projects",
@@ -207,21 +169,13 @@
             projects : genAIProjects
         },
         {
-            title: "Game development",
-            id: "games",
+            title: "Interactive Tools for AI Education",
+            id: "education",
             description: `
-                <p> I explore unconventional gameplays through game jams, personal projects, and a commercial game soon to be announced.
-                I collaborate with friends within <a href="https://ohmlet.itch.io">RockBottom</a>, a collective making small experimental games.</p>
+                <p>I believe in making complex AI concepts accessible through hands-on learning and visual tools.
+                I teach at graduate level and work with educational organizations to bring AI education to younger audiences.</p>
             `,
-            projects : gameProjects
-        },
-        {
-            title: "Miscellaneous projects",
-            id: "misc",
-            description:`
-                <p>Experiments, 3D modeling and older projects that didn't fit in any category.<p>
-            `,
-            projects : otherProjects
+            projects: educationProjects
         },
     ]
 
@@ -438,6 +392,13 @@
             </div>
         </section>
     {/each}
+
+    <div class="archive-link-wrap">
+        <a href="/archive" class="archive-link">
+            Browse the archive
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+    </div>
 </ScrollEffect>
 
 <style>
@@ -722,6 +683,36 @@
         line-height: 1.3em;
         font-size: 0.95rem;
         margin: 0;
+    }
+
+    .archive-link-wrap {
+        display: flex;
+        justify-content: center;
+        padding: 1rem 13px 0;
+    }
+
+    .archive-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 10px 22px;
+        font-size: 0.85rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+        color: #c9d4ff;
+        background: #1c1c2a;
+        border: 1px solid #2a2a3a;
+        border-radius: 24px;
+        text-decoration: none;
+        transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease, transform 0.15s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    .archive-link:hover {
+        background: #efb6df;
+        color: #0a0a12;
+        border-color: transparent;
+        transform: translateY(-2px);
     }
 
     @keyframes projectPoof {

@@ -58,19 +58,29 @@ body {
     font-size: 5.5em;
     font-weight: 800;
     line-height: 1;
-    margin: 0 auto 0.35em;
+    height: 1em;
+    margin: 0 auto -0.05em;
     letter-spacing: -0.02em;
 }
 
 .home_banner_area .banner_content .hero-name .gradient-name {
-    color: rgb(255, 175, 175);
-    filter: drop-shadow(0 4px 24px rgba(0, 0, 0, 0.85));
+    color: #fff;
+    display: inline-block;
+    line-height: 1;
+    vertical-align: top;
+    -webkit-text-stroke: 1.5px rgba(0, 0, 0, 0.55);
+    paint-order: stroke fill;
+    filter: drop-shadow(0 4px 24px rgba(0, 0, 0, 0.95));
+}
+
+.home_banner_area .banner_content .hero-name .gradient-name .name-part {
+    display: inline-block;
+    line-height: 1;
+    vertical-align: top;
 }
 
 .home_banner_area .banner_content .hero-name .gradient-name .initial {
-    background: none;
-    -webkit-text-fill-color: rgb(255, 175, 175);
-    color: rgb(255, 175, 175);
+    color: #fff;
 }
 
 .home_banner_area .banner_content .hero-tagline {
@@ -220,7 +230,7 @@ body {
 /* banner */
 
 .home_banner_area {
-    min-height: 100vh;
+    min-height: 100dvh;
     padding-top: 18vh;
     padding-bottom: 40px;
     position: relative;
