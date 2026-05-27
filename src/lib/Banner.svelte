@@ -25,10 +25,12 @@
                     <div class="intro-bio">
                         <p class="bio-text">
                             I build tools, apps, and games; often with artists, studios, and educational orgs.
+                        </p>
+                        <p class="bio-text">
                             Making cool things within <a href="https://misaligned.games/">Misaligned Games</a>, and the <a href="https://rockbttm.itch.io">RockBottom</a> collective.
                         </p>
                         <p class="bio-cta">
-                            <a href="https://calendly.com/rubengres/30min">Book a 30mn call with me</a>
+                            <a href="https://calendly.com/rubengres/30min">Book a 30mn call</a>
                         </p>
                         <div class="social_icons intro-social">
                             <a href="https://github.com/RubenGres" aria-label="GitHub profile">

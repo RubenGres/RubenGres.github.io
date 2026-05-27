@@ -393,7 +393,8 @@ function draw() {
         isPred: boids[i] instanceof Predator
       });
     }
-    window.parent.postMessage({ type: 'boids', positions, w: windowWidth, h: windowHeight }, '*');
+    const inside = mouseX >= 0 && mouseX <= windowWidth && mouseY >= 0 && mouseY <= windowHeight;
+    window.parent.postMessage({ type: 'boids', positions, w: windowWidth, h: windowHeight, mx: mouseX, my: mouseY, mouseInside: inside }, '*');
   }
 
   fill(200,200,200,30);

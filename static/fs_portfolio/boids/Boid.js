@@ -40,7 +40,8 @@ class Boid {
       let sep = this.separate(1); // Separation
       let ali = this.align(1);    // Alignment
       let coh = this.cohesion(0.04); // Cohesion
-  
+      let bord = this.borderRepulsion();
+
       let esc = createVector(0,0);
       if(mouseIsPressed != 0){
         if(mouseButton === LEFT)
@@ -48,46 +49,46 @@ class Boid {
       } else {
         esc = this.escapeCursor(40)
       }
-  
+
       this.velocity.add(sep);
       this.velocity.add(ali);
       this.velocity.add(coh);
+      this.velocity.add(bord);
       this.velocity.add(esc.mult(30)); // random amplification
     }
-  
+
     flock() {
       this.applyForces();
-  
+
       this.velocity.normalize();
       this.velocity.mult(this.maxspeed);
     }
-    
-    
-    borders() {
-      let margin = -10;
-      let turnFactor = 0.2;
+
+
+    borderRepulsion() {
+      const margin = 80;
+      const strength = 4;
       let steer = createVector(0, 0);
-      
-      // Check if approaching left or right edge
+
       if (this.position.x < margin) {
-        steer.x = turnFactor;
+        steer.x += (1 - this.position.x / margin);
       } else if (this.position.x > width - margin) {
-        steer.x = -turnFactor;
+        steer.x -= (1 - (width - this.position.x) / margin);
       }
-      
-      // Check if approaching top or bottom edge
+
       if (this.position.y < margin) {
-        steer.y = turnFactor;
+        steer.y += (1 - this.position.y / margin);
       } else if (this.position.y > height - margin) {
-        steer.y = -turnFactor;
+        steer.y -= (1 - (height - this.position.y) / margin);
       }
-      
-      if (steer.mag() > 0) {
-        steer.normalize();
-        steer.mult(this.maxspeed);
-        this.velocity.add(steer);
-        this.velocity.limit(this.maxspeed);
-      }
+
+      return steer.mult(strength);
+    }
+
+    borders() {
+      // Hard clamp as a safety net; primary edge handling is borderRepulsion().
+      this.position.x = constrain(this.position.x, 0, width);
+      this.position.y = constrain(this.position.y, 0, height);
     }
 
     escapeCursor(range){

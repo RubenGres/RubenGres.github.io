@@ -11,6 +11,8 @@
     const MAX_BOIDS = 32;
     const FADE_DURATION = 1400; // ms
     const SLIDE_INTERVAL = 5000; // ms
+    const GRID_W = 96;
+    const GRID_H = 54;
 
     /** @type {HTMLCanvasElement} */
     let canvas;
@@ -34,27 +36,22 @@
     let boidList = [];
     let frameW = 1;
     let frameH = 1;
+    /** normalized 0..1 mouse position over the canvas; null when inactive */
+    /** @type {{x: number, y: number} | null} */
+    let mouseUV = null;
+    let mouseLastSeen = 0;
 
     /** @type {{ [k: string]: WebGLUniformLocation | null }} */
     let u = {};
+    let indexCount = 0;
 
     const vertSrc = `
         attribute vec2 a_position;
-        varying vec2 v_uv;
-        void main() {
-            v_uv = a_position * 0.5 + 0.5;
-            gl_Position = vec4(a_position, 0.0, 1.0);
-        }
-    `;
-
-    const fragSrc = `
-        precision mediump float;
-        varying vec2 v_uv;
-        uniform sampler2D u_texA;
-        uniform sampler2D u_texB;
+        varying vec2 v_uvA;
+        varying vec2 v_uvB;
+        varying float v_highlight;
         uniform float u_aspectA;
         uniform float u_aspectB;
-        uniform float u_progress;
         uniform float u_canvasAspect;
         uniform float u_time;
         uniform int u_boidCount;
@@ -75,8 +72,9 @@
         }
 
         void main() {
-            vec2 uv = v_uv;
+            vec2 uv = a_position * 0.5 + 0.5;
             vec2 displaced = uv;
+            float highlight = 0.0;
 
             for (int i = 0; i < ${MAX_BOIDS}; i++) {
                 if (i >= u_boidCount) break;
@@ -88,33 +86,34 @@
                 float wave = sin(dist * 55.0 - u_time * 5.5) * exp(-dist * 22.0);
                 vec2 dir = dist > 0.0001 ? normalize(d) : vec2(0.0);
                 displaced += dir * wave * 0.010 * strength;
+                highlight += max(wave, 0.0) * strength;
             }
 
             displaced.y = 1.0 - displaced.y; // flip Y for image orientation
 
-            vec2 uvA = coverUV(displaced, u_aspectA, u_canvasAspect);
-            vec2 uvB = coverUV(displaced, u_aspectB, u_canvasAspect);
+            v_uvA = coverUV(displaced, u_aspectA, u_canvasAspect);
+            v_uvB = coverUV(displaced, u_aspectB, u_canvasAspect);
+            v_highlight = highlight;
 
-            vec4 colA = texture2D(u_texA, uvA);
-            vec4 colB = texture2D(u_texB, uvB);
+            gl_Position = vec4(a_position, 0.0, 1.0);
+        }
+    `;
+
+    const fragSrc = `
+        precision mediump float;
+        varying vec2 v_uvA;
+        varying vec2 v_uvB;
+        varying float v_highlight;
+        uniform sampler2D u_texA;
+        uniform sampler2D u_texB;
+        uniform float u_progress;
+
+        void main() {
+            vec4 colA = texture2D(u_texA, v_uvA);
+            vec4 colB = texture2D(u_texB, v_uvB);
             vec4 col = mix(colA, colB, u_progress);
-
-            // ambient dark tint
             col.rgb *= 0.5;
-
-            // subtle brightening ridge from ripples — visible highlight at wave crests
-            float highlight = 0.0;
-            for (int i = 0; i < ${MAX_BOIDS}; i++) {
-                if (i >= u_boidCount) break;
-                vec2 boid = u_boids[i];
-                vec2 d = uv - boid;
-                d.x *= u_canvasAspect;
-                float dist = length(d);
-                float w = sin(dist * 55.0 - u_time * 5.5) * exp(-dist * 22.0);
-                highlight += max(w, 0.0) * u_boidStrength[i];
-            }
-            col.rgb += vec3(0.08, 0.10, 0.12) * highlight;
-
+            col.rgb += vec3(0.08, 0.10, 0.12) * v_highlight;
             gl_FragColor = col;
         }
     `;
@@ -152,15 +151,37 @@
         }
         gl.useProgram(program);
 
+        const verts = new Float32Array(GRID_W * GRID_H * 2);
+        for (let y = 0; y < GRID_H; y++) {
+            for (let x = 0; x < GRID_W; x++) {
+                const i = (y * GRID_W + x) * 2;
+                verts[i] = (x / (GRID_W - 1)) * 2 - 1;
+                verts[i + 1] = (y / (GRID_H - 1)) * 2 - 1;
+            }
+        }
         const buf = gl.createBuffer();
         gl.bindBuffer(gl.ARRAY_BUFFER, buf);
-        gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([
-            -1, -1,  1, -1, -1,  1,
-            -1,  1,  1, -1,  1,  1
-        ]), gl.STATIC_DRAW);
+        gl.bufferData(gl.ARRAY_BUFFER, verts, gl.STATIC_DRAW);
         const posLoc = gl.getAttribLocation(program, 'a_position');
         gl.enableVertexAttribArray(posLoc);
         gl.vertexAttribPointer(posLoc, 2, gl.FLOAT, false, 0, 0);
+
+        const indices = new Uint16Array((GRID_W - 1) * (GRID_H - 1) * 6);
+        let p = 0;
+        for (let y = 0; y < GRID_H - 1; y++) {
+            for (let x = 0; x < GRID_W - 1; x++) {
+                const a = y * GRID_W + x;
+                const b = a + 1;
+                const c = a + GRID_W;
+                const d = c + 1;
+                indices[p++] = a; indices[p++] = b; indices[p++] = c;
+                indices[p++] = c; indices[p++] = b; indices[p++] = d;
+            }
+        }
+        const ibo = gl.createBuffer();
+        gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, ibo);
+        gl.bufferData(gl.ELEMENT_ARRAY_BUFFER, indices, gl.STATIC_DRAW);
+        indexCount = indices.length;
 
         u.texA = gl.getUniformLocation(program, 'u_texA');
         u.texB = gl.getUniformLocation(program, 'u_texB');
@@ -237,8 +258,9 @@
         gl.uniform1f(u.canvasAspect, canvas.width / canvas.height);
         gl.uniform1f(u.time, (t - startTime) / 1000);
 
-        const count = Math.min(boidList.length, MAX_BOIDS);
-        gl.uniform1i(u.boidCount, count);
+        const mouseActive = mouseUV !== null && (t - mouseLastSeen) < 1500;
+        const boidSlots = mouseActive ? MAX_BOIDS - 1 : MAX_BOIDS;
+        let count = Math.min(boidList.length, boidSlots);
         const positions = new Float32Array(MAX_BOIDS * 2);
         const strengths = new Float32Array(MAX_BOIDS);
         for (let i = 0; i < count; i++) {
@@ -246,10 +268,17 @@
             positions[i * 2 + 1] = 1.0 - boidList[i].y / frameH;
             strengths[i] = boidList[i].isPred ? 1.6 : 1.0;
         }
+        if (mouseActive && mouseUV) {
+            positions[count * 2] = mouseUV.x;
+            positions[count * 2 + 1] = 1.0 - mouseUV.y;
+            strengths[count] = 2.0;
+            count++;
+        }
+        gl.uniform1i(u.boidCount, count);
         gl.uniform2fv(u.boids, positions);
         gl.uniform1fv(u.boidStrength, strengths);
 
-        gl.drawArrays(gl.TRIANGLES, 0, 6);
+        gl.drawElements(gl.TRIANGLES, indexCount, gl.UNSIGNED_SHORT, 0);
     }
 
     function advance() {
@@ -265,6 +294,21 @@
         boidList = data.positions;
         frameW = data.w || 1;
         frameH = data.h || 1;
+        if (data.mouseInside && typeof data.mx === 'number') {
+            mouseUV = { x: data.mx / frameW, y: data.my / frameH };
+            mouseLastSeen = performance.now();
+        }
+    }
+
+    /** @param {PointerEvent} e */
+    function onPointerMove(e) {
+        if (!canvas) return;
+        const rect = canvas.getBoundingClientRect();
+        const x = (e.clientX - rect.left) / rect.width;
+        const y = (e.clientY - rect.top) / rect.height;
+        if (x < 0 || x > 1 || y < 0 || y > 1) return;
+        mouseUV = { x, y };
+        mouseLastSeen = performance.now();
     }
 
     onMount(() => {
@@ -276,6 +320,7 @@
         slideTimer = setInterval(advance, SLIDE_INTERVAL);
         window.addEventListener('message', onMessage);
         window.addEventListener('resize', resize);
+        window.addEventListener('pointermove', onPointerMove);
     });
 
     onDestroy(() => {
@@ -284,6 +329,7 @@
         if (typeof window !== 'undefined') {
             window.removeEventListener('message', onMessage);
             window.removeEventListener('resize', resize);
+            window.removeEventListener('pointermove', onPointerMove);
         }
         if (gl) {
             textures.forEach((t) => t && gl && gl.deleteTexture(t.tex));
