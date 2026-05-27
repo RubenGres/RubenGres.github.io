@@ -55,7 +55,7 @@ body {
 
 .home_banner_area .banner_content .hero-name {
     font-family: "Times New Roman", Times, serif;
-    font-size: 5.5em;
+    font-size: clamp(2.75rem, 11vw, 5.5rem);
     font-weight: 800;
     line-height: 1;
     height: 1em;
@@ -81,7 +81,7 @@ body {
 
 .home_banner_area .banner_content .hero-tagline {
     color: rgba(255, 255, 255, 0.95);
-    font-size: 1.35em;
+    font-size: clamp(1rem, 2.6vw, 1.35rem);
     font-weight: 300;
     letter-spacing: 0.05em;
     margin: 0 auto;
@@ -102,14 +102,6 @@ body {
     .home_banner_area .banner_content .hero-eyebrow {
         font-size: 0.85em;
         letter-spacing: 0.16em;
-    }
-
-    .home_banner_area .banner_content .hero-name {
-        font-size: 3em;
-    }
-
-    .home_banner_area .banner_content .hero-tagline {
-        font-size: 1em;
     }
 
     .home_banner_area .banner_content .hero-tagline .loc-sep {
