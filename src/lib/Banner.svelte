@@ -11,35 +11,56 @@
         { name: 'Spectral',    css: '"Spectral", serif' }
     ];
 
-    let firstIndex = 0;
-    let lastIndex = 3;
-    let showBoids = false;
+    const firstWord = 'Ruben';
+    const lastWord = 'Gres';
 
-    function nextIndex(current, other) {
-        let n = (current + 1) % fonts.length;
-        if (n === other) n = (n + 1) % fonts.length;
+    let firstFonts = firstWord.split('').map((_, i) => i % fonts.length);
+    let lastFonts = lastWord.split('').map((_, i) => (i + 2) % fonts.length);
+    let firstHover = firstWord.split('').map(() => false);
+    let lastHover = lastWord.split('').map(() => false);
+
+    const hoverFont = 'Wingdings, "Wingdings 2", "Webdings", fantasy';
+
+    function randomDifferentFont(current) {
+        let n = Math.floor(Math.random() * (fonts.length - 1));
+        if (n >= current) n++;
         return n;
     }
 
-    onMount(() => {
-        const mq = window.matchMedia('(min-width: 769px) and (pointer: fine)');
-        showBoids = mq.matches;
-        const onChange = (e) => { showBoids = e.matches; };
-        mq.addEventListener('change', onChange);
+    function hoverLetter(word, i) {
+        if (word === 'first') {
+            firstHover[i] = true;
+            firstHover = firstHover;
+        } else {
+            lastHover[i] = true;
+            lastHover = lastHover;
+        }
+    }
 
-        let tick = 0;
+    function unhoverLetter(word, i) {
+        if (word === 'first') {
+            firstHover[i] = false;
+            firstHover = firstHover;
+        } else {
+            lastHover[i] = false;
+            lastHover = lastHover;
+        }
+    }
+
+    onMount(() => {
         const timer = setInterval(() => {
-            if (tick % 2 === 0) {
-                firstIndex = nextIndex(firstIndex, lastIndex);
+            const totalLen = firstFonts.length + lastFonts.length;
+            const i = Math.floor(Math.random() * totalLen);
+            if (i < firstFonts.length) {
+                firstFonts[i] = randomDifferentFont(firstFonts[i]);
+                firstFonts = firstFonts;
             } else {
-                lastIndex = nextIndex(lastIndex, firstIndex);
+                const j = i - firstFonts.length;
+                lastFonts[j] = randomDifferentFont(lastFonts[j]);
+                lastFonts = lastFonts;
             }
-            tick++;
-        }, 1000);
-        return () => {
-            clearInterval(timer);
-            mq.removeEventListener('change', onChange);
-        };
+        }, 1200);
+        return () => clearInterval(timer);
     });
 </script>
 
@@ -55,23 +76,21 @@
 <section class="home_banner_area">
     <WorkCarousel />
 
-    {#if showBoids}
-        <div class="banner_boids">
-            <iframe
-                src="/fs_portfolio/index.html"
-                allowtransparency="true"
-                scrolling="no"
-                title="boids_banner"
-            >
-            </iframe>
-        </div>
-    {/if}
+    <div class="banner_boids">
+        <iframe
+            src="/fs_portfolio/index.html"
+            allowtransparency="true"
+            scrolling="no"
+            title="boids_banner"
+        >
+        </iframe>
+    </div>
 
     <div class="banner_inner">
         <div class="container">
             <div class="row justify-content-center banner_parent">
                 <div class="banner_content col-12 text-center">
-                    <h1 class="hero-name"><span class="gradient-name"><span class="name-part" style="font-family: {fonts[firstIndex].css};">Ruben</span><span style="display:inline-block;width:0.3em;">&nbsp;</span><span class="name-part" style="font-family: {fonts[lastIndex].css};">Gres</span></span></h1>
+                    <h1 class="hero-name"><span class="gradient-name"><span class="name-part">{#each firstWord.split('') as letter, i}<span class="name-letter" style="font-family: {firstHover[i] ? hoverFont : fonts[firstFonts[i]].css};" on:mouseenter={() => hoverLetter('first', i)} on:mouseleave={() => unhoverLetter('first', i)}>{letter}</span>{/each}</span><span class="name-part">{#each lastWord.split('') as letter, i}<span class="name-letter" style="font-family: {lastHover[i] ? hoverFont : fonts[lastFonts[i]].css};" on:mouseenter={() => hoverLetter('last', i)} on:mouseleave={() => unhoverLetter('last', i)}>{letter}</span>{/each}</span></span></h1>
                     <h2 class="hero-tagline">Game Dev, Creative Technologist &amp; AI Engineer</h2>
 
                     <div class="intro-bio">

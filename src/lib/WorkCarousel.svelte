@@ -262,9 +262,9 @@
         gl.uniform1f(u.canvasAspect, canvas.width / canvas.height);
         gl.uniform1f(u.time, (t - startTime) / 1000);
 
-        const mouseActive = mouseUV !== null && (t - mouseLastSeen) < 1500;
+        const mouseActive = !isMobile && mouseUV !== null && (t - mouseLastSeen) < 1500;
         const boidSlots = mouseActive ? MAX_BOIDS - 1 : MAX_BOIDS;
-        let count = Math.min(boidList.length, boidSlots);
+        let count = isMobile ? 0 : Math.min(boidList.length, boidSlots);
         for (let i = 0; i < count; i++) {
             boidPositions[i * 2] = boidList[i].x / frameW;
             boidPositions[i * 2 + 1] = 1.0 - boidList[i].y / frameH;
