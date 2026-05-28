@@ -9,12 +9,12 @@
             category: "Art & Tech"
         },
         {
-            title: "GouvX",
-            link: "work/gouvx",
-            image: "img/gouvx/gouvx_logo.jpg",
-            description: "A chatbot using retrieval augmented generation to help you navigate French law.",
-            year: 2023,
-            category: "AI & Law"
+            title: "Entropedia",
+            link: "https://entropedia.xyz/",
+            image: "img/entropedia/thumb.png",
+            description: "An alchemy card crafting game where you race to invent cards no one has ever seen.",
+            year: 2026,
+            category: "Game Design"
         },
         {
             title: "Seg2Sat",

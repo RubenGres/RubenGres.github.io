@@ -97,9 +97,16 @@
 
     let gameProjects = [
         {
+            title: "Entropedia",
+            link: "https://entropedia.xyz/",
+            image: "img/entropedia/thumb.png",
+            description: "An alchemy card crafting game where you race to invent cards no one has ever seen. Commercial title.",
+            year: 2026
+        },
+        {
             title: "Emotional Baggage",
             link: "https://rockbttm.itch.io/emotional-baggage",
-            image: "https://img.itch.zone/aW1nLzI1NzcxOTY1LnBuZw==/315x250%23c/quMvwx.jpg",
+            image: "https://img.itch.zone/aW1nLzI1NzcxOTY1LmpwZw==/315x250%23c/quMvwx.jpg",
             description: "A quick trip back to your parents' house brings back a rush of memories. Brackeys 2026.1 Game Jam.",
             year: 2026
         },
@@ -154,7 +161,7 @@
             title: "Game development",
             id: "games",
             description: `
-                <p> I explore unconventional gameplays through game jams, personal projects, and a commercial game soon to be announced.
+                <p> I explore unconventional gameplays through game jams and personal projects.
                 I collaborate with friends within <a href="https://ohmlet.itch.io">RockBottom</a>, a collective making small experimental games.</p>
             `,
             projects : gameProjects
