@@ -161,8 +161,7 @@
             title: "Game development",
             id: "games",
             description: `
-                <p> I explore unconventional gameplays through game jams and personal projects.
-                I collaborate with friends within <a href="https://ohmlet.itch.io">RockBottom</a>, a collective making small experimental games.</p>
+                <p> Beyond discovering AI native games at <a href="https://misaligned.games/">Misaligned Games</a>, I also explore unconventional gameplays with <a href="https://ohmlet.itch.io">RockBottom</a>, a collective making small experimental games.</p>
             `,
             projects : gameProjects
         },
