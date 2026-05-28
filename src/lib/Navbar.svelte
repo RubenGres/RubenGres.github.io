@@ -198,7 +198,7 @@
   }
 
   /* Mobile styles */
-  @media (max-width: 768px) {
+  @media (max-width: 768px), (pointer: coarse) {
     #navigation {
       height: auto;
       min-height: 60px;

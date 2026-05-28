@@ -97,6 +97,20 @@
 
     let gameProjects = [
         {
+            title: "Emotional Baggage",
+            link: "https://rockbttm.itch.io/emotional-baggage",
+            image: "https://img.itch.zone/aW1nLzI1NzcxOTY1LnBuZw==/315x250%23c/quMvwx.jpg",
+            description: "A quick trip back to your parents' house brings back a rush of memories. Brackeys 2026.1 Game Jam.",
+            year: 2026
+        },
+        {
+            title: "'Til You Make It",
+            link: "https://rockbttm.itch.io/tilyoumakeit",
+            image: "https://img.itch.zone/aW1nLzI1MzUwNTYyLnBuZw==/315x250%23c/Ea%2FJfx.png",
+            description: "A rhythm game where you have to mask through a family dinner. Global Game Jam 2026.",
+            year: 2026
+        },
+        {
             title: "A Bug's Day",
             link: "https://ohmlet.itch.io/a-bugs-day",
             image: "img/fifi.png",
