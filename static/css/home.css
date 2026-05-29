@@ -224,7 +224,7 @@ body {
 /* banner */
 
 .home_banner_area {
-    min-height: 100svh;
+    min-height: 10svh;
     padding-top: 18vh;
     padding-bottom: 40px;
     position: relative;
