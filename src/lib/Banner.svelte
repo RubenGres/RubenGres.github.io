@@ -12,7 +12,7 @@
     ];
 
     const firstWord = 'Ruben';
-    const lastWord = 'Gres';
+    const lastWord = 'Gr.es';
 
     let firstFonts = firstWord.split('').map((_, i) => i % fonts.length);
     let lastFonts = lastWord.split('').map((_, i) => (i + 2) % fonts.length);
