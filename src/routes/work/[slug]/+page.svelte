@@ -103,13 +103,21 @@
 
     let projectContentEl;
 
+    function navigateHome() {
+        if (typeof window !== 'undefined' && window.history.length > 1) {
+            window.history.back();
+        } else {
+            goto('/');
+        }
+    }
+
     function handleOutsideClick(event) {
         if (fullscreenImage) return;
         if (!projectContentEl) return;
         // Ignore clicks on interactive elements (nav, links, buttons)
         if (event.target.closest('a, button, nav')) return;
         if (!projectContentEl.contains(event.target)) {
-            goto('/');
+            navigateHome();
         }
     }
 </script>
@@ -123,9 +131,10 @@
 
 <svelte:window on:keydown={handleKeydown} on:click={handleOutsideClick} />
 
+<div class="modal-backdrop">
 <div class="container">
     <nav aria-label="Breadcrumb">
-        <a href="/" class="back-link">← Back to projects</a>
+        <a href="/" class="back-link" on:click|preventDefault={navigateHome}>← Back to projects</a>
     </nav>
 
     <div class="project-content" bind:this={projectContentEl}>
@@ -182,6 +191,7 @@
         </div>
     </div>
 </div>
+</div>
 
 <!-- Fullscreen Modal — accessible dialog -->
 {#if fullscreenImage}
@@ -226,6 +236,16 @@
         overflow: hidden;
     }
 
+    .modal-backdrop {
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.75);
+        backdrop-filter: blur(4px);
+        -webkit-backdrop-filter: blur(4px);
+        overflow-y: auto;
+        z-index: 9999;
+    }
+
     .container {
         max-width: 800px;
         margin: 0 auto;
@@ -233,17 +253,23 @@
     }
 
     .back-link {
-        color: #666;
+        color: #aaa;
         text-decoration: none;
         margin-bottom: 30px;
         display: inline-block;
     }
 
+    .back-link:hover {
+        color: #fff;
+    }
+
     .project-content {
-        background: white;
+        background: #1a1a1a;
+        border: 1px solid rgba(255, 255, 255, 0.08);
         border-radius: 8px;
         padding: 40px;
-        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+        color: #d0d0d0;
     }
 
     .project-meta {
@@ -254,10 +280,10 @@
     }
 
     .category {
-        background: #f0f0f0;
+        background: #2a2a2a;
         padding: 4px 12px;
         border-radius: 4px;
-        color: #666;
+        color: #bbb;
     }
 
     .year {
@@ -267,12 +293,12 @@
     .project-title {
         font-size: 32px;
         margin-bottom: 10px;
-        color: #333;
+        color: #f5f5f5;
     }
 
     .project-subtitle {
         font-size: 18px;
-        color: #666;
+        color: #aaa;
         margin-bottom: 30px;
     }
 
@@ -327,13 +353,13 @@
     .project-description {
         margin-bottom: 30px;
         padding-bottom: 20px;
-        border-bottom: 1px solid #eee;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
     }
 
     .project-description p {
         font-size: 16px;
         line-height: 1.6;
-        color: #555;
+        color: #c0c0c0;
     }
 
     .content-block {
@@ -343,14 +369,14 @@
     .content-block h2 {
         font-size: 20px;
         margin-bottom: 10px;
-        color: #333;
+        color: #f0f0f0;
         text-align: left;
     }
 
     .content-block p {
         font-size: 16px;
         line-height: 1.6;
-        color: #555;
+        color: #c0c0c0;
     }
 
     .project-links {
@@ -358,12 +384,12 @@
         gap: 15px;
         margin-top: 30px;
         padding-top: 20px;
-        border-top: 1px solid #eee;
+        border-top: 1px solid rgba(255, 255, 255, 0.08);
     }
 
     .project-link {
         padding: 10px 20px;
-        background: #05364d;
+        background: #0a6e9e;
         color: white;
         text-decoration: none;
         border-radius: 4px;
@@ -371,7 +397,7 @@
     }
 
     .project-link:hover {
-        background: #08253a;
+        background: #0d85bd;
     }
 
     /* Fullscreen Modal Styles */
@@ -385,7 +411,7 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        z-index: 1000;
+        z-index: 10001;
         cursor: pointer;
     }
 
@@ -415,7 +441,7 @@
         padding: 5px 10px;
         border-radius: 4px;
         transition: background-color 0.2s ease;
-        z-index: 1001;
+        z-index: 10002;
     }
 
     .close-button:hover,
@@ -437,7 +463,7 @@
         padding: 15px 20px;
         border-radius: 4px;
         transition: background-color 0.2s ease;
-        z-index: 1001;
+        z-index: 10002;
     }
 
     .nav-arrow:hover,
