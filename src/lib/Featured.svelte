@@ -12,7 +12,7 @@
             title: "Entropedia",
             link: "https://entropedia.xyz/",
             image: "img/entropedia/thumb.png",
-            description: "An alchemy card crafting game where you race to invent cards no one has ever seen.",
+            description: "An alchemy card crafting game where you race to invent cards no one else has made.",
             year: 2026,
             category: "Game Design"
         },
@@ -20,7 +20,7 @@
             title: "Seg2Sat",
             link: "work/drawing2map",
             image: "img/seg2sat.jpg",
-            description: "Create aerial view images in any style you want. Project made with IGN FLAIR1 dataset, StableDiffusion, and ControlNet.",
+            description: "Generate aerial imagery in any visual style. Built with the IGN FLAIR1 dataset, Stable Diffusion, and ControlNet.",
             year: 2023,
             category: "Computer Vision"
         }

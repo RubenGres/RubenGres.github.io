@@ -91,13 +91,13 @@
             <div class="row justify-content-center banner_parent">
                 <div class="banner_content col-12 text-center">
                     <h1 class="hero-name"><span class="gradient-name"><span class="name-part">{#each firstWord.split('') as letter, i}<span class="name-letter" style="font-family: {firstHover[i] ? hoverFont : fonts[firstFonts[i]].css};" on:mouseenter={() => hoverLetter('first', i)} on:mouseleave={() => unhoverLetter('first', i)}>{letter}</span>{/each}</span><span class="name-part">{#each lastWord.split('') as letter, i}<span class="name-letter" style="font-family: {lastHover[i] ? hoverFont : fonts[lastFonts[i]].css};" on:mouseenter={() => hoverLetter('last', i)} on:mouseleave={() => unhoverLetter('last', i)}>{letter}</span>{/each}</span></span></h1>
-                    <h2 class="hero-tagline">Game Dev, Creative Technologist &amp; AI Engineer</h2>
+                    <h2 class="hero-tagline">GameDev, Creative Technologist &amp; AI Engineer</h2>
 
                     <div class="intro-bio">
                         <p class="bio-text">
                             I build tools, apps, and games with artists, studios, and educational orgs.
                             <br />
-                            <span class="bio-affiliations">Currently at <a href="https://misaligned.games/">Misaligned Games</a> &amp; the <a href="https://rockbttm.itch.io">RockBottom</a> collective.</span>
+                            <span class="bio-affiliations">Currently at <a href="https://misaligned.games/">Misaligned Games</a> and with the <a href="https://rockbttm.itch.io">RockBottom</a> collective.</span>
                         </p>
                         <div class="social_icons intro-social">
                             <a href="https://github.com/RubenGres" aria-label="GitHub profile">
@@ -124,7 +124,7 @@
                         <div class="bio-cta">
                             <a class="cta-button" href="https://calendly.com/rubengres/30min">
                                 <svg class="cta-icon" viewBox="0 0 448 512" aria-hidden="true"><path d="M152 64H296V24C296 10.75 306.7 0 320 0C333.3 0 344 10.75 344 24V64H384C419.3 64 448 92.65 448 128V448C448 483.3 419.3 512 384 512H64C28.65 512 0 483.3 0 448V128C0 92.65 28.65 64 64 64H104V24C104 10.75 114.7 0 128 0C141.3 0 152 10.75 152 24V64zM48 448C48 456.8 55.16 464 64 464H384C392.8 464 400 456.8 400 448V192H48V448z"/></svg>
-                                <span>Book a 30&nbsp;min call</span>
+                                <span>Book a 30-min call</span>
                                 <svg class="cta-icon cta-arrow" viewBox="0 0 448 512" aria-hidden="true"><path d="M438.6 278.6l-160 160C272.4 444.9 264.2 448 256 448s-16.38-3.125-22.62-9.375c-12.5-12.5-12.5-32.75 0-45.25L338.8 288H32C14.33 288 .0016 273.7 .0016 256S14.33 224 32 224h306.8l-105.4-105.4c-12.5-12.5-12.5-32.75 0-45.25s32.75-12.5 45.25 0l160 160C451.1 245.9 451.1 266.1 438.6 278.6z"/></svg>
                             </a>
                         </div>

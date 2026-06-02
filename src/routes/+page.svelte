@@ -5,11 +5,11 @@
 </script>
 
 <svelte:head>
-    <title>Ruben Gres — Creative Technologist & AI Engineer | France</title>
-    <meta name="description" content="Ruben Gres — Creative Technologist & AI Engineer based in France. Building tools, apps, and games with artists, studios, and educational organizations at the intersection of AI and creativity." />
-    <meta name="keywords" content="creative technologist France, AI engineer France, generative AI, AI artist, AI games, creative AI, Ruben Gres" />
-    <meta property="og:title" content="Ruben Gres — Creative Technologist & AI Engineer (France)" />
-    <meta property="og:description" content="Creative Technologist & AI Engineer based in France. Tools, apps, and games at the intersection of AI and creativity." />
+    <title>Ruben Gres — GameDev, Creative Technologist & AI Engineer | France</title>
+    <meta name="description" content="Ruben Gres — GameDev, Creative Technologist & AI Engineer based in France. Building tools, apps, and games with artists, studios, and educational orgs at the intersection of AI and creativity." />
+    <meta name="keywords" content="game developer France, creative technologist France, AI engineer France, generative AI, AI artist, AI games, creative AI, Ruben Gres" />
+    <meta property="og:title" content="Ruben Gres — GameDev, Creative Technologist & AI Engineer (France)" />
+    <meta property="og:description" content="GameDev, Creative Technologist & AI Engineer based in France. Tools, apps, and games at the intersection of AI and creativity." />
     <link rel="canonical" href="https://rubengr.es/" />
     {@html `<script type="application/ld+json">${JSON.stringify({
         "@context": "https://schema.org",
@@ -17,8 +17,8 @@
         "name": "Ruben Gres",
         "url": "https://rubengr.es/",
         "image": "https://rubengr.es/img/portfolio.jpg",
-        "jobTitle": "Creative Technologist & AI Engineer",
-        "description": "Creative Technologist and AI Engineer based in France, building tools, apps, and games at the intersection of AI and creativity.",
+        "jobTitle": "GameDev, Creative Technologist & AI Engineer",
+        "description": "GameDev, Creative Technologist and AI Engineer based in France, building tools, apps, and games at the intersection of AI and creativity.",
         "address": {
             "@type": "PostalAddress",
             "addressCountry": "FR"
@@ -93,7 +93,7 @@
 
 <div class="section-header">
     <h2 class="section-title">
-        What I do
+        What I Do
     </h2>
 </div>
 
