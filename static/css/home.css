@@ -21,6 +21,11 @@ html, body {
     color: var(--text);
     -webkit-text-size-adjust: 100%;
     text-size-adjust: 100%;
+    /* Guard: a single overflowing element must never widen the page,
+       which on Android Chrome triggers a "shrink-to-fit" zoom-out that
+       makes the whole UI look tiny. */
+    max-width: 100%;
+    overflow-x: hidden;
 }
 
 #navigation {
@@ -58,7 +63,7 @@ body {
 
 .home_banner_area .banner_content .hero-name {
     font-family: "Times New Roman", Times, serif;
-    font-size: clamp(3.25rem, 15vw, 5.5rem);
+    font-size: clamp(2.75rem, 13vw, 5.5rem);
     font-weight: 800;
     line-height: 1;
     height: 1em;
