@@ -26,7 +26,7 @@
         },
         {
             title: "WTFood",
-            link: "work/wtfood",
+            link: "/work/wtfood",
             image: "img/wtfood.png",
             description: "An exploration of food-system glitches through AI. S+T+ARTS EU residency.",
             year: 2024

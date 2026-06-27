@@ -1,7 +1,5 @@
 // File: src/routes/work/[slug]/+page.js
-export async function load({ params }) {
-    const { slug } = params;
-
+function getProjects() {
     // All your projects data (moved from your main component)
     const allProjects = {
         // GenAI Projects
@@ -331,7 +329,22 @@ export async function load({ params }) {
         }
     };
 
-    const project = allProjects[slug];
+    return allProjects;
+}
+
+// Tell SvelteKit's prerenderer to generate a page for every project that has a
+// full detail-page schema (a `links` array). Archive entries use a singular
+// `link` string and point to external pages, so they get no /work/* route.
+export function entries() {
+    const projects = getProjects();
+    return Object.keys(projects)
+        .filter((slug) => Array.isArray(projects[slug].links))
+        .map((slug) => ({ slug }));
+}
+
+export async function load({ params }) {
+    const { slug } = params;
+    const project = getProjects()[slug];
 
     if (!project) {
         throw new Error(`Project "${slug}" not found`);
