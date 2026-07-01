@@ -16,7 +16,7 @@
                 </a>
             </h2>
 
-            Artificial Intelligence Technologies Summer School, 2026
+            <a href="https://ai.lnu.edu.ua/">Artificial Intelligence Technologies Summer School</a>, Ivan Franko National University of Lviv, 2026
             <br/>
             A talk on creativity, taste, and working with AI agents (slides)
         </li>
