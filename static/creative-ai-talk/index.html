@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Being Creative in the Age of AI</title>
+<base target="_blank">
+<link rel="stylesheet" href="css/deck.css">
+</head>
+<body>
+
+<div class="deck"></div>
+
+<div class="notes-overlay" id="notes"></div>
+<span class="counter" id="counter"></span>
+
+<div class="controls">
+  <button id="notesBtn" title="Toggle speaker notes (N)">notes</button>
+  <button id="pdfBtn" title="Export to PDF (print)">⤓ pdf</button>
+</div>
+
+<div class="nav">
+  <button id="prev">‹ prev</button>
+  <button id="next">next ›</button>
+</div>
+
+<!-- markdown renderer (vendored so the deck works fully offline) -->
+<script src="js/marked.min.js"></script>
+
+<!-- visuals: each self-registers on window.deckVisuals, run after slides render -->
+<script src="visuals/spiky-star.js"></script>
+<script src="visuals/latent-map.js"></script>
+<script src="visuals/connection-graph.js"></script>
+<script src="visuals/org-graph.js"></script>
+
+<!-- deck: fetches slides.md, builds the deck, wires nav + notes + pdf -->
+<script src="js/deck.js"></script>
+</body>
+</html>

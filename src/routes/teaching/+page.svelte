@@ -11,6 +11,20 @@
     <ul>
         <li>
             <h2>
+                <a href="/creative-ai-talk/index.html">
+                    Being Creative in the Age of AI
+                </a>
+            </h2>
+
+            Artificial Intelligence Technologies Summer School, 2026
+            <br/>
+            A talk on creativity, taste, and working with AI agents (slides)
+        </li>
+    </ul>
+
+    <ul>
+        <li>
+            <h2>
                 <a href="https://rubengr.es/llm_lab/">
                     LLM Lab (2026)
                 </a>
